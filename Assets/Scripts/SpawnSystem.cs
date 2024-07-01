@@ -4,6 +4,7 @@ using Unity.Mathematics;
 using Unity.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Entities.UniversalDelegates;
 
 namespace WireframePlexus {
 
@@ -15,9 +16,6 @@ public partial class SpawnSystem : SystemBase {
 
 
     protected override void OnUpdate() {
-
-
-        Debug.Log("OnUpdate beginnt");
         if (!SystemAPI.TryGetSingleton<VertexEntitySpawnData>(out VertexEntitySpawnData wireframePlexusVertexSpawnData)) {
             World.EntityManager.CreateSingleton<VertexEntitySpawnData>();
         }
@@ -35,22 +33,16 @@ public partial class SpawnSystem : SystemBase {
 
         var ecb = new EntityCommandBuffer(Allocator.Temp);
 
-        Debug.Log("foreach beginnt");
         foreach (EntityBuildData plexusBuildData in SpawnQueue.Instance.PlexusBuildDataQueue) {
-            Debug.Log("new foracheach iteration");
+
             
             Entity wireframePlexusObjectEntity = ecb.Instantiate(wireframePlexusObjectSpawnData.WireframePlexusEntityPrefab);
-            Debug.Log("entity isntantziiert");
 
-            Debug.Log("new sync data");
             SyncEntityPositionToGameobjectData parentReference = new SyncEntityPositionToGameobjectData();
-            Debug.Log("set sync data value");
             parentReference.gameObject = plexusBuildData.PlexusParent;
-            Debug.Log("set component sync data");
             ecb.SetComponent(wireframePlexusObjectEntity, parentReference);
             
             int points = plexusBuildData.Mesh.triangles.Length;
-            Debug.Log("set component object");
             ecb.SetComponent(wireframePlexusObjectEntity, new PlexusObjectData {
                 VertexPositions = new NativeArray<float3>(points, Allocator.Persistent),
                 MaxVertexMoveSpeed = plexusBuildData.MaxVertexMoveSpeed,
@@ -59,13 +51,11 @@ public partial class SpawnSystem : SystemBase {
                 MaxEdgeLengthPercent = plexusBuildData.MaxEdgeLengthPercent,
                 WireframePlexusObjectId = plexusObjectId
             });
-            Debug.Log("entity fertig");
 
             Dictionary<int, float3> usedPositionById = new Dictionary<int, float3>();
             Dictionary<float3, int> usedIdByPosition = new Dictionary<float3, int>();
             int pointId = 0;
             for (int i = 0; i < plexusBuildData.Mesh.vertices.Length; i++) {
-                Debug.Log("in mesh vertecies loop "+i +" / "+ plexusBuildData.Mesh.vertices.Length);
                 if (usedPositionById.ContainsValue(plexusBuildData.Mesh.vertices[i])) {
                     continue;
                 }
@@ -93,7 +83,6 @@ public partial class SpawnSystem : SystemBase {
 
             List<Connection> connections = new List<Connection>();
             for (int i = 0; i < plexusBuildData.Mesh.triangles.Length - 2; i = i + 3) {
-                Debug.Log("in mesh triangle loop " + i + " / " + plexusBuildData.Mesh.triangles.Length);
                 int pos1Id = plexusBuildData.Mesh.triangles[i];
                 int pos2Id = plexusBuildData.Mesh.triangles[i + 1];
                 int pos3Id = plexusBuildData.Mesh.triangles[i + 2];
@@ -120,10 +109,10 @@ public partial class SpawnSystem : SystemBase {
                     AddPlexusLine(ref ecb, wireframePlexusEdgeSpawnData.WireframePlexusEdgeEntityPrefab, pos1Id, pos3Id, math.distance(plexusBuildData.Mesh.vertices[pos3Id], plexusBuildData.Mesh.vertices[pos1Id]), wireframePlexusObjectEntity);
                 }
             }
-            plexusObjectId++;
+                plexusObjectId++;
         }
-
-        ecb.Playback(EntityManager);
+            Debug.Log("Start Playback");
+            ecb.Playback(EntityManager);
 
         SpawnQueue.Instance.PlexusBuildDataQueue.Clear();
         Enabled = false;
