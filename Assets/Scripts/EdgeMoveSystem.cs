@@ -10,38 +10,38 @@ namespace WireframePlexus {
     [UpdateAfter(typeof(VertexMoveSystem))]
     public partial struct EdgeMoveSystem : ISystem {
         EntityQuery plexusObjectEntityQuery;
-        EntityQuery plexusLinesByPlexusObjectIdEntityQuery;
+        EntityQuery edgesByPlexusObjectIdEntityQuery;
 
         public void OnCreate(ref SystemState state) {
             plexusObjectEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<PlexusObjectData>().Build(ref state);
-            plexusLinesByPlexusObjectIdEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<LocalTransform, EdgeData, PostTransformMatrix, PlexusObjectIdData>().Build(ref state);
+            edgesByPlexusObjectIdEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<LocalTransform, EdgeData, PostTransformMatrix, PlexusObjectIdData>().Build(ref state);
         }
 
         public void OnUpdate(ref SystemState state) {
             var plexusObjectEntries = plexusObjectEntityQuery.ToEntityArray(Allocator.Temp);
             foreach (Entity plexusObject in plexusObjectEntries) {
                 var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
-                plexusLinesByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { ObjectId = plexusObjectData.WireframePlexusObjectId });
+                edgesByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { ObjectId = plexusObjectData.WireframePlexusObjectId });
 
 
-                PlexusLineMovementJob job = new PlexusLineMovementJob { PointPositions = plexusObjectData.VertexPositions, MaxEdgeLengthPercent = plexusObjectData.MaxEdgeLengthPercent };
-                job.ScheduleParallel(plexusLinesByPlexusObjectIdEntityQuery);
+                PlexusEdgeMovementJob job = new PlexusEdgeMovementJob { PointPositions = plexusObjectData.VertexPositions, MaxEdgeLengthPercent = plexusObjectData.MaxEdgeLengthPercent };
+                job.ScheduleParallel(edgesByPlexusObjectIdEntityQuery);
             }
 
 
         }
         [BurstCompile]
-        public partial struct PlexusLineMovementJob : IJobEntity {
+        public partial struct PlexusEdgeMovementJob : IJobEntity {
 
             [ReadOnly] public float MaxEdgeLengthPercent;
             [ReadOnly][NativeDisableContainerSafetyRestriction] public NativeArray<float3> PointPositions;
 
-            public void Execute(ref LocalTransform localTransform, ref EdgeData lineData, ref PostTransformMatrix postTransform) {
-                float3 pos1 = PointPositions[lineData.Vertex1Index];
-                float3 pos2 = PointPositions[lineData.Vertex2Index];
+            public void Execute(ref LocalTransform localTransform, ref EdgeData edgeData, ref PostTransformMatrix postTransform) {
+                float3 pos1 = PointPositions[edgeData.Vertex1Index];
+                float3 pos2 = PointPositions[edgeData.Vertex2Index];
 
                 float distance = math.distance(pos1, pos2);
-                float distancePercent = distance / lineData.Length;
+                float distancePercent = distance / edgeData.Length;
                 if (distancePercent > MaxEdgeLengthPercent) {
                     localTransform.Scale = 0;
                 } else {
