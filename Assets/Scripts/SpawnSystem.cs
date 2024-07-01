@@ -13,6 +13,11 @@ namespace WireframePlexus {
         int plexusObjectId = 0;
         Unity.Mathematics.Random random = new Unity.Mathematics.Random(1);
 
+        protected override void OnCreate() {
+            RequireForUpdate<VertexEntitySpawnData>();
+            RequireForUpdate<PlexusObjectEntitySpawnData>();
+            RequireForUpdate<EdgeEntitySpawnData>();
+        }
 
         protected override void OnUpdate() {
             if (!SystemAPI.TryGetSingleton<VertexEntitySpawnData>(out VertexEntitySpawnData wireframePlexusVertexSpawnData)) {
