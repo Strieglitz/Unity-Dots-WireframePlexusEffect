@@ -2,6 +2,7 @@ using Unity.Entities;
 using UnityEngine;
 
 namespace WireframePlexus {
+
     public class EdgeEntitySpawnAuthoring : MonoBehaviour {
         public GameObject WireframePlexusEdgeEntityPrefab;
 
@@ -11,9 +12,5 @@ namespace WireframePlexus {
                 AddComponent(entity, new EdgeEntitySpawnData { WireframePlexusEdgeEntityPrefab = GetEntity(authoring.WireframePlexusEdgeEntityPrefab, TransformUsageFlags.Dynamic) });
             }
         }
-    }
-
-    public struct EdgeEntitySpawnData : IComponentData {
-        public Entity WireframePlexusEdgeEntityPrefab;
     }
 }

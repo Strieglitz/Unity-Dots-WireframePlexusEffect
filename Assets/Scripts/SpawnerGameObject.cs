@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace WireframePlexus {
 
-
-public class SpawnerGameObject : MonoBehaviour {
-        [SerializeField] Mesh mesh;
+    public class SpawnerGameObject : MonoBehaviour {
+        [SerializeField] 
+        Mesh mesh;
 
         [SerializeField]
         [Tooltip("Only draw the wireframes edge when its length is smaller than x Percent of the original length in the mesh")]
@@ -31,7 +31,7 @@ public class SpawnerGameObject : MonoBehaviour {
         }
 
         private void TestPlexus() {
-            SpawnQueue.Instance.PlexusBuildDataQueue.Enqueue(new EntityBuildData {
+            SpawnQueue.Instance.PlexusBuildDataQueue.Enqueue(new EntitySpawnData {
                 Mesh = mesh,
                 CameraWorldPos = cameraWorldPos.position,
                 MaxEdgeLengthPercent = maxEdgeLengthPercent,

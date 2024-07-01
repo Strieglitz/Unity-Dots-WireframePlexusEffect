@@ -32,12 +32,12 @@ namespace WireframePlexus {
 
             var ecb = new EntityCommandBuffer(Allocator.Temp);
 
-            foreach (EntityBuildData plexusBuildData in SpawnQueue.Instance.PlexusBuildDataQueue) {
+            foreach (EntitySpawnData plexusBuildData in SpawnQueue.Instance.PlexusBuildDataQueue) {
 
 
                 Entity wireframePlexusObjectEntity = ecb.Instantiate(wireframePlexusObjectSpawnData.WireframePlexusEntityPrefab);
 
-                SyncEntityPositionToGameobjectData parentReference = new SyncEntityPositionToGameobjectData();
+                SyncEntityPositionToGameobjectPositionData parentReference = new SyncEntityPositionToGameobjectPositionData();
                 parentReference.gameObject = plexusBuildData.PlexusParent;
                 ecb.SetComponent(wireframePlexusObjectEntity, parentReference);
 

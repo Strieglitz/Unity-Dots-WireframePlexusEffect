@@ -7,7 +7,6 @@ namespace WireframePlexus {
 
     public class EdgeDataAuthoring : MonoBehaviour {
 
-
         private class Baker : Baker<EdgeDataAuthoring> {
             public override void Bake(EdgeDataAuthoring authoring) {
                 Entity entity = GetEntity(TransformUsageFlags.Dynamic);
@@ -16,11 +15,5 @@ namespace WireframePlexus {
                 AddComponent(entity, new PostTransformMatrix { });
             }
         }
-    }
-
-    public struct EdgeData : IComponentData {
-        public int Vertex1Index;
-        public int Vertex2Index;
-        public float Length;
     }
 }

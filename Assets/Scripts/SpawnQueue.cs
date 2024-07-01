@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace WireframePlexus {
 
-public class SpawnQueue : MonoBehaviour {
+    public class SpawnQueue : MonoBehaviour {
         public static SpawnQueue Instance { get; private set; }
-        public Queue<EntityBuildData> PlexusBuildDataQueue { get; private set; } = new Queue<EntityBuildData>();
+        public Queue<EntitySpawnData> PlexusBuildDataQueue { get; private set; } = new Queue<EntitySpawnData>();
 
         private void Awake() {
             if (Instance == null || Instance == this) {
@@ -24,13 +24,5 @@ public class SpawnQueue : MonoBehaviour {
         }
     }
 
-    public struct EntityBuildData {
-        public Mesh Mesh;
-        public float MaxEdgeLengthPercent;
-        public float MinVertexMoveSpeed;
-        public float MaxVertexMoveSpeed;
-        public float MaxVertexMoveDistance;
-        public Vector3 CameraWorldPos;
-        public GameObject PlexusParent;
-    }
+
 }

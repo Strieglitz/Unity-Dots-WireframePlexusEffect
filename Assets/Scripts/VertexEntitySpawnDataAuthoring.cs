@@ -13,8 +13,4 @@ public class VertexEntitySpawnDataAuthoring : MonoBehaviour {
             }
         }
     }
-
-    public struct VertexEntitySpawnData : IComponentData {
-        public Entity WireframePlexusVertexEntityPrefab;
-    }
 }
