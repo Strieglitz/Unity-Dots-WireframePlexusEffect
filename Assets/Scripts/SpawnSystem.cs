@@ -115,9 +115,7 @@ namespace WireframePlexus {
                 }
                 plexusObjectId++;
             }
-            Debug.Log("Playback Beginn");
             ecb.Playback(EntityManager);
-            Debug.Log("Playback Finished");
 
             SpawnQueue.Instance.PlexusBuildDataQueue.Clear();
             Enabled = false;
