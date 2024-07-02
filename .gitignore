@@ -72,4 +72,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # ECS
-SceneDependencyCache/
+# Dependency caches
+**/[Aa]ssets/GlobalEntitiesDependencies*
+**/[Aa]ssets/SceneDependencyCache*
+**/[Aa]ssets/TypeDependencyCache*

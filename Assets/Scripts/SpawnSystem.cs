@@ -47,7 +47,7 @@ namespace WireframePlexus {
                 ecb.SetComponent(wireframePlexusObjectEntity, parentReference);
 
                 int points = plexusBuildData.Mesh.triangles.Length;
-                ecb.SetComponent(wireframePlexusObjectEntity, new PlexusObjectData {
+                ecb.AddComponent(wireframePlexusObjectEntity, new PlexusObjectData {
                     VertexPositions = new NativeArray<float3>(points, Allocator.Persistent),
                     MaxVertexMoveSpeed = plexusBuildData.MaxVertexMoveSpeed,
                     MinVertexMoveSpeed = plexusBuildData.MinVertexMoveSpeed,
