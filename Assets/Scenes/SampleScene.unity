@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &21006662
 Transform:
   m_ObjectHideFlags: 0
@@ -286,13 +286,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa0168fef59c5764997105929affa1f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  maxEdgeLengthPercent: 100000
-  edgeThickness: 0.01
-  vertexSize: 0.01
-  maxVertexMoveDistance: 0
-  minVertexMoveSpeed: 1
-  maxVertexMoveSpeed: 2
+  mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  maxEdgeLengthPercent: 1.5
+  edgeThickness: 0.001
+  vertexSize: 0.05
+  maxVertexMoveDistance: 0.05
+  minVertexMoveSpeed: 0.001
+  maxVertexMoveSpeed: 0.01
   cameraWorldPos: {fileID: 330585546}
   wireframePlexusParentGameobject: {fileID: 289799064}
 --- !u!4 &289799066
@@ -304,7 +304,7 @@ Transform:
   m_GameObject: {fileID: 289799064}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.16, y: 1.12, z: -7.24}
+  m_LocalPosition: {x: -0.004, y: 1.039, z: -9.056}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

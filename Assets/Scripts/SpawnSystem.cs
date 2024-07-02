@@ -81,6 +81,7 @@ namespace WireframePlexus {
                     movementData.PointId = pointId;
 
                     ecb.SetComponent(plexusVertexEntity, movementData);
+                    ecb.SetComponent(plexusVertexEntity, new LocalTransform { Position = pos, Scale = plexusBuildData.VertexSize });
                     ecb.AddSharedComponent(plexusVertexEntity, new PlexusObjectIdData { ObjectId = plexusObjectId });
                     ecb.AddComponent(plexusVertexEntity, new Parent { Value = wireframePlexusObjectEntity });
 
