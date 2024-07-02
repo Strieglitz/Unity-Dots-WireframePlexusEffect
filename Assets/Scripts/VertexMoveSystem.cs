@@ -15,14 +15,11 @@ namespace WireframePlexus {
         EntityQuery plexusObjectEntityQuery;
         EntityQuery plexusPointsByPlexusObjectIdEntityQuery;
 
-
         public void OnCreate(ref SystemState state) {
             state.RequireForUpdate<VertexMovementData>();
             plexusObjectEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<PlexusObjectData>().Build(ref state);
             plexusPointsByPlexusObjectIdEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<LocalTransform, VertexMovementData, PlexusObjectIdData>().Build(ref state);
-
         }
-
 
         public void OnUpdate(ref SystemState state) {
             var plexusObjectEntries = plexusObjectEntityQuery.ToEntityArray(Allocator.Temp);
@@ -51,9 +48,13 @@ namespace WireframePlexus {
             [ReadOnly] public float MaxVertexMoveDistance;
             [NativeDisableContainerSafetyRestriction] public NativeArray<float3> PointPositions;
 
-
-
             public void Execute(ref LocalTransform localTransform, ref VertexMovementData movementData) {
+                if((MinVertexMovementSpeed == 0 && MaxVertexMovementSpeed == 0) || MaxVertexMoveDistance == 0) {
+                    localTransform.Position = movementData.Position;
+                    PointPositions[movementData.PointId] = localTransform.Position;
+                    return;
+                }
+                
                 if (movementData.CurrentMovementDuration <= 0) {
                     localTransform = localTransform.WithPosition(movementData.PositionTarget);
                     movementData.MoveSpeed = movementData.Random.NextFloat(MinVertexMovementSpeed, MaxVertexMovementSpeed);

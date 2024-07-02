@@ -1,3 +1,5 @@
+using NUnit;
+using System.Diagnostics;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
@@ -31,7 +33,7 @@ namespace WireframePlexus {
 
 
         }
-        [BurstCompile]
+   //     [BurstCompile]
         public partial struct PlexusEdgeMovementJob : IJobEntity {
 
             [ReadOnly] public float MaxEdgeLengthPercent;
@@ -52,9 +54,15 @@ namespace WireframePlexus {
 
                     float3 relativePos = math.normalize(pos1 - pos2);
 
-                    quaternion start = localTransform.Rotation.value;
-                    quaternion end = quaternion.LookRotation(relativePos, math.up());
-                    localTransform.Rotation = end;
+                    // quaternion.LookRotationSafe cannot handle vectors that are collinear so for the case of the edge faceing directly up or down hardcoded a 90 degree rotation
+                    if (relativePos.y == 1 || relativePos.y == -1) {
+                        localTransform.Rotation = quaternion.RotateX(math.PIHALF);
+                    } else {
+                        quaternion end = quaternion.LookRotationSafe(relativePos, math.up());
+                        localTransform.Rotation = end;
+                    }
+
+                    
 
                     var scale = new float3(EdgeThickness, EdgeThickness, distance);
                     postTransform.Value = float4x4.Scale(scale);
