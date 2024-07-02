@@ -13,6 +13,7 @@ namespace WireframePlexus {
                 AddTransformUsageFlags(entity, TransformUsageFlags.NonUniformScale);
                 AddComponent(entity, new EdgeData { });
                 AddComponent(entity, new PostTransformMatrix { });
+                AddComponent(entity, new EdgeAlphaData {Value= 0});
             }
         }
     }
