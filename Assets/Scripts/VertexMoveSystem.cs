@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
@@ -29,7 +30,6 @@ namespace WireframePlexus {
                 var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
                 plexusPointsByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { ObjectId = plexusObjectData.WireframePlexusObjectId });
 
-
                 PlexusPointMovementJob job = new PlexusPointMovementJob {
                     DeltaTime = SystemAPI.Time.DeltaTime,
                     PointPositions = plexusObjectData.VertexPositions,
@@ -40,8 +40,6 @@ namespace WireframePlexus {
 
                 job.ScheduleParallel(plexusPointsByPlexusObjectIdEntityQuery);
             }
-
-
         }
 
         [BurstCompile]

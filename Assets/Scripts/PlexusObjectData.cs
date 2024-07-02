@@ -12,6 +12,8 @@ namespace WireframePlexus {
         public float MinVertexMoveSpeed;
         public float MaxVertexMoveDistance;
         public float MaxEdgeLengthPercent;
+        public float EdgeThickness;
+        public float VertexSize;
         public int WireframePlexusObjectId;
 
         public void Dispose() {

@@ -23,8 +23,9 @@ namespace WireframePlexus {
                 var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
                 edgesByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { ObjectId = plexusObjectData.WireframePlexusObjectId });
 
-
-                PlexusEdgeMovementJob job = new PlexusEdgeMovementJob { PointPositions = plexusObjectData.VertexPositions, MaxEdgeLengthPercent = plexusObjectData.MaxEdgeLengthPercent };
+                PlexusEdgeMovementJob job = new PlexusEdgeMovementJob {     PointPositions = plexusObjectData.VertexPositions, 
+                                                                            MaxEdgeLengthPercent = plexusObjectData.MaxEdgeLengthPercent,
+                                                                            EdgeThickness = plexusObjectData.EdgeThickness};
                 job.ScheduleParallel(edgesByPlexusObjectIdEntityQuery);
             }
 
@@ -34,6 +35,7 @@ namespace WireframePlexus {
         public partial struct PlexusEdgeMovementJob : IJobEntity {
 
             [ReadOnly] public float MaxEdgeLengthPercent;
+            [ReadOnly] public float EdgeThickness;
             [ReadOnly][NativeDisableContainerSafetyRestriction] public NativeArray<float3> PointPositions;
 
             public void Execute(ref LocalTransform localTransform, ref EdgeData edgeData, ref PostTransformMatrix postTransform) {
@@ -54,7 +56,7 @@ namespace WireframePlexus {
                     quaternion end = quaternion.LookRotation(relativePos, math.up());
                     localTransform.Rotation = end;
 
-                    var scale = new float3(0.003f, 0.003f, distance);
+                    var scale = new float3(EdgeThickness, EdgeThickness, distance);
                     postTransform.Value = float4x4.Scale(scale);
                 }
             }

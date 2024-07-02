@@ -11,6 +11,14 @@ namespace WireframePlexus {
         float maxEdgeLengthPercent;
 
         [SerializeField]
+        [Tooltip("how thick the edges gonna be")]
+        float edgeThickness;
+
+        [SerializeField]
+        [Tooltip("The size of the visible vertecie particle")]
+        float vertexSize;
+
+        [SerializeField]
         [Tooltip("The vertecies are always in motion, relative to their original position in the mesh, this value sets how far from the original possition they can go")]
         float maxVertexMoveDistance;
 
@@ -35,6 +43,8 @@ namespace WireframePlexus {
                 Mesh = mesh,
                 CameraWorldPos = cameraWorldPos.position,
                 MaxEdgeLengthPercent = maxEdgeLengthPercent,
+                EdgeThickness = edgeThickness,
+                VertexSize = vertexSize,
                 MaxVertexMoveSpeed = maxVertexMoveSpeed,
                 MinVertexMoveSpeed = minVertexMoveSpeed,
                 PlexusParent = wireframePlexusParentGameobject,

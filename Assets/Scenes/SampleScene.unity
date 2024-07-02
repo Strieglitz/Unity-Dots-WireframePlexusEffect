@@ -286,11 +286,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa0168fef59c5764997105929affa1f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
-  maxEdgeLengthPercent: 1.15
-  maxVertexMoveDistance: 0.02
-  minVertexMoveSpeed: 0.01
-  maxVertexMoveSpeed: 0.02
+  mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  maxEdgeLengthPercent: 100000
+  edgeThickness: 0.01
+  vertexSize: 0.01
+  maxVertexMoveDistance: 0
+  minVertexMoveSpeed: 1
+  maxVertexMoveSpeed: 2
   cameraWorldPos: {fileID: 330585546}
   wireframePlexusParentGameobject: {fileID: 289799064}
 --- !u!4 &289799066
