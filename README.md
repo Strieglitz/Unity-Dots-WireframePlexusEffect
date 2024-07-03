@@ -6,5 +6,5 @@ Had no idea how to implement this effect in Shadergraph or Effectgraph so i trie
 You can set any mesh and andjust some values like how fast and far the vertecies move from their original Position or how thick the connection lines are and how streched they have to be until they get invisible.
 
 
-# Example with the build in sphere mesh
+# Example with the buildin sphere mesh
 ![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect.gif)
