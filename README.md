@@ -6,5 +6,5 @@ A Mesh gets converted into WireaframePlexusObject.
 
 
 
-#Example
-![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/effect.gif)
+# Example
+![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect.gif)
