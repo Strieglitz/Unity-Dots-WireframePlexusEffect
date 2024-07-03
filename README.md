@@ -3,3 +3,8 @@ A Plexus like effect with connection-lines based on the wireframe of the mesh. I
 
 Had no idea how to implement this effect in Shadergraph or Effectgraph so i tried it with ecs/dots. 
 A Mesh gets converted into WireaframePlexusObject. 
+
+
+
+#Example
+![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/effect.gif)
