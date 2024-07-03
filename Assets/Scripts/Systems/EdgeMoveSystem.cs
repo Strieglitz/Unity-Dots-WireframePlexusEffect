@@ -50,6 +50,7 @@ namespace WireframePlexus {
 
                 float distance = math.distance(pos1, pos2);
                 float distancePercent = distance / edgeData.Length;
+                
                 if (distancePercent > MaxEdgeLengthPercent) {
                     //localTransform.Scale = 0;
                     if (edgeColor.Value > 0) {

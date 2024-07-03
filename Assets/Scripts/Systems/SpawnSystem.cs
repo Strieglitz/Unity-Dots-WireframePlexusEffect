@@ -96,15 +96,15 @@ namespace WireframePlexus {
 
                     if (connections.Contains(new Connection { Id1 = pos1Id, Id2 = pos2Id }) == false && connections.Contains(new Connection { Id1 = pos2Id, Id2 = pos1Id }) == false) {
                         connections.Add(new Connection { Id1 = pos1Id, Id2 = pos2Id });
-                        AddPlexusEdge(ref ecb, wireframePlexusEdgeSpawnData.WireframePlexusEdgeEntityPrefab, pos1Id, pos2Id, math.distance(plexusBuildData.Mesh.vertices[pos1Id], plexusBuildData.Mesh.vertices[pos2Id]), wireframePlexusObjectEntity);
+                        AddPlexusEdge(ref ecb, wireframePlexusEdgeSpawnData.WireframePlexusEdgeEntityPrefab, pos1Id, pos2Id, math.distance(usedPositionById[pos1Id], usedPositionById[pos2Id]), wireframePlexusObjectEntity);
                     }
                     if (connections.Contains(new Connection { Id1 = pos2Id, Id2 = pos3Id }) == false && connections.Contains(new Connection { Id1 = pos3Id, Id2 = pos2Id }) == false) {
                         connections.Add(new Connection { Id1 = pos2Id, Id2 = pos3Id });
-                        AddPlexusEdge(ref ecb, wireframePlexusEdgeSpawnData.WireframePlexusEdgeEntityPrefab, pos2Id, pos3Id, math.distance(plexusBuildData.Mesh.vertices[pos2Id], plexusBuildData.Mesh.vertices[pos3Id]), wireframePlexusObjectEntity);
+                        AddPlexusEdge(ref ecb, wireframePlexusEdgeSpawnData.WireframePlexusEdgeEntityPrefab, pos2Id, pos3Id, math.distance(usedPositionById[pos2Id], usedPositionById[pos3Id]), wireframePlexusObjectEntity);
                     }
                     if (connections.Contains(new Connection { Id1 = pos1Id, Id2 = pos3Id }) == false && connections.Contains(new Connection { Id1 = pos3Id, Id2 = pos1Id }) == false) {
                         connections.Add(new Connection { Id1 = pos1Id, Id2 = pos3Id });
-                        AddPlexusEdge(ref ecb, wireframePlexusEdgeSpawnData.WireframePlexusEdgeEntityPrefab, pos1Id, pos3Id, math.distance(plexusBuildData.Mesh.vertices[pos3Id], plexusBuildData.Mesh.vertices[pos1Id]), wireframePlexusObjectEntity);
+                        AddPlexusEdge(ref ecb, wireframePlexusEdgeSpawnData.WireframePlexusEdgeEntityPrefab, pos1Id, pos3Id, math.distance(usedPositionById[pos3Id], usedPositionById[pos1Id]), wireframePlexusObjectEntity);
                     }
                 }
                 plexusObjectId++;
