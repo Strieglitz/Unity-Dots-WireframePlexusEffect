@@ -15,11 +15,11 @@ namespace WireframePlexus {
         float edgeThickness;
 
         [SerializeField]
-        [Tooltip("The size of the visible vertecie particle")]
+        [Tooltip("The size of the visible vertex particle")]
         float vertexSize;
 
         [SerializeField]
-        [Tooltip("The vertecies are always in motion, relative to their original position in the mesh, this value sets how far from the original possition they can go")]
+        [Tooltip("The vertices are always in motion, relative to their original position in the mesh, this value sets how far from the original possition they can go")]
         float maxVertexMoveDistance;
 
         [SerializeField]
