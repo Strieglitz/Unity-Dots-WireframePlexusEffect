@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace WireframePlexus {
 
-    public class EdgeDataAuthoring : MonoBehaviour {
+    public class EdgeEntityAuthoring : MonoBehaviour {
 
-        private class Baker : Baker<EdgeDataAuthoring> {
-            public override void Bake(EdgeDataAuthoring authoring) {
+        private class Baker : Baker<EdgeEntityAuthoring> {
+            public override void Bake(EdgeEntityAuthoring authoring) {
                 Entity entity = GetEntity(TransformUsageFlags.Dynamic);
                 AddTransformUsageFlags(entity, TransformUsageFlags.NonUniformScale);
                 AddComponent(entity, new EdgeData { });

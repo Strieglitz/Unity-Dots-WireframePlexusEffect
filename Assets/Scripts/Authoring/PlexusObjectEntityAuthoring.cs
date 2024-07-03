@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace WireframePlexus {
 
-    public class PlexusObjectAuthoring : MonoBehaviour {
-        private class Baker : Baker<PlexusObjectAuthoring> {
-            public override void Bake(PlexusObjectAuthoring authoring) {
+    public class PlexusObjectEntityAuthoring : MonoBehaviour {
+        private class Baker : Baker<PlexusObjectEntityAuthoring> {
+            public override void Bake(PlexusObjectEntityAuthoring authoring) {
                 Entity entity = GetEntity(TransformUsageFlags.Dynamic);
                 AddComponentObject(entity, new SyncEntityPositionToGameobjectPositionData { });
             }

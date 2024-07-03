@@ -286,8 +286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa0168fef59c5764997105929affa1f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-  maxEdgeLengthPercent: 0.9
+  mesh: {fileID: -6377567948183986090, guid: bdcf520ce1deb434d9cc4c2f5352e05a, type: 3}
+  maxEdgeLengthPercent: 1.2
   edgeThickness: 0.001
   vertexSize: 0.02
   maxVertexMoveDistance: 0.05

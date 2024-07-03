@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace WireframePlexus {
 
-public class VertexMovementDataAuthoring : MonoBehaviour {
+public class VertexEntityAuthoring : MonoBehaviour {
 
-        private class Baker : Baker<VertexMovementDataAuthoring> {
-            public override void Bake(VertexMovementDataAuthoring authoring) {
+        private class Baker : Baker<VertexEntityAuthoring> {
+            public override void Bake(VertexEntityAuthoring authoring) {
                 Entity entity = GetEntity(TransformUsageFlags.Dynamic);
                 AddComponent(entity, new VertexMovementData { });
             }
