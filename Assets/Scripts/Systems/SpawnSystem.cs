@@ -37,36 +37,36 @@ namespace WireframePlexus {
 
 
             var ecb = new EntityCommandBuffer(Allocator.Temp);
-            foreach (EntitySpawnData plexusBuildData in SpawnQueue.Instance.PlexusBuildDataQueue) {
+            foreach (EntitySpawnData entitySpawnData in SpawnQueue.Instance.PlexusSpawnDataQueue) {
 
 
                 Entity wireframePlexusObjectEntity = ecb.Instantiate(wireframePlexusObjectSpawnData.WireframePlexusEntityPrefab);
 
                 SyncEntityPositionToGameobjectPositionData parentReference = new SyncEntityPositionToGameobjectPositionData();
-                parentReference.gameObject = plexusBuildData.PlexusParent;
+                parentReference.gameObject = entitySpawnData.PlexusParent;
                 ecb.SetComponent(wireframePlexusObjectEntity, parentReference);
 
-                int points = plexusBuildData.Mesh.triangles.Length;
+                int points = entitySpawnData.Mesh.triangles.Length;
                 ecb.AddComponent(wireframePlexusObjectEntity, new PlexusObjectData {
                     VertexPositions = new NativeArray<float3>(points, Allocator.Persistent),
-                    MaxVertexMoveSpeed = plexusBuildData.MaxVertexMoveSpeed,
-                    MinVertexMoveSpeed = plexusBuildData.MinVertexMoveSpeed,
-                    MaxVertexMoveDistance = plexusBuildData.MaxVertexMoveDistance,
-                    MaxEdgeLengthPercent = plexusBuildData.MaxEdgeLengthPercent,
-                    EdgeThickness = plexusBuildData.EdgeThickness,
-                    VertexSize = plexusBuildData.VertexSize,
+                    MaxVertexMoveSpeed = entitySpawnData.MaxVertexMoveSpeed,
+                    MinVertexMoveSpeed = entitySpawnData.MinVertexMoveSpeed,
+                    MaxVertexMoveDistance = entitySpawnData.MaxVertexMoveDistance,
+                    MaxEdgeLengthPercent = entitySpawnData.MaxEdgeLengthPercent,
+                    EdgeThickness = entitySpawnData.EdgeThickness,
+                    VertexSize = entitySpawnData.VertexSize,
                     WireframePlexusObjectId = plexusObjectId
                 });
 
                 Dictionary<int, float3> usedPositionById = new Dictionary<int, float3>();
                 Dictionary<float3, int> usedIdByPosition = new Dictionary<float3, int>();
                 int pointId = 0;
-                for (int i = 0; i < plexusBuildData.Mesh.vertices.Length; i++) {
-                    if (usedPositionById.ContainsValue(plexusBuildData.Mesh.vertices[i])) {
+                for (int i = 0; i < entitySpawnData.Mesh.vertices.Length; i++) {
+                    if (usedPositionById.ContainsValue(entitySpawnData.Mesh.vertices[i])) {
                         continue;
                     }
 
-                    float3 pos = plexusBuildData.Mesh.vertices[i];
+                    float3 pos = entitySpawnData.Mesh.vertices[i];
                     usedPositionById.Add(pointId, pos);
                     usedIdByPosition.Add(pos, pointId);
                     
@@ -76,12 +76,12 @@ namespace WireframePlexus {
                     movementData.Position = pos;
                     movementData.PositionTarget = pos;
 
-                    movementData.MoveSpeed = UnityEngine.Random.Range(plexusBuildData.MinVertexMoveSpeed, plexusBuildData.MaxVertexMoveSpeed);
+                    movementData.MoveSpeed = UnityEngine.Random.Range(entitySpawnData.MinVertexMoveSpeed, entitySpawnData.MaxVertexMoveSpeed);
                     movementData.Random = new Unity.Mathematics.Random(random.NextUInt());
                     movementData.PointId = pointId;
 
                     ecb.SetComponent(plexusVertexEntity, movementData);
-                    ecb.SetComponent(plexusVertexEntity, new LocalTransform { Position = pos, Scale = plexusBuildData.VertexSize });
+                    ecb.SetComponent(plexusVertexEntity, new LocalTransform { Position = pos, Scale = entitySpawnData.VertexSize });
                     ecb.AddSharedComponent(plexusVertexEntity, new PlexusObjectIdData { ObjectId = plexusObjectId });
                     ecb.AddComponent(plexusVertexEntity, new Parent { Value = wireframePlexusObjectEntity });
 
@@ -89,10 +89,10 @@ namespace WireframePlexus {
                 }
 
                 List<Connection> connections = new List<Connection>();
-                for (int i = 0; i < plexusBuildData.Mesh.triangles.Length - 2; i = i + 3) {
-                    int pos1Id = usedIdByPosition[plexusBuildData.Mesh.vertices[plexusBuildData.Mesh.triangles[i]]];
-                    int pos2Id = usedIdByPosition[plexusBuildData.Mesh.vertices[plexusBuildData.Mesh.triangles[i+1]]];
-                    int pos3Id = usedIdByPosition[plexusBuildData.Mesh.vertices[plexusBuildData.Mesh.triangles[i+2]]];
+                for (int i = 0; i < entitySpawnData.Mesh.triangles.Length - 2; i = i + 3) {
+                    int pos1Id = usedIdByPosition[entitySpawnData.Mesh.vertices[entitySpawnData.Mesh.triangles[i]]];
+                    int pos2Id = usedIdByPosition[entitySpawnData.Mesh.vertices[entitySpawnData.Mesh.triangles[i+1]]];
+                    int pos3Id = usedIdByPosition[entitySpawnData.Mesh.vertices[entitySpawnData.Mesh.triangles[i+2]]];
 
                     if (connections.Contains(new Connection { Id1 = pos1Id, Id2 = pos2Id }) == false && connections.Contains(new Connection { Id1 = pos2Id, Id2 = pos1Id }) == false) {
                         connections.Add(new Connection { Id1 = pos1Id, Id2 = pos2Id });
@@ -111,7 +111,7 @@ namespace WireframePlexus {
             }
 
             ecb.Playback(EntityManager);
-            SpawnQueue.Instance.PlexusBuildDataQueue.Clear();
+            SpawnQueue.Instance.PlexusSpawnDataQueue.Clear();
             Enabled = false;
         }
 

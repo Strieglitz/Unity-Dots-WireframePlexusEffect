@@ -39,7 +39,7 @@ namespace WireframePlexus {
         }
 
         private void TestPlexus() {
-            SpawnQueue.Instance.PlexusBuildDataQueue.Enqueue(new EntitySpawnData {
+            SpawnQueue.Instance.PlexusSpawnDataQueue.Enqueue(new EntitySpawnData {
                 Mesh = mesh,
                 CameraWorldPos = cameraWorldPos.position,
                 MaxEdgeLengthPercent = maxEdgeLengthPercent,

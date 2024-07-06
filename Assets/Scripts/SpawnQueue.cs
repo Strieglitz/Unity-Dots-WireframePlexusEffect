@@ -6,7 +6,7 @@ namespace WireframePlexus {
 
     public class SpawnQueue : MonoBehaviour {
         public static SpawnQueue Instance { get; private set; }
-        public Queue<EntitySpawnData> PlexusBuildDataQueue { get; private set; } = new Queue<EntitySpawnData>();
+        public Queue<EntitySpawnData> PlexusSpawnDataQueue { get; private set; } = new Queue<EntitySpawnData>();
 
         private void Awake() {
             if (Instance == null || Instance == this) {
@@ -18,7 +18,7 @@ namespace WireframePlexus {
         }
 
         private void Update() {
-            if (PlexusBuildDataQueue.Count > 0) {
+            if (PlexusSpawnDataQueue.Count > 0) {
                 World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<SpawnSystem>().Enabled = true;
             }
         }
