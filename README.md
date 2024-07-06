@@ -9,3 +9,7 @@ There is still tonns of room for improvements like adding lots of options to mak
 
 # Example with the buildin sphere mesh
 ![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect.gif)
+
+# Or you can abuse it as a Wireframe Shader, when setting the vertices to not move around
+
+![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect2.gif)
