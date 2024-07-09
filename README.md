@@ -14,6 +14,6 @@ There is still tonns of room for improvements like adding lots of options to mak
 
 ![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect2.gif)
 
-# Multi Object setup with different Meshes and Colors
+# Multi Object setup with different settings, meshes and colors
 
 ![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect3.gif)
