@@ -13,3 +13,7 @@ There is still tonns of room for improvements like adding lots of options to mak
 # Or you can abuse it as a Wireframe Shader, when setting the vertices to not move around
 
 ![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect2.gif)
+
+# Multi Object setup with different Meshes and Colors
+
+![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect3.gif)
