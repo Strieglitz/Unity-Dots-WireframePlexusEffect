@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace WireframePlexus {
 
     public struct EntitySpawnData {
-        public Mesh Mesh;
+        public MeshFilter MeshFilter;
         public float MaxEdgeLengthPercent;
         public float EdgeThickness;
         public float VertexSize;
@@ -12,5 +13,7 @@ namespace WireframePlexus {
         public float MaxVertexMoveDistance;
         public Vector3 CameraWorldPos;
         public GameObject PlexusParent;
+        public Color EdgeColor;
+        public Color VertexColor;
     }
 }

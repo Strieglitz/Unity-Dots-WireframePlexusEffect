@@ -9,6 +9,7 @@ public class VertexEntityAuthoring : MonoBehaviour {
             public override void Bake(VertexEntityAuthoring authoring) {
                 Entity entity = GetEntity(TransformUsageFlags.Dynamic);
                 AddComponent(entity, new VertexMovementData { });
+                AddComponent(entity, new VertexColorData { });
             }
         }
     }

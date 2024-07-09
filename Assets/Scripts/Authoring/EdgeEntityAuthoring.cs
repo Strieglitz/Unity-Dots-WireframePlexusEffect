@@ -14,6 +14,7 @@ namespace WireframePlexus {
                 AddComponent(entity, new EdgeData { });
                 AddComponent(entity, new PostTransformMatrix { });
                 AddComponent(entity, new EdgeAlphaData {Value= 0});
+                AddComponent(entity, new EdgeColorData { });
             }
         }
     }

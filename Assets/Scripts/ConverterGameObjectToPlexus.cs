@@ -1,11 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace WireframePlexus {
 
-    public class SpawnerGameObject : MonoBehaviour {
-        [SerializeField] 
-        Mesh mesh;
-
+    [RequireComponent(typeof(MeshFilter))]
+    public class ConverterGameObjectToPlexus : MonoBehaviour {
+        
         [SerializeField]
         [Tooltip("Only draw the wireframes edge when its length is smaller than x Percent of the original length in the mesh")]
         float maxEdgeLengthPercent;
@@ -30,8 +30,16 @@ namespace WireframePlexus {
         [Tooltip("The Maximum Speed a Vertex will have to move randomly around its original position in the mesh")]
         float maxVertexMoveSpeed;
 
+        [SerializeField]
+        [ColorUsage(true, true)]
+        Color vertexColor;
+
+        [SerializeField]
+        [ColorUsage(true, true)]
+        Color edgeColor;
+
+
         [SerializeField] Transform cameraWorldPos;
-        [SerializeField] GameObject wireframePlexusParentGameobject;
 
 
         private void Start() {
@@ -40,16 +48,19 @@ namespace WireframePlexus {
 
         private void TestPlexus() {
             SpawnQueue.Instance.PlexusSpawnDataQueue.Enqueue(new EntitySpawnData {
-                Mesh = mesh,
+                MeshFilter = gameObject.GetComponent<MeshFilter>(),
                 CameraWorldPos = cameraWorldPos.position,
                 MaxEdgeLengthPercent = maxEdgeLengthPercent,
                 EdgeThickness = edgeThickness,
                 VertexSize = vertexSize,
                 MaxVertexMoveSpeed = maxVertexMoveSpeed,
                 MinVertexMoveSpeed = minVertexMoveSpeed,
-                PlexusParent = wireframePlexusParentGameobject,
-                MaxVertexMoveDistance = maxVertexMoveDistance
+                PlexusParent = gameObject,
+                MaxVertexMoveDistance = maxVertexMoveDistance,
+                VertexColor = vertexColor,
+                EdgeColor = edgeColor
             });
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
         }
     }
 }
