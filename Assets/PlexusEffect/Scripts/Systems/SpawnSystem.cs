@@ -10,7 +10,6 @@ namespace WireframePlexus {
 
     public partial class SpawnSystem : SystemBase {
 
-
         int plexusObjectId = 0;
         Unity.Mathematics.Random random = new Unity.Mathematics.Random(1);
 
@@ -44,7 +43,7 @@ namespace WireframePlexus {
                 Entity wireframePlexusObjectEntity = ecb.Instantiate(wireframePlexusObjectSpawnData.WireframePlexusEntityPrefab);
 
                 SyncEntityPositionToGameobjectPositionData parentReference = new SyncEntityPositionToGameobjectPositionData();
-                parentReference.gameObject = entitySpawnData.PlexusParent;
+                parentReference.PlexusGameObject = entitySpawnData.PlexusGameObject;
                 ecb.SetComponent(wireframePlexusObjectEntity, parentReference);
 
                 int points = entitySpawnData.MeshFilter.mesh.triangles.Length;
@@ -93,7 +92,6 @@ namespace WireframePlexus {
                     ecb.SetComponent(plexusVertexEntity, new VertexColorData { Value = new float4(entitySpawnData.VertexColor.r, entitySpawnData.VertexColor.g, entitySpawnData.VertexColor.b, entitySpawnData.VertexColor.a) });
                     ecb.AddSharedComponent(plexusVertexEntity, new PlexusObjectIdData { ObjectId = plexusObjectId });
                     ecb.AddComponent(plexusVertexEntity, new Parent { Value = wireframePlexusObjectEntity });
-                   
 
                     pointId++;
                 }
@@ -142,8 +140,8 @@ namespace WireframePlexus {
             ecb.SetComponent(plexusEdgeEntity, new EdgeColorData { Value = new float4(entitySpawnData.EdgeColor.r, entitySpawnData.EdgeColor.g, entitySpawnData.EdgeColor.b, entitySpawnData.EdgeColor.a) });
             ecb.AddComponent(plexusEdgeEntity, new Parent { Value = parentEntity });
         }
-
     }
+
     struct Connection {
         public int Id1;
         public int Id2;

@@ -1,10 +1,12 @@
-using System.Collections.Generic;
+using System.Collections;
+using Unity.Entities;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace WireframePlexus {
 
     [RequireComponent(typeof(MeshFilter))]
-    public class ConverterGameObjectToPlexus : MonoBehaviour {
+    public class PlexusGameObject : MonoBehaviour {
         
         [SerializeField]
         [Tooltip("Only draw the wireframes edge when its length is smaller than x Percent of the original length in the mesh")]
@@ -55,12 +57,18 @@ namespace WireframePlexus {
                 VertexSize = vertexSize,
                 MaxVertexMoveSpeed = maxVertexMoveSpeed,
                 MinVertexMoveSpeed = minVertexMoveSpeed,
-                PlexusParent = gameObject,
+                PlexusGameObject = this,
                 MaxVertexMoveDistance = maxVertexMoveDistance,
                 VertexColor = vertexColor,
                 EdgeColor = edgeColor
             });
             gameObject.GetComponent<MeshRenderer>().enabled = false;
+        }
+
+        public void SetPlexusContactAnimation(ContactColorAnimationData contactColorAnimationData) {
+            PlexusObjectSystem plexusObjectSystem = World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<PlexusObjectSystem>();
+            contactColorAnimationData.CurrentContactDuration = contactColorAnimationData.TotalContactDuration;
+            plexusObjectSystem.SetPlexusContactAnimation(this, contactColorAnimationData);
         }
     }
 }

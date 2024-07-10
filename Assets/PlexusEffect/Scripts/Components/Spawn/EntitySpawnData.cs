@@ -12,7 +12,7 @@ namespace WireframePlexus {
         public float MaxVertexMoveSpeed;
         public float MaxVertexMoveDistance;
         public Vector3 CameraWorldPos;
-        public GameObject PlexusParent;
+        public PlexusGameObject PlexusGameObject;
         public Color EdgeColor;
         public Color VertexColor;
     }

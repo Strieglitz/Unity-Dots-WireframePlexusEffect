@@ -4,6 +4,6 @@ using UnityEngine;
 namespace WireframePlexus {
 
     public class SyncEntityPositionToGameobjectPositionData : IComponentData {
-        public GameObject gameObject;
+        public PlexusGameObject PlexusGameObject;
     }
 }

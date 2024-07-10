@@ -2,7 +2,6 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
-using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
@@ -29,8 +28,10 @@ namespace WireframePlexus {
             var plexusObjectEntities = plexusObjectEntityQuery.ToEntityArray(Allocator.Temp);
             for (int i = 0; i < plexusObjectEntities.Length; i++) {
                 var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObjectEntities[i]);
+                
                 plexusVertexByPlexusObjectIdEntityQuery.ResetFilter();
                 plexusVertexByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { ObjectId = plexusObjectData.WireframePlexusObjectId });
+                
                 new PlexusVertexMovementJob {
                     DeltaTime = SystemAPI.Time.DeltaTime,
                     VertexPositions = plexusObjectData.VertexPositions,
@@ -41,17 +42,11 @@ namespace WireframePlexus {
                     ParentRotation = plexusObjectData.CurrentRotation,
                 }.ScheduleParallel(plexusVertexByPlexusObjectIdEntityQuery);
             }
-
-            // run the jobs
-            for (int i = 0; i < plexusObjectEntities.Length; i++) {
-                
-            }
         }
 
         [BurstCompile]
 
         public partial struct PlexusVertexMovementJob : IJobEntity {
-
 
             [ReadOnly] public quaternion ParentRotation;
             [ReadOnly] public float3 CameraWolrdPos;
