@@ -16,6 +16,9 @@ namespace WireframePlexus {
         public float VertexSize;
         public int WireframePlexusObjectId;
         public quaternion CurrentRotation;
+        public float4 EdgeColor;
+        public float4 VertexColor;
+
 
         public void Dispose() {
             VertexPositions.Dispose();

@@ -56,7 +56,9 @@ namespace WireframePlexus {
                     MaxEdgeLengthPercent = entitySpawnData.MaxEdgeLengthPercent,
                     EdgeThickness = entitySpawnData.EdgeThickness,
                     VertexSize = entitySpawnData.VertexSize,
-                    WireframePlexusObjectId = plexusObjectId
+                    WireframePlexusObjectId = plexusObjectId,
+                    EdgeColor = new float4(entitySpawnData.EdgeColor.r, entitySpawnData.EdgeColor.g, entitySpawnData.EdgeColor.b, entitySpawnData.EdgeColor.a),
+                    VertexColor = new float4(entitySpawnData.VertexColor.r, entitySpawnData.VertexColor.g, entitySpawnData.VertexColor.b, entitySpawnData.VertexColor.a),
                 });
 
                 // create the vertex entities
