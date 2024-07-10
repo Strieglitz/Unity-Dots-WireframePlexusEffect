@@ -8,6 +8,7 @@ You can set any mesh and andjust some values like how fast and far the vertecies
 There is still tonns of room for improvements like adding lots of options to make the the effect more variable. If you have an idea or an request pleas let me know.
 
 # Example with the buildin sphere mesh
+
 ![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect.gif)
 
 # Or you can abuse it as a Wireframe Shader, when setting the vertices to not move around
@@ -17,3 +18,7 @@ There is still tonns of room for improvements like adding lots of options to mak
 # Multi Object setup with different settings, meshes and colors
 
 ![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect3.gif)
+
+# An contact color change animation for later use in a game
+
+![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect4.gif)
