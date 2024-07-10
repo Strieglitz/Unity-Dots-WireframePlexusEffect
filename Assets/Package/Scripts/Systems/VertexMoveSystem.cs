@@ -10,57 +10,42 @@ using UnityEngine;
 
 namespace WireframePlexus {
 
-    [UpdateAfter(typeof(SyncEntityToGameobjectPositionSystem))]
+    [UpdateAfter(typeof(PlexusObjectSystem))]
     public partial struct VertexMoveSystem : ISystem {
 
+        EntityQuery plexusVertexByPlexusObjectIdEntityQuery;
         EntityQuery plexusObjectEntityQuery;
-        EntityQuery plexusPointsByPlexusObjectIdEntityQuery;
-        NativeArray<VertexMovementJobData> vertexMovementJobDatas;
 
         public void OnCreate(ref SystemState state) {
             state.RequireForUpdate<VertexMovementData>();
-            vertexMovementJobDatas = new NativeArray<VertexMovementJobData>(0, Allocator.Persistent);
             plexusObjectEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<PlexusObjectData>().Build(ref state);
-            plexusPointsByPlexusObjectIdEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<LocalTransform, VertexMovementData>().WithAll<LocalToWorld, PlexusObjectIdData>().Build(ref state);
+            plexusVertexByPlexusObjectIdEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<LocalTransform, VertexMovementData>().WithAll<LocalToWorld, PlexusObjectIdData>().Build(ref state);
         }
         public void OnDestroy(ref SystemState state) {
-            vertexMovementJobDatas.Dispose();
+            
         }
 
         public void OnUpdate(ref SystemState state) {
             var plexusObjectEntities = plexusObjectEntityQuery.ToEntityArray(Allocator.Temp);
-            if (vertexMovementJobDatas.Length != plexusObjectEntities.Length) {
-                vertexMovementJobDatas.Dispose();
-                vertexMovementJobDatas = new NativeArray<VertexMovementJobData>(plexusObjectEntities.Length, Allocator.Persistent);
-            }
-
-            // prepare the data for the jobs ( cannot read from localtransform in the onUpdate and write to a differnt localtransform in the job because of ecs saftey checks)
-            // so read the rotation from the localTransform first and store it together with the plexusObjectData and run the jobs later
             for (int i = 0; i < plexusObjectEntities.Length; i++) {
-                var plexusObjectTransform = state.EntityManager.GetComponentData<LocalTransform>(plexusObjectEntities[i]);
                 var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObjectEntities[i]);
-                vertexMovementJobDatas[i] = new VertexMovementJobData { plexusObjectData = plexusObjectData, parentRotation = plexusObjectTransform.Rotation.value };
+                plexusVertexByPlexusObjectIdEntityQuery.ResetFilter();
+                plexusVertexByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { ObjectId = plexusObjectData.WireframePlexusObjectId });
+                new PlexusVertexMovementJob {
+                    DeltaTime = SystemAPI.Time.DeltaTime,
+                    VertexPositions = plexusObjectData.VertexPositions,
+                    MaxVertexMoveDistance = plexusObjectData.MaxVertexMoveDistance,
+                    MaxVertexMovementSpeed = plexusObjectData.MaxVertexMoveSpeed,
+                    MinVertexMovementSpeed = plexusObjectData.MinVertexMoveSpeed,
+                    CameraWolrdPos = (float3)Camera.main.transform.position,
+                    ParentRotation = plexusObjectData.CurrentRotation,
+                }.ScheduleParallel(plexusVertexByPlexusObjectIdEntityQuery);
             }
 
             // run the jobs
             for (int i = 0; i < plexusObjectEntities.Length; i++) {
-                plexusPointsByPlexusObjectIdEntityQuery.ResetFilter();
-                plexusPointsByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { ObjectId = vertexMovementJobDatas[i].plexusObjectData.WireframePlexusObjectId });
-                new PlexusVertexMovementJob {
-                    DeltaTime = SystemAPI.Time.DeltaTime,
-                    VertexPositions = vertexMovementJobDatas[i].plexusObjectData.VertexPositions,
-                    MaxVertexMoveDistance = vertexMovementJobDatas[i].plexusObjectData.MaxVertexMoveDistance,
-                    MaxVertexMovementSpeed = vertexMovementJobDatas[i].plexusObjectData.MaxVertexMoveSpeed,
-                    MinVertexMovementSpeed = vertexMovementJobDatas[i].plexusObjectData.MinVertexMoveSpeed,
-                    CameraWolrdPos = (float3)Camera.main.transform.position,
-                    ParentRotation = vertexMovementJobDatas[i].parentRotation
-                }.ScheduleParallel(plexusPointsByPlexusObjectIdEntityQuery);
+                
             }
-        }
-
-        struct VertexMovementJobData {
-            public PlexusObjectData plexusObjectData;
-            public quaternion parentRotation;
         }
 
         [BurstCompile]

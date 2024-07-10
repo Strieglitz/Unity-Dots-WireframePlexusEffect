@@ -15,6 +15,7 @@ namespace WireframePlexus {
         public float EdgeThickness;
         public float VertexSize;
         public int WireframePlexusObjectId;
+        public quaternion CurrentRotation;
 
         public void Dispose() {
             VertexPositions.Dispose();

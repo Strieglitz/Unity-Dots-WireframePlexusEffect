@@ -310,7 +310,7 @@
     "m_ActiveSubTarget": {
         "m_Id": "99fde0084e1b41a8811a0dedb11ad50e"
     },
-    "m_AllowMaterialOverride": true,
+    "m_AllowMaterialOverride": false,
     "m_SurfaceType": 1,
     "m_ZTestMode": 4,
     "m_ZWriteControl": 0,
@@ -484,7 +484,7 @@
     "m_DismissedVersion": 0,
     "m_Precision": 0,
     "overrideHLSLDeclaration": true,
-    "hlslDeclarationOverride": 3,
+    "hlslDeclarationOverride": 2,
     "m_Hidden": false,
     "m_Value": 1.0,
     "m_FloatType": 1,

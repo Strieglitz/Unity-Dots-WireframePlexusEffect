@@ -19,10 +19,10 @@ MonoBehaviour:
   m_RendererDataList:
   - {fileID: 11400000, guid: f288ae1f4751b564a96ac7587541f7a2, type: 2}
   m_DefaultRendererIndex: 0
-  m_RequireDepthTexture: 1
-  m_RequireOpaqueTexture: 1
+  m_RequireDepthTexture: 0
+  m_RequireOpaqueTexture: 0
   m_OpaqueDownsampling: 1
-  m_SupportsTerrainHoles: 1
+  m_SupportsTerrainHoles: 0
   m_SupportsHDR: 1
   m_HDRColorBufferPrecision: 0
   m_MSAA: 8
@@ -41,19 +41,19 @@ MonoBehaviour:
   m_SupportProbeVolumeScenarios: 0
   m_SupportProbeVolumeScenarioBlending: 0
   m_ProbeVolumeSHBands: 1
-  m_MainLightRenderingMode: 1
+  m_MainLightRenderingMode: 0
   m_MainLightShadowsSupported: 1
   m_MainLightShadowmapResolution: 2048
-  m_AdditionalLightsRenderingMode: 1
+  m_AdditionalLightsRenderingMode: 0
   m_AdditionalLightsPerObjectLimit: 4
   m_AdditionalLightShadowsSupported: 1
   m_AdditionalLightsShadowmapResolution: 2048
   m_AdditionalLightsShadowResolutionTierLow: 256
   m_AdditionalLightsShadowResolutionTierMedium: 512
   m_AdditionalLightsShadowResolutionTierHigh: 1024
-  m_ReflectionProbeBlending: 1
-  m_ReflectionProbeBoxProjection: 1
-  m_ShadowDistance: 50
+  m_ReflectionProbeBlending: 0
+  m_ReflectionProbeBoxProjection: 0
+  m_ShadowDistance: 0
   m_ShadowCascadeCount: 4
   m_Cascade2Split: 0.25
   m_Cascade3Split: {x: 0.1, y: 0.3}
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_ShadowDepthBias: 0.1
   m_ShadowNormalBias: 0.5
   m_AnyShadowsSupported: 1
-  m_SoftShadowsSupported: 1
+  m_SoftShadowsSupported: 0
   m_ConservativeEnclosingSphere: 1
   m_NumIterationsEnclosingSphere: 64
   m_SoftShadowQuality: 3
@@ -76,15 +76,15 @@ MonoBehaviour:
   m_DebugLevel: 0
   m_StoreActionsOptimization: 0
   m_UseAdaptivePerformance: 1
-  m_ColorGradingMode: 0
+  m_ColorGradingMode: 1
   m_ColorGradingLutSize: 32
   m_AllowPostProcessAlphaOutput: 0
   m_UseFastSRGBLinearConversion: 0
   m_SupportDataDrivenLensFlare: 1
   m_SupportScreenSpaceLensFlare: 1
   m_GPUResidentDrawerMode: 0
-  m_SmallMeshScreenPercentage: 0
-  m_GPUResidentDrawerEnableOcclusionCullingInCameras: 0
+  m_SmallMeshScreenPercentage: 20
+  m_GPUResidentDrawerEnableOcclusionCullingInCameras: 1
   m_ShadowType: 1
   m_LocalShadowsSupported: 0
   m_LocalShadowsAtlasResolution: 256
@@ -99,25 +99,25 @@ MonoBehaviour:
     obsoleteHasProbeVolumes:
       m_Keys: []
       m_Values: 
-  m_PrefilteringModeMainLightShadows: 3
+  m_PrefilteringModeMainLightShadows: 0
   m_PrefilteringModeAdditionalLight: 0
   m_PrefilteringModeAdditionalLightShadows: 2
   m_PrefilterXRKeywords: 1
   m_PrefilteringModeForwardPlus: 2
   m_PrefilteringModeDeferredRendering: 0
-  m_PrefilteringModeScreenSpaceOcclusion: 2
+  m_PrefilteringModeScreenSpaceOcclusion: 0
   m_PrefilterDebugKeywords: 1
   m_PrefilterWriteRenderingLayers: 1
   m_PrefilterHDROutput: 1
   m_PrefilterAlphaOutput: 1
-  m_PrefilterSSAODepthNormals: 0
+  m_PrefilterSSAODepthNormals: 1
   m_PrefilterSSAOSourceDepthLow: 1
   m_PrefilterSSAOSourceDepthMedium: 1
   m_PrefilterSSAOSourceDepthHigh: 1
   m_PrefilterSSAOInterleaved: 1
-  m_PrefilterSSAOBlueNoise: 0
+  m_PrefilterSSAOBlueNoise: 1
   m_PrefilterSSAOSampleCountLow: 1
-  m_PrefilterSSAOSampleCountMedium: 0
+  m_PrefilterSSAOSampleCountMedium: 1
   m_PrefilterSSAOSampleCountHigh: 1
   m_PrefilterDBufferMRT1: 1
   m_PrefilterDBufferMRT2: 1
