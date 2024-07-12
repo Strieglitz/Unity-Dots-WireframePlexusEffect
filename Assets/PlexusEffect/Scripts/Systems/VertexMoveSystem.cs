@@ -25,12 +25,11 @@ namespace WireframePlexus {
         }
 
         public void OnUpdate(ref SystemState state) {
-            var plexusObjectEntities = plexusObjectEntityQuery.ToEntityArray(Allocator.Temp);
-            for (int i = 0; i < plexusObjectEntities.Length; i++) {
-                var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObjectEntities[i]);
-                
+            var plexusObjectEntries = plexusObjectEntityQuery.ToEntityArray(Allocator.Temp);
+            foreach (Entity plexusObject in plexusObjectEntries) {
+                var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
                 plexusVertexByPlexusObjectIdEntityQuery.ResetFilter();
-                plexusVertexByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { ObjectId = plexusObjectData.WireframePlexusObjectId });
+                plexusVertexByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { ObjectId = plexusObjectData.WireframePlexusObjectId});
                 
                 new PlexusVertexMovementJob {
                     DeltaTime = SystemAPI.Time.DeltaTime,
@@ -39,7 +38,7 @@ namespace WireframePlexus {
                     MaxVertexMovementSpeed = plexusObjectData.MaxVertexMoveSpeed,
                     MinVertexMovementSpeed = plexusObjectData.MinVertexMoveSpeed,
                     CameraWolrdPos = (float3)Camera.main.transform.position,
-                    ParentRotation = plexusObjectData.CurrentRotation,
+                    ParentRotation = plexusObjectData.rotation,
                 }.ScheduleParallel(plexusVertexByPlexusObjectIdEntityQuery);
             }
         }

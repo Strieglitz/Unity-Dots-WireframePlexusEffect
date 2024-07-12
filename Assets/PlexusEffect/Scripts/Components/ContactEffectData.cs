@@ -3,7 +3,7 @@ using Unity.Mathematics;
 
 namespace WireframePlexus {
 
-    public struct ContactColorAnimationData : IComponentData {
+    public struct ContactEffectData {
         public float3 LocalContactPosition;
         public float ContactLength;
         public float4 ContactColor;

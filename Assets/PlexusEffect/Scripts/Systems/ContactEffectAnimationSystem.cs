@@ -1,3 +1,4 @@
+using System.Numerics;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
@@ -7,15 +8,14 @@ using Unity.Transforms;
 namespace WireframePlexus {
 
     [UpdateAfter(typeof(EdgeMoveSystem))]
-    partial struct ContactColorAnimationSystem : ISystem {
-
+    partial struct ContactEffectAnimationSystem : ISystem {
+        EntityQuery plexusObjectEntityQuery;
         EntityQuery vertexByPlexusObjectIdEntityQuery;
         EntityQuery edgeByPlexusObjectIdEntityQuery;
-        EntityQuery plexusObjectEntityQuery;
 
         [BurstCompile]
         public void OnCreate(ref SystemState state) {
-            plexusObjectEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<PlexusObjectData, ContactColorAnimationData>().Build(ref state);
+            plexusObjectEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<PlexusObjectData>().Build(ref state);
             vertexByPlexusObjectIdEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<VertexColorData>().WithAll<LocalTransform, PlexusObjectIdData>().Build(ref state);
             edgeByPlexusObjectIdEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<EdgeColorData>().WithAll<LocalTransform, PlexusObjectIdData>().Build(ref state);
         }
@@ -25,38 +25,42 @@ namespace WireframePlexus {
             var plexusObjectEntries = plexusObjectEntityQuery.ToEntityArray(Allocator.Temp);
             foreach (Entity plexusObject in plexusObjectEntries) {
                 var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
-                var contactColorAnimationData = state.EntityManager.GetComponentData<ContactColorAnimationData>(plexusObject);
-                if(contactColorAnimationData.CurrentContactDuration == 0) {
-                    continue;
-                }
-                contactColorAnimationData.CurrentContactDuration -= SystemAPI.Time.DeltaTime;
-                if (contactColorAnimationData.CurrentContactDuration < 0) {
-                    contactColorAnimationData.CurrentContactDuration = 0;
-                }
-                state.EntityManager.SetComponentData(plexusObject, contactColorAnimationData);
+                for (int i = 0; i < plexusObjectData.ContactAnimationColorData.Length; i++) {
+                    ContactEffectData contactColorAnimationData = plexusObjectData.ContactAnimationColorData[i];
+                    
+                    if (contactColorAnimationData.CurrentContactDuration == 0) {
+                        continue;
+                    }
+                    contactColorAnimationData.CurrentContactDuration -= SystemAPI.Time.DeltaTime;
+                    if (contactColorAnimationData.CurrentContactDuration < 0) {
+                        contactColorAnimationData.CurrentContactDuration = 0;
+                    }
 
-                float colorInterpolationPercent = 1 - (contactColorAnimationData.CurrentContactDuration / contactColorAnimationData.TotalContactDuration);
-                vertexByPlexusObjectIdEntityQuery.ResetFilter();
-                vertexByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { ObjectId = plexusObjectData.WireframePlexusObjectId });
-                edgeByPlexusObjectIdEntityQuery.ResetFilter();
-                edgeByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { ObjectId = plexusObjectData.WireframePlexusObjectId });
+                    float colorInterpolationPercent = 1 - (contactColorAnimationData.CurrentContactDuration / contactColorAnimationData.TotalContactDuration);
+                    vertexByPlexusObjectIdEntityQuery.ResetFilter();
+                    vertexByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { ObjectId = plexusObjectData.WireframePlexusObjectId });
+                    edgeByPlexusObjectIdEntityQuery.ResetFilter();
+                    edgeByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { ObjectId = plexusObjectData.WireframePlexusObjectId });
 
-                ContactColorVertexJob jobVertex = new ContactColorVertexJob {
-                    ColorInterpolationPercent = colorInterpolationPercent,
-                    ContactPosition = contactColorAnimationData.LocalContactPosition,
-                    ContactMaxDistance = contactColorAnimationData.ContactLength,
-                    DefaultColor = plexusObjectData.VertexColor,
-                    ContactColor = contactColorAnimationData.ContactColor
-                };
-                ContactColorEdgeJob jobEdge = new ContactColorEdgeJob {
-                    ColorInterpolationPercent = colorInterpolationPercent,
-                    ContactPosition = contactColorAnimationData.LocalContactPosition,
-                    ContactMaxDistance = contactColorAnimationData.ContactLength,
-                    DefaultColor = plexusObjectData.EdgeColor,
-                    ContactColor = contactColorAnimationData.ContactColor
-                };
-                jobVertex.ScheduleParallel(vertexByPlexusObjectIdEntityQuery);
-                jobEdge.ScheduleParallel(edgeByPlexusObjectIdEntityQuery);
+                    plexusObjectData.ContactAnimationColorData[i] = contactColorAnimationData;
+
+                    ContactColorVertexJob jobVertex = new ContactColorVertexJob {
+                        ColorInterpolationPercent = colorInterpolationPercent,
+                        ContactPosition = contactColorAnimationData.LocalContactPosition,
+                        ContactMaxDistance = contactColorAnimationData.ContactLength,
+                        DefaultColor = plexusObjectData.VertexColor,
+                        ContactColor = contactColorAnimationData.ContactColor
+                    };
+                    ContactColorEdgeJob jobEdge = new ContactColorEdgeJob {
+                        ColorInterpolationPercent = colorInterpolationPercent,
+                        ContactPosition = contactColorAnimationData.LocalContactPosition,
+                        ContactMaxDistance = contactColorAnimationData.ContactLength,
+                        DefaultColor = plexusObjectData.EdgeColor,
+                        ContactColor = contactColorAnimationData.ContactColor
+                    };
+                    jobVertex.ScheduleParallel(vertexByPlexusObjectIdEntityQuery);
+                    jobEdge.ScheduleParallel(edgeByPlexusObjectIdEntityQuery);
+                }
             }
         }
 

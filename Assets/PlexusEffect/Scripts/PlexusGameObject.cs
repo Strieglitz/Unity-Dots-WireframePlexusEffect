@@ -1,4 +1,6 @@
 using System.Collections;
+using Unity.Collections;
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
@@ -8,67 +10,68 @@ namespace WireframePlexus {
     [RequireComponent(typeof(MeshFilter))]
     public class PlexusGameObject : MonoBehaviour {
         
-        [SerializeField]
+        [field:SerializeField]
         [Tooltip("Only draw the wireframes edge when its length is smaller than x Percent of the original length in the mesh")]
-        float maxEdgeLengthPercent;
+        public float MaxEdgeLengthPercent { get; private set; }
 
-        [SerializeField]
+        [field: SerializeField]
         [Tooltip("how thick the edges gonna be")]
-        float edgeThickness;
+        public float EdgeThickness { get; private set; }
 
-        [SerializeField]
+        [field: SerializeField]
         [Tooltip("The size of the visible vertex particle")]
-        float vertexSize;
+        public float VertexSize { get; private set; }
 
-        [SerializeField]
+        [field: SerializeField]
         [Tooltip("The vertices are always in motion, relative to their original position in the mesh, this value sets how far from the original possition they can go")]
-        float maxVertexMoveDistance;
+        public float MaxVertexMoveDistance { get; private set; }
 
-        [SerializeField]
+        [field: SerializeField]
         [Tooltip("The Minimum Speed a Vertex will have to move randomly around its original position in the mesh")]
-        float minVertexMoveSpeed;
+        public float MinVertexMoveSpeed { get; private set; }
 
-        [SerializeField]
+        [field: SerializeField]
         [Tooltip("The Maximum Speed a Vertex will have to move randomly around its original position in the mesh")]
-        float maxVertexMoveSpeed;
+        public float MaxVertexMoveSpeed { get; private set; }
 
-        [SerializeField]
+        [field: SerializeField]
         [ColorUsage(true, true)]
         Color vertexColor;
+        public float4 VertexColor => new float4(vertexColor.r, vertexColor.g, vertexColor.b, vertexColor.a);
 
-        [SerializeField]
+        [field: SerializeField]
         [ColorUsage(true, true)]
         Color edgeColor;
+        public float4 EdgeColor => new float4(edgeColor.r, edgeColor.g, edgeColor.b, edgeColor.a);
 
-
-        [SerializeField] Transform cameraWorldPos;
-
+        int wireframePlexusObjectId;
 
         private void Start() {
             TestPlexus();
         }
 
         private void TestPlexus() {
-            SpawnQueue.Instance.PlexusSpawnDataQueue.Enqueue(new EntitySpawnData {
-                MeshFilter = gameObject.GetComponent<MeshFilter>(),
-                CameraWorldPos = cameraWorldPos.position,
-                MaxEdgeLengthPercent = maxEdgeLengthPercent,
-                EdgeThickness = edgeThickness,
-                VertexSize = vertexSize,
-                MaxVertexMoveSpeed = maxVertexMoveSpeed,
-                MinVertexMoveSpeed = minVertexMoveSpeed,
-                PlexusGameObject = this,
-                MaxVertexMoveDistance = maxVertexMoveDistance,
-                VertexColor = vertexColor,
-                EdgeColor = edgeColor
-            });
+            World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<SpawnSystem>().SpawnPlexusObject(ref wireframePlexusObjectId,
+                new PlexusObjectData {
+                    MaxEdgeLengthPercent = MaxEdgeLengthPercent,
+                    EdgeThickness = EdgeThickness,
+                    MaxVertexMoveDistance = MaxVertexMoveDistance,
+                    MinVertexMoveSpeed = MinVertexMoveSpeed,
+                    MaxVertexMoveSpeed = MaxVertexMoveSpeed,
+                    VertexColor = VertexColor,
+                    EdgeColor = EdgeColor,
+                    VertexSize = VertexSize,
+                    rotation = transform.rotation
+                }, 
+                this, 
+                GetComponent<MeshFilter>().mesh
+                );
             gameObject.GetComponent<MeshRenderer>().enabled = false;
         }
 
-        public void SetPlexusContactAnimation(ContactColorAnimationData contactColorAnimationData) {
-            PlexusObjectSystem plexusObjectSystem = World.DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<PlexusObjectSystem>();
+        public void SetPlexusContactAnimation(ContactEffectData contactColorAnimationData) {
             contactColorAnimationData.CurrentContactDuration = contactColorAnimationData.TotalContactDuration;
-            plexusObjectSystem.SetPlexusContactAnimation(this, contactColorAnimationData);
+            World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<ContactEffectSpawnSystem>().SpawnContactEffect(contactColorAnimationData, wireframePlexusObjectId);
         }
     }
 }

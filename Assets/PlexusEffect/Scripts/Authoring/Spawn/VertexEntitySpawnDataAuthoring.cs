@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace WireframePlexus {
 
-public class VertexEntitySpawnDataAuthoring : MonoBehaviour {
+public class VertexplexusGameObjectAuthoring : MonoBehaviour {
         public GameObject WireframePlexusVertexEntityPrefab;
 
-        public class Baker : Baker<VertexEntitySpawnDataAuthoring> {
-            public override void Bake(VertexEntitySpawnDataAuthoring authoring) {
+        public class Baker : Baker<VertexplexusGameObjectAuthoring> {
+            public override void Bake(VertexplexusGameObjectAuthoring authoring) {
                 Entity entity = GetEntity(TransformUsageFlags.Dynamic);
-                AddComponent(entity, new VertexEntitySpawnData { WireframePlexusVertexEntityPrefab = GetEntity(authoring.WireframePlexusVertexEntityPrefab, TransformUsageFlags.Dynamic) });
+                AddComponent(entity, new VertexplexusGameObject { WireframePlexusVertexEntityPrefab = GetEntity(authoring.WireframePlexusVertexEntityPrefab, TransformUsageFlags.Dynamic) });
             }
         }
     }

@@ -8,7 +8,6 @@ namespace WireframePlexus {
             public override void Bake(PlexusObjectEntityAuthoring authoring) {
                 Entity entity = GetEntity(TransformUsageFlags.Dynamic);
                 AddComponentObject(entity, new SyncEntityPositionToGameobjectPositionData { });
-                AddComponent(entity, new ContactColorAnimationData { });
             }
         }
     }

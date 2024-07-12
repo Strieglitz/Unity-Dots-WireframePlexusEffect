@@ -3,12 +3,12 @@ using UnityEngine;
 
  namespace WireframePlexus {
 
-    public class PlexusObjectEntitySpawnDataAuthoring : MonoBehaviour {
+    public class PlexusObjectplexusGameObjectAuthoring : MonoBehaviour {
         public GameObject WireframePlexusObjectPrefab;
-        public class Baker : Baker<PlexusObjectEntitySpawnDataAuthoring> {
-            public override void Bake(PlexusObjectEntitySpawnDataAuthoring authoring) {
+        public class Baker : Baker<PlexusObjectplexusGameObjectAuthoring> {
+            public override void Bake(PlexusObjectplexusGameObjectAuthoring authoring) {
                 Entity entity = GetEntity(TransformUsageFlags.Dynamic);
-                AddComponent(entity, new PlexusObjectEntitySpawnData { WireframePlexusEntityPrefab = GetEntity(authoring.WireframePlexusObjectPrefab, TransformUsageFlags.Dynamic) });
+                AddComponent(entity, new PlexusObjectplexusGameObject { WireframePlexusEntityPrefab = GetEntity(authoring.WireframePlexusObjectPrefab, TransformUsageFlags.Dynamic) });
             }
         }
     }
