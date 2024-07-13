@@ -47,14 +47,14 @@ namespace WireframePlexus {
                     ContactColorVertexJob jobVertex = new ContactColorVertexJob {
                         ColorInterpolationPercent = colorInterpolationPercent,
                         ContactPosition = contactColorAnimationData.LocalContactPosition,
-                        ContactMaxDistance = contactColorAnimationData.ContactLength,
+                        ContactMaxDistance = contactColorAnimationData.ContactRadius,
                         DefaultColor = plexusObjectData.VertexColor,
                         ContactColor = contactColorAnimationData.ContactColor
                     };
                     ContactColorEdgeJob jobEdge = new ContactColorEdgeJob {
                         ColorInterpolationPercent = colorInterpolationPercent,
                         ContactPosition = contactColorAnimationData.LocalContactPosition,
-                        ContactMaxDistance = contactColorAnimationData.ContactLength,
+                        ContactMaxDistance = contactColorAnimationData.ContactRadius,
                         DefaultColor = plexusObjectData.EdgeColor,
                         ContactColor = contactColorAnimationData.ContactColor
                     };
