@@ -43,14 +43,16 @@ namespace WireframePlexus {
             [ReadOnly][NativeDisableContainerSafetyRestriction] public NativeArray<float3> PointPositions;
 
             public void Execute(ref LocalTransform localTransform, in EdgeData edgeData, ref PostTransformMatrix postTransform, ref EdgeAlphaData edgeColor) {
+                // read vertex positions from native array
                 float3 pos1 = PointPositions[edgeData.Vertex1Index];
                 float3 pos2 = PointPositions[edgeData.Vertex2Index];
 
+                // calc distance
                 float distance = math.distance(pos1, pos2);
                 float distancePercent = distance / edgeData.Length;
-                
+
+                // fade in/out of the edge depending of the lenght (is longer than the max length or not)
                 if (distancePercent > MaxEdgeLengthPercent) {
-                    //localTransform.Scale = 0;
                     if (edgeColor.Value > 0) {
                         edgeColor.Value -= DeltaTime;
                         if (edgeColor.Value < 0) {
@@ -58,8 +60,6 @@ namespace WireframePlexus {
                         }
                     }
                 } else {
-                    
-                    //localTransform.Scale = 1;
                     if (edgeColor.Value < 1) {
                         edgeColor.Value += DeltaTime;
                         if (edgeColor.Value > 1) {
@@ -68,6 +68,7 @@ namespace WireframePlexus {
                     }
                 }
 
+                // set edge in the middle between the vertices and rotate it to face both vertices
                 localTransform.Position = math.lerp(pos1, pos2, 0.5f);
                 float3 relativePos = math.normalize(pos1 - pos2);
 
@@ -79,9 +80,9 @@ namespace WireframePlexus {
                     localTransform.Rotation = end;
                 }
 
+                // scale the edge to reach both vertices
                 var scale = new float3(EdgeThickness, EdgeThickness, distance);
                 postTransform.Value = float4x4.Scale(scale);
-
             }
         }
     }

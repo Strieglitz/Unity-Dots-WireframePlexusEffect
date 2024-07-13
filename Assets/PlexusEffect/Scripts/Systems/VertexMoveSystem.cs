@@ -57,7 +57,7 @@ namespace WireframePlexus {
 
             public void Execute(ref LocalTransform localTransform, ref VertexMovementData movementData, in LocalToWorld localToWorld) {
 
-
+                // calc vertex new position depending on the movement data and write the current pos to the nativeArray of vertex positions
                 if ((MinVertexMovementSpeed == 0 && MaxVertexMovementSpeed == 0) || MaxVertexMoveDistance == 0) {
                     localTransform.Position = movementData.Position;
                     VertexPositions[movementData.PointId] = localTransform.Position;
