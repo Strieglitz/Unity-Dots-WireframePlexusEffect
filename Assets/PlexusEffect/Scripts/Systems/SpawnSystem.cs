@@ -20,6 +20,7 @@ namespace WireframePlexus {
         }
 
         public void SpawnPlexusObject(ref int PlexusObjectToSpawnId, PlexusObjectData plexusObjectData,PlexusGameObject plexusGameObject, Mesh mesh) {
+            // get spawn data singletons
             if (!SystemAPI.TryGetSingleton<VertexplexusGameObject>(out VertexplexusGameObject wireframePlexusVertexSpawnData)) {
                 World.EntityManager.CreateSingleton<VertexplexusGameObject>();
             }
@@ -35,24 +36,19 @@ namespace WireframePlexus {
             }
             wireframePlexusEdgeSpawnData = SystemAPI.GetSingleton<EdgeplexusGameObject>();
 
+
+            // fill ecb to cache all strucutral changes and execute them at once later on ecb play
             var ecb = new EntityCommandBuffer(Allocator.Temp);
 
 
-            // create an parent entity
+            // create an parent entity 
             Entity wireframePlexusObjectEntity = ecb.Instantiate(wireframePlexusObjectSpawnData.WireframePlexusEntityPrefab);
-
+            // set parent sync Gameobject 
             SyncEntityPositionToGameobjectPositionData parentReference = new SyncEntityPositionToGameobjectPositionData();
             parentReference.PlexusGameObject = plexusGameObject;
             ecb.SetComponent(wireframePlexusObjectEntity, parentReference);
 
-            
 
-            int points = mesh.triangles.Length;
-
-            plexusObjectData.VertexPositions = new NativeArray<float3>(points, Allocator.Persistent);
-            plexusObjectData.ContactAnimationColorData = new NativeList<ContactEffectData>(Allocator.Persistent);
-            plexusObjectData.WireframePlexusObjectId = plexusObjectId;
-            ecb.AddComponent(wireframePlexusObjectEntity, plexusObjectData);
 
             // create the vertex entities
             Dictionary<int, float3> usedPositionById = new Dictionary<int, float3>();
@@ -89,8 +85,14 @@ namespace WireframePlexus {
                 pointId++;
             }
 
+            // create parent plexusObjectData because now the number of vertices is known
+            plexusObjectData.VertexPositions = new NativeArray<float3>(pointId+1, Allocator.Persistent);
+            plexusObjectData.ContactAnimationColorData = new NativeList<ContactEffectData>(Allocator.Persistent);
+            plexusObjectData.WireframePlexusObjectId = plexusObjectId;
+            ecb.AddComponent(wireframePlexusObjectEntity, plexusObjectData);
 
-            // create the edge entities
+
+            // create the edge entities without duplicates
             HashSet<Tuple<int,int>> edgeConnections = new HashSet<Tuple<int, int>>();
             for (int i = 0; i < mesh.triangles.Length - 2; i = i + 3) {
                 int pos1Id = usedIdByPosition[(float3)mesh.vertices[mesh.triangles[i]]];
@@ -117,6 +119,10 @@ namespace WireframePlexus {
             plexusObjectId++;
             ecb.Playback(EntityManager);
         }
+        private Tuple<int, int> EdgePair(int id1, int id2) {
+            // Ensure the pair is always ordered the same way
+            return id1 < id2 ? Tuple.Create(id1, id2) : Tuple.Create(id2, id1);
+        }
 
         protected override void OnUpdate() {
         }
@@ -135,10 +141,7 @@ namespace WireframePlexus {
             ecb.AddComponent(plexusEdgeEntity, new Parent { Value = parentEntity });
         }
 
-        private Tuple<int, int> EdgePair(int id1, int id2) {
-            // Ensure the pair is always ordered the same way
-            return id1 < id2 ? Tuple.Create(id1, id2) : Tuple.Create(id2, id1);
-        }
+        
     }
 
 
