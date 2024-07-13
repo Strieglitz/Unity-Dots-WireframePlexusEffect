@@ -4,6 +4,7 @@ using Unity.Mathematics;
 using Unity.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace WireframePlexus {
 
@@ -47,10 +48,10 @@ namespace WireframePlexus {
             
 
             int points = mesh.triangles.Length;
+
             plexusObjectData.VertexPositions = new NativeArray<float3>(points, Allocator.Persistent);
             plexusObjectData.ContactAnimationColorData = new NativeList<ContactEffectData>(Allocator.Persistent);
             plexusObjectData.WireframePlexusObjectId = plexusObjectId;
-
             ecb.AddComponent(wireframePlexusObjectEntity, plexusObjectData);
 
             // create the vertex entities
@@ -90,22 +91,22 @@ namespace WireframePlexus {
 
 
             // create the edge entities
-            List<Connection> connections = new List<Connection>();
+            HashSet<Tuple<int,int>> edgeConnections = new HashSet<Tuple<int, int>>();
             for (int i = 0; i < mesh.triangles.Length - 2; i = i + 3) {
                 int pos1Id = usedIdByPosition[(float3)mesh.vertices[mesh.triangles[i]]];
                 int pos2Id = usedIdByPosition[(float3)mesh.vertices[mesh.triangles[i + 1]]];
                 int pos3Id = usedIdByPosition[(float3)mesh.vertices[mesh.triangles[i + 2]]];
 
-                if (connections.Contains(new Connection { Id1 = pos1Id, Id2 = pos2Id }) == false && connections.Contains(new Connection { Id1 = pos2Id, Id2 = pos1Id }) == false) {
-                    connections.Add(new Connection { Id1 = pos1Id, Id2 = pos2Id });
+                if (edgeConnections.Contains(EdgePair(pos1Id,pos2Id)) == false) {
+                    edgeConnections.Add(EdgePair(pos1Id, pos2Id));
                     AddPlexusEdge(ref ecb, wireframePlexusEdgeSpawnData.WireframePlexusEdgeEntityPrefab, pos1Id, pos2Id, math.distance(usedPositionById[pos1Id], usedPositionById[pos2Id]), wireframePlexusObjectEntity, plexusObjectData);
                 }
-                if (connections.Contains(new Connection { Id1 = pos2Id, Id2 = pos3Id }) == false && connections.Contains(new Connection { Id1 = pos3Id, Id2 = pos2Id }) == false) {
-                    connections.Add(new Connection { Id1 = pos2Id, Id2 = pos3Id });
+                if (edgeConnections.Contains(EdgePair(pos2Id, pos3Id))== false) {
+                    edgeConnections.Add(EdgePair(pos2Id, pos3Id));
                     AddPlexusEdge(ref ecb, wireframePlexusEdgeSpawnData.WireframePlexusEdgeEntityPrefab, pos2Id, pos3Id, math.distance(usedPositionById[pos2Id], usedPositionById[pos3Id]), wireframePlexusObjectEntity, plexusObjectData);
                 }
-                if (connections.Contains(new Connection { Id1 = pos1Id, Id2 = pos3Id }) == false && connections.Contains(new Connection { Id1 = pos3Id, Id2 = pos1Id }) == false) {
-                    connections.Add(new Connection { Id1 = pos1Id, Id2 = pos3Id });
+                if (edgeConnections.Contains(EdgePair(pos1Id, pos3Id)) == false) {
+                    edgeConnections.Add(EdgePair(pos1Id, pos3Id));
                     AddPlexusEdge(ref ecb, wireframePlexusEdgeSpawnData.WireframePlexusEdgeEntityPrefab, pos1Id, pos3Id, math.distance(usedPositionById[pos3Id], usedPositionById[pos1Id]), wireframePlexusObjectEntity, plexusObjectData);
                 }
 
@@ -133,10 +134,12 @@ namespace WireframePlexus {
             ecb.SetComponent(plexusEdgeEntity, new EdgeColorData { Value = plexusObjectData.EdgeColor });
             ecb.AddComponent(plexusEdgeEntity, new Parent { Value = parentEntity });
         }
+
+        private Tuple<int, int> EdgePair(int id1, int id2) {
+            // Ensure the pair is always ordered the same way
+            return id1 < id2 ? Tuple.Create(id1, id2) : Tuple.Create(id2, id1);
+        }
     }
 
-    struct Connection {
-        public int Id1;
-        public int Id2;
-    }
+
 }
