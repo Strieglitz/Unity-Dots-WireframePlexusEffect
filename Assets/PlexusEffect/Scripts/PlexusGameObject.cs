@@ -61,7 +61,7 @@ namespace WireframePlexus {
                     VertexColor = VertexColor,
                     EdgeColor = EdgeColor,
                     VertexSize = VertexSize,
-                    rotation = transform.rotation
+                    Rotation = transform.rotation
                 }, 
                 this, 
                 GetComponent<MeshFilter>().mesh
@@ -69,8 +69,14 @@ namespace WireframePlexus {
             gameObject.GetComponent<MeshRenderer>().enabled = false;
         }
 
-        public void SetPlexusContactAnimation(ContactEffectData contactColorAnimationData) {
-            contactColorAnimationData.CurrentContactDuration = contactColorAnimationData.TotalContactDuration;
+        public void SetPlexusContactAnimation(Color contactColor, float contactRadius, float contactDuration, Vector3 contactWorldPosition) {
+            ContactEffectData contactColorAnimationData = new ContactEffectData {
+                ContactColor = new float4(contactColor.r, contactColor.g, contactColor.b, contactColor.a),
+                ContactRadius = contactRadius,
+                TotalContactDuration = contactDuration,
+                CurrentContactDuration = contactDuration,
+                LocalContactPosition = contactWorldPosition - transform.position
+            };
             World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<ContactEffectSpawnSystem>().SpawnContactEffect(contactColorAnimationData, wireframePlexusObjectId);
         }
     }

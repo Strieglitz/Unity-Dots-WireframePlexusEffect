@@ -19,17 +19,19 @@ namespace WireframePlexus {
             state.RequireForUpdate<VertexMovementData>();
             plexusObjectEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<PlexusObjectData>().Build(ref state);
             plexusVertexByPlexusObjectIdEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<LocalTransform, VertexMovementData>().WithAll<LocalToWorld, PlexusObjectIdData>().Build(ref state);
+            
         }
         public void OnDestroy(ref SystemState state) {
             
         }
 
         public void OnUpdate(ref SystemState state) {
+            return;
             var plexusObjectEntries = plexusObjectEntityQuery.ToEntityArray(Allocator.Temp);
             foreach (Entity plexusObject in plexusObjectEntries) {
                 var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
                 plexusVertexByPlexusObjectIdEntityQuery.ResetFilter();
-                plexusVertexByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { ObjectId = plexusObjectData.WireframePlexusObjectId});
+                plexusVertexByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { PlexusObjectId = plexusObjectData.WireframePlexusObjectId});
                 
                 new PlexusVertexMovementJob {
                     DeltaTime = SystemAPI.Time.DeltaTime,
@@ -38,7 +40,7 @@ namespace WireframePlexus {
                     MaxVertexMovementSpeed = plexusObjectData.MaxVertexMoveSpeed,
                     MinVertexMovementSpeed = plexusObjectData.MinVertexMoveSpeed,
                     CameraWolrdPos = (float3)Camera.main.transform.position,
-                    ParentRotation = plexusObjectData.rotation,
+                    ParentRotation = plexusObjectData.Rotation,
                 }.ScheduleParallel(plexusVertexByPlexusObjectIdEntityQuery);
             }
         }

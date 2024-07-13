@@ -18,10 +18,11 @@ namespace WireframePlexus {
         }
 
         public void OnUpdate(ref SystemState state) {
+            return;
             var plexusObjectEntries = plexusObjectEntityQuery.ToEntityArray(Allocator.Temp);
             foreach (Entity plexusObject in plexusObjectEntries) {
                 var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
-                edgesByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { ObjectId = plexusObjectData.WireframePlexusObjectId });
+                edgesByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { PlexusObjectId = plexusObjectData.WireframePlexusObjectId });
 
                 PlexusEdgeMovementJob job = new PlexusEdgeMovementJob {
                     PointPositions = plexusObjectData.VertexPositions,
