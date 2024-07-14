@@ -9,5 +9,7 @@ namespace WireframePlexus {
         public float4 ContactColor;
         public float TotalContactDuration;
         public float CurrentContactDuration;
+        public float ContactVertexMaxDistance;
+        public float ContactVertexDurationMultiplier; // this one has to be >= 1
     }
 }

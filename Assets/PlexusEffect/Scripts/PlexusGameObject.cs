@@ -9,8 +9,8 @@ namespace WireframePlexus {
 
     [RequireComponent(typeof(MeshFilter))]
     public class PlexusGameObject : MonoBehaviour {
-        
-        [field:SerializeField]
+
+        [field: SerializeField]
         [Tooltip("Only draw the wireframes edge when its length is smaller than x Percent of the original length in the mesh")]
         public float MaxEdgeLengthPercent { get; private set; }
 
@@ -61,20 +61,30 @@ namespace WireframePlexus {
                     VertexColor = VertexColor,
                     EdgeColor = EdgeColor,
                     VertexSize = VertexSize,
-                }, 
-                this, 
+                },
+                this,
                 GetComponent<MeshFilter>().mesh
                 );
             gameObject.GetComponent<MeshRenderer>().enabled = false;
         }
 
-        public void SetPlexusContactAnimation(Color contactColor, float contactRadius, float contactDuration, Vector3 contactWorldPosition) {
+        /*** Set a contact animation on the plexus object
+         *         * @param contactColor the color of the contact animation
+         *                 * @param contactRadius the radius of the contact animation
+         *                         * @param contactDuration the duration of the contact animation
+         *                                 * @param contactWorldPosition the world position of the contact animation
+         *                                         * @param contactVertexAnimationDurationMultiplier the multiplier for the duration of the vertex animation, has to be >= 1 (greater or equals 1) or 0 to not use a vertex animation
+         *                                         * @param contactVertexMaxDistance the max distance a vertex will move at the contact animation
+         *                                                 */
+        public void SetPlexusContactAnimation(Color contactColor, float contactRadius, float contactDuration, Vector3 contactWorldPosition, float contactVertexAnimationDurationMultiplier, float contactVertexMaxDistance) {
             ContactEffectData contactColorAnimationData = new ContactEffectData {
                 ContactColor = new float4(contactColor.r, contactColor.g, contactColor.b, contactColor.a),
                 ContactRadius = contactRadius,
                 TotalContactDuration = contactDuration,
                 CurrentContactDuration = contactDuration,
-                ContactWorldPosition = contactWorldPosition
+                ContactWorldPosition = contactWorldPosition,
+                ContactVertexDurationMultiplier = contactVertexAnimationDurationMultiplier,
+                ContactVertexMaxDistance = contactVertexMaxDistance
             };
             World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<ContactEffectSpawnSystem>().SpawnContactEffect(contactColorAnimationData, wireframePlexusObjectId);
         }

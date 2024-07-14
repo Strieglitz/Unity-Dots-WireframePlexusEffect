@@ -1,4 +1,3 @@
-using System.Numerics;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
@@ -16,8 +15,12 @@ namespace WireframePlexus {
         [BurstCompile]
         public void OnCreate(ref SystemState state) {
             plexusObjectEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<PlexusObjectData>().Build(ref state);
-            vertexByPlexusObjectIdEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<VertexColorData>().WithAll<LocalTransform, PlexusObjectIdData, LocalToWorld>().Build(ref state);
+            vertexByPlexusObjectIdEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<VertexColorData, VertexAdditionalMovementData>().WithAll<LocalTransform, PlexusObjectIdData, LocalToWorld>().Build(ref state);
             edgeByPlexusObjectIdEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<EdgeColorData>().WithAll<LocalTransform, PlexusObjectIdData, LocalToWorld>().Build(ref state);
+        }
+
+        float EaseInOut(float t) {
+            return t < 0.5f ? 2 * t * t : -1 + (4 - 2 * t) * t;
         }
 
         [BurstCompile]
@@ -38,7 +41,8 @@ namespace WireframePlexus {
                         contactColorAnimationData.CurrentContactDuration = 0;
                     }
 
-                    float colorInterpolationPercent = 1 - (contactColorAnimationData.CurrentContactDuration / contactColorAnimationData.TotalContactDuration);
+                    float contactInterpolationPercent = 1 - (contactColorAnimationData.CurrentContactDuration / contactColorAnimationData.TotalContactDuration);
+                    float contactInterpolationPercentEasedInOut = EaseInOut(contactInterpolationPercent);
                     vertexByPlexusObjectIdEntityQuery.ResetFilter();
                     vertexByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { PlexusObjectId = plexusObjectData.WireframePlexusObjectId });
                     edgeByPlexusObjectIdEntityQuery.ResetFilter();
@@ -46,17 +50,19 @@ namespace WireframePlexus {
 
                     plexusObjectData.ContactAnimationColorData[i] = contactColorAnimationData;
 
-                    ContactColorVertexJob jobVertex = new ContactColorVertexJob {
-                        ColorInterpolationPercent = colorInterpolationPercent,
+                    ContactAnimationVertexJob jobVertex = new ContactAnimationVertexJob {
+                        InterpolationPercent = contactInterpolationPercentEasedInOut,
                         ContactWorldPosition = contactColorAnimationData.ContactWorldPosition,
                         ContactMaxDistance = contactColorAnimationData.ContactRadius,
                         DefaultColor = plexusObjectData.VertexColor,
                         ContactColor = contactColorAnimationData.ContactColor,
                         ParentWorldPos = plexusObjectData.WorldPosition,
-                        ParentWorldRotation = plexusObjectData.WorldRotation
+                        ParentWorldRotation = plexusObjectData.WorldRotation,
+                        ContactVertexDurationMultiplier = contactColorAnimationData.ContactVertexDurationMultiplier,
+                        ContactVertexMaxDistance = contactColorAnimationData.ContactVertexMaxDistance
                     };
-                    ContactColorEdgeJob jobEdge = new ContactColorEdgeJob {
-                        ColorInterpolationPercent = colorInterpolationPercent,
+                    ContactAnimationEdgeJob jobEdge = new ContactAnimationEdgeJob {
+                        InterpolationPercent = contactInterpolationPercentEasedInOut,
                         ContactWorldPosition = contactColorAnimationData.ContactWorldPosition,
                         ContactMaxDistance = contactColorAnimationData.ContactRadius,
                         DefaultColor = plexusObjectData.EdgeColor,
@@ -82,9 +88,11 @@ namespace WireframePlexus {
 
         }
         [BurstCompile]
-        public partial struct ContactColorVertexJob : IJobEntity {
+        public partial struct ContactAnimationVertexJob : IJobEntity {
 
-            public float ColorInterpolationPercent;
+            public float InterpolationPercent;
+            public float ContactVertexDurationMultiplier;
+            public float ContactVertexMaxDistance;
             public float3 ContactWorldPosition;
             public float ContactMaxDistance;
             public float4 DefaultColor;
@@ -92,24 +100,41 @@ namespace WireframePlexus {
             public float3 ParentWorldPos;
             public quaternion ParentWorldRotation;
 
-            public void Execute(ref VertexColorData vertexColorData, in LocalTransform localTransform) {
-                float3 relativeContactPos = ContactWorldPosition - (ParentWorldPos);
-                float3 relativeVertexPos = math.mul(ParentWorldRotation, localTransform.Position);
+
+
+            public void Execute(ref VertexColorData vertexColorData,ref VertexAdditionalMovementData vertexAdditionalMovementData, in LocalTransform localTransform) {
+                // the additionalMovementAnimation is changing the position, so we need to calculate the distance to the contact point without the additional movement
+                // also the local position is rotated by the parent rotation, to match the world position of the vertex
+                float3 localPosWithoutAdditionalMovement = localTransform.Position - vertexAdditionalMovementData.AdditionalLocalPosition;
+                float3 relativeContactPos = ContactWorldPosition - ParentWorldPos;
+                float3 relativeVertexPos = math.mul(ParentWorldRotation, localPosWithoutAdditionalMovement);
                 float vertexDistanceToContact = math.distance(relativeVertexPos, relativeContactPos);
                 
                 if (vertexDistanceToContact < ContactMaxDistance) {
                     float colorStrength = 1 - (vertexDistanceToContact / ContactMaxDistance);
                     float4 contactColorStrength = math.lerp(DefaultColor, ContactColor, colorStrength);
-                    float4 color = math.lerp(contactColorStrength, DefaultColor, ColorInterpolationPercent);
+                    float4 color = math.lerp(contactColorStrength, DefaultColor, InterpolationPercent);
                     vertexColorData.Value = color;
+
+                    float interpolationPercentDouble = InterpolationPercent * ContactVertexDurationMultiplier;
+                    if(interpolationPercentDouble > 1) {
+                        interpolationPercentDouble = 1;
+                    }
+                    float3 additionalVertexMoveDirection = math.normalize(relativeVertexPos - relativeContactPos) * colorStrength * ContactVertexMaxDistance;
+                    if (interpolationPercentDouble < 0.5f) {
+                        additionalVertexMoveDirection = math.lerp(0, additionalVertexMoveDirection, interpolationPercentDouble * 2);
+                    } else {
+                        additionalVertexMoveDirection = math.lerp(additionalVertexMoveDirection, 0, (interpolationPercentDouble - 0.5f) * 2);
+                    }
+                    vertexAdditionalMovementData.AdditionalLocalPosition = math.mul(math.inverse(ParentWorldRotation), additionalVertexMoveDirection);
                 }
             }
         }
 
         [BurstCompile]
-        public partial struct ContactColorEdgeJob : IJobEntity {
+        public partial struct ContactAnimationEdgeJob : IJobEntity {
             
-            public float ColorInterpolationPercent;
+            public float InterpolationPercent;
             public float3 ContactWorldPosition;
             public float ContactMaxDistance;
             public float4 DefaultColor;
@@ -125,7 +150,7 @@ namespace WireframePlexus {
                 if (vertexDistanceToContact < ContactMaxDistance) {
                     float colorStrength = 1 - (vertexDistanceToContact / ContactMaxDistance);
                     float4 contactColorStrength = math.lerp(DefaultColor, ContactColor, colorStrength);
-                    float4 color = math.lerp(contactColorStrength, DefaultColor, ColorInterpolationPercent);
+                    float4 color = math.lerp(contactColorStrength, DefaultColor, InterpolationPercent);
                     edgeColorData.Value = color;
                 }
             }

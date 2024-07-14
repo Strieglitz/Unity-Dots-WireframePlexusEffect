@@ -1,4 +1,5 @@
 using Unity.Burst;
+using Unity.Burst.Intrinsics;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
@@ -10,50 +11,63 @@ namespace WireframePlexus {
     [UpdateAfter(typeof(VertexMoveSystem))]
     public partial struct EdgeMoveSystem : ISystem {
         EntityQuery plexusObjectEntityQuery;
-        EntityQuery edgesByPlexusObjectIdEntityQuery;
+        EntityQuery plexusEdgeEntityQuery;
+        NativeHashMap<int, PlexusObjectData> plexusObjectDataById;
+
+        SharedComponentTypeHandle<PlexusObjectIdData> idTypeHandle;
 
         public void OnCreate(ref SystemState state) {
             plexusObjectEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<PlexusObjectData>().Build(ref state);
-            edgesByPlexusObjectIdEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<LocalTransform, EdgeData, PostTransformMatrix, PlexusObjectIdData, EdgeAlphaData>().Build(ref state);
+            plexusEdgeEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<LocalTransform, EdgeData, PostTransformMatrix, PlexusObjectIdData, EdgeAlphaData>().Build(ref state);
+            plexusObjectDataById = new NativeHashMap<int, PlexusObjectData>(0, Allocator.Persistent);
+            idTypeHandle = state.GetSharedComponentTypeHandle<PlexusObjectIdData>();
+        }
+
+        public void OnDestroy(ref SystemState state) {
+            plexusObjectDataById.Dispose();
         }
 
         public void OnUpdate(ref SystemState state) {
-            return;
+            idTypeHandle.Update(ref state);
             var plexusObjectEntries = plexusObjectEntityQuery.ToEntityArray(Allocator.Temp);
-            foreach (Entity plexusObject in plexusObjectEntries) {
-                var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
-                edgesByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { PlexusObjectId = plexusObjectData.WireframePlexusObjectId });
-
-                PlexusEdgeMovementJob job = new PlexusEdgeMovementJob {
-                    PointPositions = plexusObjectData.VertexPositions,
-                    MaxEdgeLengthPercent = plexusObjectData.MaxEdgeLengthPercent,
-                    EdgeThickness = plexusObjectData.EdgeThickness,
-                    DeltaTime = SystemAPI.Time.DeltaTime,
-                };
-                job.ScheduleParallel(edgesByPlexusObjectIdEntityQuery);
+            if (plexusObjectEntries.Length != plexusObjectDataById.Count) {
+                plexusObjectDataById.Dispose();
+                plexusObjectDataById = new NativeHashMap<int, PlexusObjectData>(plexusObjectEntries.Length, Allocator.Persistent);
+                foreach (Entity plexusObject in plexusObjectEntries) {
+                    var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
+                    plexusObjectDataById.Add(plexusObjectData.WireframePlexusObjectId, plexusObjectData);
+                }
             }
 
-
+            new PlexusEdgeMovementJob { DeltaTime = SystemAPI.Time.DeltaTime, IdTypeHandle = idTypeHandle, PlexusObjectDataById = plexusObjectDataById }.ScheduleParallel(plexusEdgeEntityQuery);
         }
-        [BurstCompile]
-        public partial struct PlexusEdgeMovementJob : IJobEntity {
 
+        [BurstCompile]
+        public partial struct PlexusEdgeMovementJob : IJobEntity, IJobEntityChunkBeginEnd {
+
+            public SharedComponentTypeHandle<PlexusObjectIdData> IdTypeHandle;
             [ReadOnly] public float DeltaTime;
-            [ReadOnly] public float MaxEdgeLengthPercent;
-            [ReadOnly] public float EdgeThickness;
-            [ReadOnly][NativeDisableContainerSafetyRestriction] public NativeArray<float3> PointPositions;
+            [NativeDisableContainerSafetyRestriction][ReadOnly] public NativeHashMap<int, PlexusObjectData> PlexusObjectDataById;
+            int plexusObjectId;
+
+            public bool OnChunkBegin(in ArchetypeChunk chunk, int unfilteredChunkIndex, bool useEnabledMask, in v128 chunkEnabledMask) {
+                plexusObjectId = chunk.GetSharedComponent(IdTypeHandle).PlexusObjectId;
+                return true;
+            }
 
             public void Execute(ref LocalTransform localTransform, in EdgeData edgeData, ref PostTransformMatrix postTransform, ref EdgeAlphaData edgeColor) {
+                PlexusObjectData plexusObjectData = PlexusObjectDataById[plexusObjectId];
+
                 // read vertex positions from native array
-                float3 pos1 = PointPositions[edgeData.Vertex1Index];
-                float3 pos2 = PointPositions[edgeData.Vertex2Index];
+                float3 pos1 = plexusObjectData.VertexPositions[edgeData.Vertex1Index];
+                float3 pos2 = plexusObjectData.VertexPositions[edgeData.Vertex2Index];
 
                 // calc distance
                 float distance = math.distance(pos1, pos2);
                 float distancePercent = distance / edgeData.Length;
 
                 // fade in/out of the edge depending of the lenght (is longer than the max length or not)
-                if (distancePercent > MaxEdgeLengthPercent) {
+                if (distancePercent > plexusObjectData.MaxEdgeLengthPercent) {
                     if (edgeColor.Value > 0) {
                         edgeColor.Value -= DeltaTime;
                         if (edgeColor.Value < 0) {
@@ -82,11 +96,12 @@ namespace WireframePlexus {
                 }
 
                 // scale the edge to reach both vertices
-                var scale = new float3(EdgeThickness, EdgeThickness, distance);
+                var scale = new float3(plexusObjectData.EdgeThickness, plexusObjectData.EdgeThickness, distance);
                 postTransform.Value = float4x4.Scale(scale);
+            }
+            public void OnChunkEnd(in ArchetypeChunk chunk, int unfilteredChunkIndex, bool useEnabledMask, in v128 chunkEnabledMask, bool chunkWasExecuted) {
+
             }
         }
     }
 }
-
-

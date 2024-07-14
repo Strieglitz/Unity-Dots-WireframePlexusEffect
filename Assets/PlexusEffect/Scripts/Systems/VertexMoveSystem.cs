@@ -1,10 +1,12 @@
 using Unity.Burst;
+using Unity.Burst.Intrinsics;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 namespace WireframePlexus {
@@ -12,74 +14,84 @@ namespace WireframePlexus {
     [UpdateAfter(typeof(PlexusObjectSystem))]
     public partial struct VertexMoveSystem : ISystem {
 
-        EntityQuery plexusVertexByPlexusObjectIdEntityQuery;
         EntityQuery plexusObjectEntityQuery;
+        EntityQuery plexusVertexEntityQuery;
+        NativeHashMap<int, PlexusObjectData> plexusObjectDataById;
+        SharedComponentTypeHandle<PlexusObjectIdData> idTypeHandle;
 
+       [BurstCompile]
         public void OnCreate(ref SystemState state) {
             state.RequireForUpdate<VertexMovementData>();
             plexusObjectEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<PlexusObjectData>().Build(ref state);
-            plexusVertexByPlexusObjectIdEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<LocalTransform, VertexMovementData>().WithAll<LocalToWorld, PlexusObjectIdData>().Build(ref state);
-            
+            plexusVertexEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<LocalTransform, VertexMovementData>().WithAll<PlexusObjectIdData, VertexAdditionalMovementData>().Build(ref state);
+            plexusObjectDataById = new NativeHashMap<int, PlexusObjectData>(0,Allocator.Persistent);
+            idTypeHandle = state.GetSharedComponentTypeHandle<PlexusObjectIdData>();
         }
         public void OnDestroy(ref SystemState state) {
-            
+            plexusObjectDataById.Dispose();
         }
 
         public void OnUpdate(ref SystemState state) {
-            return;
+            idTypeHandle.Update(ref state);
             var plexusObjectEntries = plexusObjectEntityQuery.ToEntityArray(Allocator.Temp);
-            foreach (Entity plexusObject in plexusObjectEntries) {
-                var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
-                plexusVertexByPlexusObjectIdEntityQuery.ResetFilter();
-                plexusVertexByPlexusObjectIdEntityQuery.SetSharedComponentFilter(new PlexusObjectIdData { PlexusObjectId = plexusObjectData.WireframePlexusObjectId});
-                
-                new PlexusVertexMovementJob {
-                    DeltaTime = SystemAPI.Time.DeltaTime,
-                    VertexPositions = plexusObjectData.VertexPositions,
-                    MaxVertexMoveDistance = plexusObjectData.MaxVertexMoveDistance,
-                    MaxVertexMovementSpeed = plexusObjectData.MaxVertexMoveSpeed,
-                    MinVertexMovementSpeed = plexusObjectData.MinVertexMoveSpeed,
-                    CameraWolrdPos = (float3)Camera.main.transform.position,
-                }.ScheduleParallel(plexusVertexByPlexusObjectIdEntityQuery);
+            if(plexusObjectEntries.Length != plexusObjectDataById.Count) {
+                plexusObjectDataById.Dispose();
+                plexusObjectDataById = new NativeHashMap<int, PlexusObjectData>(plexusObjectEntries.Length, Allocator.Persistent);
+                foreach (Entity plexusObject in plexusObjectEntries) {
+                    var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
+                    plexusObjectDataById.Add(plexusObjectData.WireframePlexusObjectId, plexusObjectData);
+                }
+            }
+            new PlexusVertexMovementJob { DeltaTime = SystemAPI.Time.DeltaTime, CameraWolrdPos = (float3)Camera.main.transform.position, PlexusObjectDataById = plexusObjectDataById, IdTypeHandle = idTypeHandle}.ScheduleParallel(plexusVertexEntityQuery);
+        }
+    }
+
+    [BurstCompile]
+    public partial struct PlexusVertexMovementJob : IJobEntity, IJobEntityChunkBeginEnd {
+
+        [ReadOnly] public float DeltaTime;
+        [ReadOnly] public float3 CameraWolrdPos;
+        [NativeDisableContainerSafetyRestriction][ReadOnly] public NativeHashMap<int, PlexusObjectData> PlexusObjectDataById;
+
+        public SharedComponentTypeHandle<PlexusObjectIdData> IdTypeHandle;
+        
+        int plexusObjectId;
+
+
+
+        public bool OnChunkBegin(in ArchetypeChunk chunk, int unfilteredChunkIndex, bool useEnabledMask, in v128 chunkEnabledMask) {
+            plexusObjectId = chunk.GetSharedComponent(IdTypeHandle).PlexusObjectId;
+            return true;
+        }
+
+        public void Execute(ref LocalTransform localTransform, ref VertexMovementData movementData, in VertexAdditionalMovementData vertexAdditionalMovementData) {
+            PlexusObjectData plexusObjectData = PlexusObjectDataById[plexusObjectId];
+            
+            // calc vertex new position depending on the movement data and write the current pos to the nativeArray of vertex positions
+            if ((plexusObjectData.MinVertexMoveSpeed == 0 && plexusObjectData.MaxVertexMoveSpeed == 0) || plexusObjectData.MaxVertexMoveDistance == 0) {
+                localTransform.Position = movementData.Position + vertexAdditionalMovementData.AdditionalLocalPosition;
+                plexusObjectData.VertexPositions[movementData.PointId] = localTransform.Position;
+
+            } else {
+                if (movementData.CurrentMovementDuration <= 0) {
+                    localTransform = localTransform.WithPosition(movementData.PositionTarget+ vertexAdditionalMovementData.AdditionalLocalPosition);
+                    movementData.MoveSpeed = movementData.Random.NextFloat(plexusObjectData.MinVertexMoveSpeed, plexusObjectData.MaxVertexMoveSpeed);
+                    movementData.PositionOrigin = movementData.PositionTarget;
+                    movementData.PositionTarget = movementData.Position + movementData.Random.NextFloat3(-plexusObjectData.MaxVertexMoveSpeed, plexusObjectData.MaxVertexMoveDistance);
+                    movementData.CurrentMovementDuration = math.distance(movementData.PositionTarget, movementData.PositionOrigin) / movementData.MoveSpeed;
+                    movementData.TotalMovementDuration = movementData.CurrentMovementDuration;
+                } else {
+                    movementData.CurrentMovementDuration -= DeltaTime;
+                    float interpolationPercent = 1 - (movementData.CurrentMovementDuration / movementData.TotalMovementDuration);
+                    float3 newPosition = math.lerp(movementData.PositionOrigin, movementData.PositionTarget, interpolationPercent);
+                    localTransform = localTransform.WithPosition(newPosition+ vertexAdditionalMovementData.AdditionalLocalPosition);
+                }
+                plexusObjectData.VertexPositions[movementData.PointId] = localTransform.Position;
             }
         }
 
-        [BurstCompile]
-
-        public partial struct PlexusVertexMovementJob : IJobEntity {
-
-            [ReadOnly] public quaternion ParentRotation;
-            [ReadOnly] public float3 CameraWolrdPos;
-            [ReadOnly] public float DeltaTime;
-            [ReadOnly] public float MinVertexMovementSpeed;
-            [ReadOnly] public float MaxVertexMovementSpeed;
-            [ReadOnly] public float MaxVertexMoveDistance;
-            [NativeDisableContainerSafetyRestriction] public NativeArray<float3> VertexPositions;
-
-            public void Execute(ref LocalTransform localTransform, ref VertexMovementData movementData, in LocalToWorld localToWorld) {
-
-                // calc vertex new position depending on the movement data and write the current pos to the nativeArray of vertex positions
-                if ((MinVertexMovementSpeed == 0 && MaxVertexMovementSpeed == 0) || MaxVertexMoveDistance == 0) {
-                    localTransform.Position = movementData.Position;
-                    VertexPositions[movementData.PointId] = localTransform.Position;
-
-                } else {
-                    if (movementData.CurrentMovementDuration <= 0) {
-                        localTransform = localTransform.WithPosition(movementData.PositionTarget);
-                        movementData.MoveSpeed = movementData.Random.NextFloat(MinVertexMovementSpeed, MaxVertexMovementSpeed);
-                        movementData.PositionOrigin = movementData.PositionTarget;
-                        movementData.PositionTarget = movementData.Position + movementData.Random.NextFloat3(-MaxVertexMoveDistance, MaxVertexMoveDistance);
-                        movementData.CurrentMovementDuration = math.distance(movementData.PositionTarget, movementData.PositionOrigin) / movementData.MoveSpeed;
-                        movementData.TotalMovementDuration = movementData.CurrentMovementDuration;
-                    } else {
-                        movementData.CurrentMovementDuration -= DeltaTime;
-                        float interpolationPercent = 1 - (movementData.CurrentMovementDuration / movementData.TotalMovementDuration);
-                        float3 newPosition = math.lerp(movementData.PositionOrigin, movementData.PositionTarget, interpolationPercent);
-                        localTransform = localTransform.WithPosition(newPosition);
-                    }
-                    VertexPositions[movementData.PointId] = localTransform.Position;
-                }
-            }
+        public void OnChunkEnd(in ArchetypeChunk chunk, int unfilteredChunkIndex, bool useEnabledMask, in v128 chunkEnabledMask, bool chunkWasExecuted) {
+            
         }
     }
 }
