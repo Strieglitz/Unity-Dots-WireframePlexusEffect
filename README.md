@@ -22,3 +22,7 @@ There is still tonns of room for improvements like adding lots of options to mak
 # An contact color change animation for later use in a game
 
 ![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect4.gif)
+
+# Contact animation with vertex distortion
+
+![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect5.gif)
