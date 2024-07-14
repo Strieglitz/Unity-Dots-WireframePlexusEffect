@@ -61,7 +61,6 @@ namespace WireframePlexus {
                     VertexColor = VertexColor,
                     EdgeColor = EdgeColor,
                     VertexSize = VertexSize,
-                    Rotation = transform.rotation
                 }, 
                 this, 
                 GetComponent<MeshFilter>().mesh

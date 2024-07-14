@@ -15,7 +15,6 @@ namespace WireframePlexus {
         public float MaxVertexMoveSpeed;
         public float4 VertexColor;
         public float4 EdgeColor;
-        public quaternion Rotation;
         public NativeArray<float3> VertexPositions;
         public NativeList<ContactEffectData> ContactAnimationColorData;
         public int WireframePlexusObjectId;

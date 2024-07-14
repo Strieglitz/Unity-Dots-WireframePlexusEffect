@@ -25,12 +25,6 @@ namespace WireframePlexus {
                     continue;
                 }
                 EntityManager.SetComponentData(entity, new LocalTransform { Position = gameobjectReference.PlexusGameObject.transform.position, Rotation = gameobjectReference.PlexusGameObject.transform.rotation, Scale = (gameobjectReference.PlexusGameObject.transform.lossyScale.x + gameobjectReference.PlexusGameObject.transform.lossyScale.y + gameobjectReference.PlexusGameObject.transform.lossyScale.z) / 3 });
-                
-                // set the rotation to the plexus object data so the vertex movement system can use it
-                var plexusObjectData = EntityManager.GetComponentData<PlexusObjectData>(entity);
-                plexusObjectData.Rotation = gameobjectReference.PlexusGameObject.transform.rotation;
-                EntityManager.SetComponentData(entity, plexusObjectData);
-                
             }
         }
     }

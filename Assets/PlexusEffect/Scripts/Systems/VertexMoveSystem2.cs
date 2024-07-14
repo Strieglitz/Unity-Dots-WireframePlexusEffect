@@ -6,6 +6,7 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 namespace WireframePlexus {
@@ -22,7 +23,7 @@ namespace WireframePlexus {
         public void OnCreate(ref SystemState state) {
             state.RequireForUpdate<VertexMovementData>();
             plexusObjectEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<PlexusObjectData>().Build(ref state);
-            plexusVertexEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<LocalTransform, VertexMovementData>().WithAll<LocalToWorld, PlexusObjectIdData>().Build(ref state);
+            plexusVertexEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<LocalTransform, VertexMovementData>().WithAll<PlexusObjectIdData>().Build(ref state);
             plexusObjectDataById = new NativeHashMap<int, PlexusObjectData>(0,Allocator.Persistent);
             idTypeHandle = state.GetSharedComponentTypeHandle<PlexusObjectIdData>();
         }
@@ -63,7 +64,7 @@ namespace WireframePlexus {
             return true;
         }
 
-        public void Execute(ref LocalTransform localTransform, ref VertexMovementData movementData, in LocalToWorld localToWorld) {
+        public void Execute(ref LocalTransform localTransform, ref VertexMovementData movementData) {
             PlexusObjectData plexusObjectData = PlexusObjectDataById[plexusObjectId];
             
             // calc vertex new position depending on the movement data and write the current pos to the nativeArray of vertex positions
@@ -86,16 +87,6 @@ namespace WireframePlexus {
                     localTransform = localTransform.WithPosition(newPosition);
                 }
                 plexusObjectData.VertexPositions[movementData.PointId] = localTransform.Position;
-            }
-
-            // make vertex face camera
-            float3 relativePos = CameraWolrdPos - localToWorld.Position;
-            // quaternion.LookRotationSafe cannot handle vectors that are collinear so for the case of the edge faceing directly up or down hardcoded a 90 degree rotation
-            if (relativePos.y == 1 || relativePos.y == -1) {
-                localTransform.Rotation = math.mul(quaternion.RotateX(math.PIHALF), math.inverse(plexusObjectData.Rotation));
-            } else {
-                quaternion end = quaternion.LookRotationSafe(-relativePos, math.up());
-                localTransform.Rotation = math.mul(end.value, math.inverse(plexusObjectData.Rotation));
             }
         }
 

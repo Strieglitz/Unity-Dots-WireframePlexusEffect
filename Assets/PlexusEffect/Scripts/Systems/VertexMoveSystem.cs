@@ -40,7 +40,6 @@ namespace WireframePlexus {
                     MaxVertexMovementSpeed = plexusObjectData.MaxVertexMoveSpeed,
                     MinVertexMovementSpeed = plexusObjectData.MinVertexMoveSpeed,
                     CameraWolrdPos = (float3)Camera.main.transform.position,
-                    ParentRotation = plexusObjectData.Rotation,
                 }.ScheduleParallel(plexusVertexByPlexusObjectIdEntityQuery);
             }
         }
@@ -80,17 +79,6 @@ namespace WireframePlexus {
                     }
                     VertexPositions[movementData.PointId] = localTransform.Position;
                 }
-
-                // make vertex face camera
-                float3 relativePos = CameraWolrdPos - localToWorld.Position;
-                // quaternion.LookRotationSafe cannot handle vectors that are collinear so for the case of the edge faceing directly up or down hardcoded a 90 degree rotation
-                if (relativePos.y == 1 || relativePos.y == -1) {
-                    localTransform.Rotation = math.mul(quaternion.RotateX(math.PIHALF), math.inverse(ParentRotation));
-                } else {
-                    quaternion end = quaternion.LookRotationSafe(-relativePos, math.up());
-                    localTransform.Rotation = math.mul(end.value, math.inverse(ParentRotation));
-                }
-
             }
         }
     }

@@ -97,9 +97,8 @@ namespace WireframePlexus {
                 MaxVertexMoveSpeed = plexusObjectData.MaxVertexMoveSpeed,
                 MinVertexMoveSpeed = plexusObjectData.MinVertexMoveSpeed,
                 MaxVertexMoveDistance = plexusObjectData.MaxVertexMoveDistance,
-                Rotation = plexusGameObject.transform.rotation,
 
-            });
+             });
             // create the edge entities without duplicates
             HashSet<Tuple<int, int>> edgeConnections = new HashSet<Tuple<int, int>>();
             for (int i = 0; i < mesh.triangles.Length - 2; i = i + 3) {
