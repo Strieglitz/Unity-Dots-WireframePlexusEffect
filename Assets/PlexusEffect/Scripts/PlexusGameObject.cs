@@ -75,7 +75,7 @@ namespace WireframePlexus {
                 ContactRadius = contactRadius,
                 TotalContactDuration = contactDuration,
                 CurrentContactDuration = contactDuration,
-                LocalContactPosition = contactWorldPosition - transform.position
+                ContactWorldPosition = contactWorldPosition
             };
             World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<ContactEffectSpawnSystem>().SpawnContactEffect(contactColorAnimationData, wireframePlexusObjectId);
         }

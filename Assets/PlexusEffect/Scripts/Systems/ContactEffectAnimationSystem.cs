@@ -16,8 +16,8 @@ namespace WireframePlexus {
         [BurstCompile]
         public void OnCreate(ref SystemState state) {
             plexusObjectEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<PlexusObjectData>().Build(ref state);
-            vertexByPlexusObjectIdEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<VertexColorData>().WithAll<LocalTransform, PlexusObjectIdData>().Build(ref state);
-            edgeByPlexusObjectIdEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<EdgeColorData>().WithAll<LocalTransform, PlexusObjectIdData>().Build(ref state);
+            vertexByPlexusObjectIdEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<VertexColorData>().WithAll<LocalTransform, PlexusObjectIdData, LocalToWorld>().Build(ref state);
+            edgeByPlexusObjectIdEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<EdgeColorData>().WithAll<LocalTransform, PlexusObjectIdData, LocalToWorld>().Build(ref state);
         }
 
         [BurstCompile]
@@ -46,14 +46,14 @@ namespace WireframePlexus {
 
                     ContactColorVertexJob jobVertex = new ContactColorVertexJob {
                         ColorInterpolationPercent = colorInterpolationPercent,
-                        ContactPosition = contactColorAnimationData.LocalContactPosition,
+                        ContactWorldPosition = contactColorAnimationData.ContactWorldPosition,
                         ContactMaxDistance = contactColorAnimationData.ContactRadius,
                         DefaultColor = plexusObjectData.VertexColor,
                         ContactColor = contactColorAnimationData.ContactColor
                     };
                     ContactColorEdgeJob jobEdge = new ContactColorEdgeJob {
                         ColorInterpolationPercent = colorInterpolationPercent,
-                        ContactPosition = contactColorAnimationData.LocalContactPosition,
+                        ContactWorldPosition = contactColorAnimationData.ContactWorldPosition,
                         ContactMaxDistance = contactColorAnimationData.ContactRadius,
                         DefaultColor = plexusObjectData.EdgeColor,
                         ContactColor = contactColorAnimationData.ContactColor
@@ -72,13 +72,14 @@ namespace WireframePlexus {
         public partial struct ContactColorVertexJob : IJobEntity {
 
             public float ColorInterpolationPercent;
-            public float3 ContactPosition;
+            public float3 ContactWorldPosition;
             public float ContactMaxDistance;
             public float4 DefaultColor;
             public float4 ContactColor;
 
-            public void Execute(ref VertexColorData vertexColorData, in LocalTransform localTransform) {
-                float vertexDistanceToContact = math.distance(localTransform.Position, ContactPosition);
+            public void Execute(ref VertexColorData vertexColorData, in LocalTransform localTransform, in LocalToWorld localToWorld) {
+                float3 relativePos = ContactWorldPosition - localToWorld.Position;
+                float vertexDistanceToContact = math.distance(localTransform.Position, relativePos);
                 if(vertexDistanceToContact < ContactMaxDistance) {
                     float colorStrength = 1 - (vertexDistanceToContact / ContactMaxDistance);
                     float4 contactColorStrength = math.lerp(DefaultColor, ContactColor, colorStrength);
@@ -92,13 +93,14 @@ namespace WireframePlexus {
         public partial struct ContactColorEdgeJob : IJobEntity {
             
             public float ColorInterpolationPercent;
-            public float3 ContactPosition;
+            public float3 ContactWorldPosition;
             public float ContactMaxDistance;
             public float4 DefaultColor;
             public float4 ContactColor;
 
-            public void Execute(ref EdgeColorData edgeColorData, in LocalTransform localTransform) {
-                float vertexDistanceToContact = math.distance(localTransform.Position, ContactPosition);
+            public void Execute(ref EdgeColorData edgeColorData, in LocalTransform localTransform, in LocalToWorld localToWorld) {
+                float3 relativePos = ContactWorldPosition - localToWorld.Position;
+                float vertexDistanceToContact = math.distance(localTransform.Position, relativePos);
                 if (vertexDistanceToContact < ContactMaxDistance) {
                     float colorStrength = 1 - (vertexDistanceToContact / ContactMaxDistance);
                     float4 contactColorStrength = math.lerp(DefaultColor, ContactColor, colorStrength);

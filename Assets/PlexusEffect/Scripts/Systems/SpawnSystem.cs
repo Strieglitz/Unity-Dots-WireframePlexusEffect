@@ -125,7 +125,6 @@ namespace WireframePlexus {
             PlexusObjectToSpawnId = plexusObjectId;
             plexusObjectId++;
             ecb.Playback(EntityManager);
-            Debug.Log("spawn end");
         }
         private Tuple<int, int> EdgePair(int id1, int id2) {
             // Ensure the pair is always ordered the same way

@@ -51,9 +51,11 @@ namespace WireframePlexus {
         [ReadOnly] public float DeltaTime;
         [ReadOnly] public float3 CameraWolrdPos;
         [NativeDisableContainerSafetyRestriction][ReadOnly] public NativeHashMap<int, PlexusObjectData> PlexusObjectDataById;
-        int plexusObjectId;
 
         public SharedComponentTypeHandle<PlexusObjectIdData> IdTypeHandle;
+        
+        int plexusObjectId;
+
 
 
         public bool OnChunkBegin(in ArchetypeChunk chunk, int unfilteredChunkIndex, bool useEnabledMask, in v128 chunkEnabledMask) {
