@@ -25,6 +25,8 @@ namespace WireframePlexus {
             var plexusObjectEntries = plexusObjectEntityQuery.ToEntityArray(Allocator.Temp);
             foreach (Entity plexusObject in plexusObjectEntries) {
                 var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
+                
+
                 for (int i = 0; i < plexusObjectData.ContactAnimationColorData.Length; i++) {
                     ContactEffectData contactColorAnimationData = plexusObjectData.ContactAnimationColorData[i];
                     
@@ -65,6 +67,13 @@ namespace WireframePlexus {
                     jobVertex.ScheduleParallel(vertexByPlexusObjectIdEntityQuery);
                     jobEdge.ScheduleParallel(edgeByPlexusObjectIdEntityQuery);
                 }
+                // iterate backwards over all contact animations and remove the ones that are done
+                for (int i = plexusObjectData.ContactAnimationColorData.Length - 1; i >= 0; i--) {
+                    if (plexusObjectData.ContactAnimationColorData[i].CurrentContactDuration == 0) {
+                        plexusObjectData.ContactAnimationColorData.RemoveAtSwapBack(i);
+                    }
+                }
+
             }
         }
 
