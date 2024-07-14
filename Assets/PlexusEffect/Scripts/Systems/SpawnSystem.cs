@@ -97,6 +97,8 @@ namespace WireframePlexus {
                 MaxVertexMoveSpeed = plexusObjectData.MaxVertexMoveSpeed,
                 MinVertexMoveSpeed = plexusObjectData.MinVertexMoveSpeed,
                 MaxVertexMoveDistance = plexusObjectData.MaxVertexMoveDistance,
+                 WorldPosition = plexusGameObject.transform.position,
+                 WorldRotation = plexusGameObject.transform.rotation
 
              });
             // create the edge entities without duplicates

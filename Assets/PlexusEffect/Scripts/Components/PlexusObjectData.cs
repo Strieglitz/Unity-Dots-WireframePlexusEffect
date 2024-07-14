@@ -18,6 +18,8 @@ namespace WireframePlexus {
         public NativeArray<float3> VertexPositions;
         public NativeList<ContactEffectData> ContactAnimationColorData;
         public int WireframePlexusObjectId;
+        public float3 WorldPosition;
+        public quaternion WorldRotation;
 
         public void Dispose() {
             VertexPositions.Dispose();

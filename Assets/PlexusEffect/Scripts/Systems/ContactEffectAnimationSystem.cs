@@ -49,14 +49,18 @@ namespace WireframePlexus {
                         ContactWorldPosition = contactColorAnimationData.ContactWorldPosition,
                         ContactMaxDistance = contactColorAnimationData.ContactRadius,
                         DefaultColor = plexusObjectData.VertexColor,
-                        ContactColor = contactColorAnimationData.ContactColor
+                        ContactColor = contactColorAnimationData.ContactColor,
+                        ParentWorldPos = plexusObjectData.WorldPosition,
+                        ParentWorldRotation = plexusObjectData.WorldRotation
                     };
                     ContactColorEdgeJob jobEdge = new ContactColorEdgeJob {
                         ColorInterpolationPercent = colorInterpolationPercent,
                         ContactWorldPosition = contactColorAnimationData.ContactWorldPosition,
                         ContactMaxDistance = contactColorAnimationData.ContactRadius,
                         DefaultColor = plexusObjectData.EdgeColor,
-                        ContactColor = contactColorAnimationData.ContactColor
+                        ContactColor = contactColorAnimationData.ContactColor,
+                        ParentWorldPos = plexusObjectData.WorldPosition,
+                        ParentWorldRotation = plexusObjectData.WorldRotation
                     };
                     jobVertex.ScheduleParallel(vertexByPlexusObjectIdEntityQuery);
                     jobEdge.ScheduleParallel(edgeByPlexusObjectIdEntityQuery);
@@ -76,11 +80,15 @@ namespace WireframePlexus {
             public float ContactMaxDistance;
             public float4 DefaultColor;
             public float4 ContactColor;
+            public float3 ParentWorldPos;
+            public quaternion ParentWorldRotation;
 
-            public void Execute(ref VertexColorData vertexColorData, in LocalTransform localTransform, in LocalToWorld localToWorld) {
-                float3 relativePos = ContactWorldPosition - localToWorld.Position;
-                float vertexDistanceToContact = math.distance(localTransform.Position, relativePos);
-                if(vertexDistanceToContact < ContactMaxDistance) {
+            public void Execute(ref VertexColorData vertexColorData, in LocalTransform localTransform) {
+                float3 relativeContactPos = ContactWorldPosition - (ParentWorldPos);
+                float3 relativeVertexPos = math.mul(ParentWorldRotation, localTransform.Position);
+                float vertexDistanceToContact = math.distance(relativeVertexPos, relativeContactPos);
+                
+                if (vertexDistanceToContact < ContactMaxDistance) {
                     float colorStrength = 1 - (vertexDistanceToContact / ContactMaxDistance);
                     float4 contactColorStrength = math.lerp(DefaultColor, ContactColor, colorStrength);
                     float4 color = math.lerp(contactColorStrength, DefaultColor, ColorInterpolationPercent);
@@ -97,10 +105,14 @@ namespace WireframePlexus {
             public float ContactMaxDistance;
             public float4 DefaultColor;
             public float4 ContactColor;
+            public float3 ParentWorldPos;
+            public quaternion ParentWorldRotation;
 
             public void Execute(ref EdgeColorData edgeColorData, in LocalTransform localTransform, in LocalToWorld localToWorld) {
-                float3 relativePos = ContactWorldPosition - localToWorld.Position;
-                float vertexDistanceToContact = math.distance(localTransform.Position, relativePos);
+                float3 relativeContactPos = ContactWorldPosition - (ParentWorldPos);
+                float3 relativeVertexPos = math.mul(ParentWorldRotation, localTransform.Position);
+                float vertexDistanceToContact = math.distance(relativeVertexPos, relativeContactPos);
+
                 if (vertexDistanceToContact < ContactMaxDistance) {
                     float colorStrength = 1 - (vertexDistanceToContact / ContactMaxDistance);
                     float4 contactColorStrength = math.lerp(DefaultColor, ContactColor, colorStrength);
