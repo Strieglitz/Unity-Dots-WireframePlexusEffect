@@ -4,6 +4,7 @@ using Unity.Mathematics;
 namespace WireframePlexus {
 
     public struct ContactEffectData {
+        public EaseType EasingType;
         public float3 ContactWorldPosition;
         public float ContactRadius;
         public float4 ContactColor;

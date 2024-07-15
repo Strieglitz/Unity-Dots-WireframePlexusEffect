@@ -1,6 +1,3 @@
-using System.Collections;
-using Unity.Collections;
-using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
@@ -76,7 +73,7 @@ namespace WireframePlexus {
          *                                         * @param contactVertexAnimationDurationMultiplier the multiplier for the duration of the vertex animation, has to be >= 1 (greater or equals 1) or 0 to not use a vertex animation
          *                                         * @param contactVertexMaxDistance the max distance a vertex will move at the contact animation
          *                                                 */
-        public void SetPlexusContactAnimation(Color contactColor, float contactRadius, float contactDuration, Vector3 contactWorldPosition, float contactVertexAnimationDurationMultiplier, float contactVertexMaxDistance) {
+        public void SetPlexusContactAnimation(Color contactColor, float contactRadius, float contactDuration, Vector3 contactWorldPosition, float contactVertexAnimationDurationMultiplier, float contactVertexMaxDistance, EaseType easeType) {
             ContactEffectData contactColorAnimationData = new ContactEffectData {
                 ContactColor = new float4(contactColor.r, contactColor.g, contactColor.b, contactColor.a),
                 ContactRadius = contactRadius,
@@ -84,7 +81,8 @@ namespace WireframePlexus {
                 CurrentContactDuration = contactDuration,
                 ContactWorldPosition = contactWorldPosition,
                 ContactVertexDurationMultiplier = contactVertexAnimationDurationMultiplier,
-                ContactVertexMaxDistance = contactVertexMaxDistance
+                ContactVertexMaxDistance = contactVertexMaxDistance,
+                EasingType = easeType
             };
             World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<ContactEffectSpawnSystem>().SpawnContactEffect(contactColorAnimationData, wireframePlexusObjectId);
         }
