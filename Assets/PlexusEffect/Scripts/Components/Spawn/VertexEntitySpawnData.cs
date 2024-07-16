@@ -2,7 +2,7 @@ using Unity.Entities;
 
 namespace WireframePlexus {
 
-    public struct VertexplexusGameObject : IComponentData {
+    public struct VertexSpawnData : IComponentData {
         public Entity WireframePlexusVertexEntityPrefab;
     }
 }

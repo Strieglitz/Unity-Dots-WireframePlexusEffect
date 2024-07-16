@@ -2,7 +2,7 @@ using Unity.Entities;
 
 namespace WireframePlexus {
 
-	public struct EdgeplexusGameObject : IComponentData {
+	public struct EdgeSpawnData : IComponentData {
 		public Entity WireframePlexusEdgeEntityPrefab;
 	}
 }

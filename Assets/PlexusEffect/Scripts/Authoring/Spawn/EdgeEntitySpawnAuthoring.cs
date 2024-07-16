@@ -9,7 +9,7 @@ namespace WireframePlexus {
         public class Baker : Baker<EdgeEntitySpawnAuthoring> {
             public override void Bake(EdgeEntitySpawnAuthoring authoring) {
                 Entity entity = GetEntity(TransformUsageFlags.None);
-                AddComponent(entity, new EdgeplexusGameObject { WireframePlexusEdgeEntityPrefab = GetEntity(authoring.WireframePlexusEdgeEntityPrefab, TransformUsageFlags.Dynamic) });
+                AddComponent(entity, new EdgeSpawnData { WireframePlexusEdgeEntityPrefab = GetEntity(authoring.WireframePlexusEdgeEntityPrefab, TransformUsageFlags.Dynamic) });
             }
         }
     }

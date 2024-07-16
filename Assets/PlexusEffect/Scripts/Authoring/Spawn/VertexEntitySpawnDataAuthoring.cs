@@ -9,7 +9,7 @@ public class VertexplexusGameObjectAuthoring : MonoBehaviour {
         public class Baker : Baker<VertexplexusGameObjectAuthoring> {
             public override void Bake(VertexplexusGameObjectAuthoring authoring) {
                 Entity entity = GetEntity(TransformUsageFlags.Dynamic);
-                AddComponent(entity, new VertexplexusGameObject { WireframePlexusVertexEntityPrefab = GetEntity(authoring.WireframePlexusVertexEntityPrefab, TransformUsageFlags.Dynamic) });
+                AddComponent(entity, new VertexSpawnData { WireframePlexusVertexEntityPrefab = GetEntity(authoring.WireframePlexusVertexEntityPrefab, TransformUsageFlags.Dynamic) });
             }
         }
     }

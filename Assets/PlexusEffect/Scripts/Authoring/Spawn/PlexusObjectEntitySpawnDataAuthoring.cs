@@ -8,7 +8,7 @@ using UnityEngine;
         public class Baker : Baker<PlexusObjectplexusGameObjectAuthoring> {
             public override void Bake(PlexusObjectplexusGameObjectAuthoring authoring) {
                 Entity entity = GetEntity(TransformUsageFlags.Dynamic);
-                AddComponent(entity, new PlexusObjectEntitySpawnData { WireframePlexusEntityPrefab = GetEntity(authoring.WireframePlexusObjectPrefab, TransformUsageFlags.Dynamic) });
+                AddComponent(entity, new PlexusObjectSpawnData { WireframePlexusEntityPrefab = GetEntity(authoring.WireframePlexusObjectPrefab, TransformUsageFlags.Dynamic) });
             }
         }
     }
