@@ -19,7 +19,77 @@ namespace WireframePlexus {
             RequireForUpdate<EdgeSpawnData>();
         }
 
-        public void SpawnPlexusObject(ref int PlexusObjectToSpawnId, PlexusObjectData plexusObjectData, PlexusGameObject plexusGameObject, Mesh mesh) {
+        public void SpawnPlexusObject( ref int PlexusObjectToSpawnId, 
+                                                    PlexusObjectData plexusObjectData, 
+                                                    PlexusGameObjectBase plexusGameObject, 
+                                                    PlexusObjectPrecalculatedMeshData plexusObjectPrecalculatedMeshData) {
+            // get spawn data singletons
+            if (!SystemAPI.TryGetSingleton<VertexSpawnData>(out VertexSpawnData wireframePlexusVertexSpawnData)) {
+                World.EntityManager.CreateSingleton<VertexSpawnData>();
+            }
+            wireframePlexusVertexSpawnData = SystemAPI.GetSingleton<VertexSpawnData>();
+
+            if (!SystemAPI.TryGetSingleton<PlexusObjectSpawnData>(out PlexusObjectSpawnData wireframePlexusObjectSpawnData)) {
+                World.EntityManager.CreateSingleton<PlexusObjectSpawnData>();
+            }
+            wireframePlexusObjectSpawnData = SystemAPI.GetSingleton<PlexusObjectSpawnData>();
+
+            if (!SystemAPI.TryGetSingleton<EdgeSpawnData>(out EdgeSpawnData wireframePlexusEdgeSpawnData)) {
+                World.EntityManager.CreateSingleton<EdgeSpawnData>();
+            }
+            wireframePlexusEdgeSpawnData = SystemAPI.GetSingleton<EdgeSpawnData>();
+
+
+            // fill ecb to cache all strucutral changes and execute them at once later on ecb play
+            var ecb = new EntityCommandBuffer(Allocator.Temp);
+
+
+            // create an parent entity 
+            Entity wireframePlexusObjectEntity = ecb.Instantiate(wireframePlexusObjectSpawnData.WireframePlexusEntityPrefab);
+            // set parent sync Gameobject 
+            SyncEntityPositionToGameobjectPositionData parentReference = new SyncEntityPositionToGameobjectPositionData();
+            parentReference.PlexusGameObject = plexusGameObject;
+
+            ecb.AddComponent(wireframePlexusObjectEntity, parentReference);
+
+            foreach ( var vertexData in plexusObjectPrecalculatedMeshData.precalculatedVertexMeshData) {
+
+                float3 pos = vertexData.Position;
+                int vertexId = vertexData.VertexId;
+
+                Entity plexusVertexEntity = ecb.Instantiate(wireframePlexusVertexSpawnData.WireframePlexusVertexEntityPrefab);
+                VertexMovementData movementData = new VertexMovementData();
+                movementData.Position = pos;
+                movementData.PositionTarget = pos;
+
+                movementData.MoveSpeed = UnityEngine.Random.Range(plexusGameObject.MinVertexMoveSpeed, plexusGameObject.MaxVertexMoveSpeed);
+                movementData.Random = new Unity.Mathematics.Random(random.NextUInt());
+                movementData.PointId = vertexId;
+
+                ecb.SetComponent(plexusVertexEntity, movementData);
+                ecb.SetComponent(plexusVertexEntity, new LocalTransform { Position = pos, Scale = plexusGameObject.VertexSize });
+                ecb.SetComponent(plexusVertexEntity, new VertexColorData { Value = plexusGameObject.VertexColor });
+                ecb.AddSharedComponent(plexusVertexEntity, new PlexusObjectIdData { PlexusObjectId = plexusObjectId });
+                ecb.AddComponent(plexusVertexEntity, new Parent { Value = wireframePlexusObjectEntity });
+            }
+
+            // create parent plexusObjectData because now the number of vertices is known
+            plexusObjectData.ContactAnimationColorData = new NativeList<ContactEffectData>(Allocator.Persistent);
+            plexusObjectData.VertexPositions = new NativeArray<float3>(plexusObjectPrecalculatedMeshData.precalculatedVertexMeshData.Length + 1, Allocator.Persistent);
+            plexusObjectData.WireframePlexusObjectId = plexusObjectId;
+            plexusObjectData.WorldPosition = plexusGameObject.transform.position;
+            plexusObjectData.WorldRotation = plexusGameObject.transform.rotation;
+            ecb.AddComponent(wireframePlexusObjectEntity, plexusObjectData);
+
+            foreach (var edgeData in plexusObjectPrecalculatedMeshData.precalculatedEdgeMeshData) {
+                AddPlexusEdge(ref ecb, wireframePlexusEdgeSpawnData.WireframePlexusEdgeEntityPrefab, edgeData.Vertex1Id, edgeData.Vertex2Id, edgeData.Distance, wireframePlexusObjectEntity, plexusObjectData);
+            }
+            PlexusObjectToSpawnId = plexusObjectId;
+            plexusObjectId++;
+            ecb.Playback(EntityManager);
+        }
+
+        public void SpawnPlexusObject(ref int PlexusObjectToSpawnId, PlexusObjectData plexusObjectData, PlexusGameObjectBase plexusGameObject, Mesh mesh) {
             // get spawn data singletons
             if (!SystemAPI.TryGetSingleton<VertexSpawnData>(out VertexSpawnData wireframePlexusVertexSpawnData)) {
                 World.EntityManager.CreateSingleton<VertexSpawnData>();
@@ -127,7 +197,7 @@ namespace WireframePlexus {
             plexusObjectId++;
             ecb.Playback(EntityManager);
         }
-        private Tuple<int, int> EdgePair(int id1, int id2) {
+        public static Tuple<int, int> EdgePair(int id1, int id2) {
             // Ensure the pair is always ordered the same way
             return id1 < id2 ? Tuple.Create(id1, id2) : Tuple.Create(id2, id1);
         }

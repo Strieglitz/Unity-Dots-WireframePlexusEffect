@@ -4,8 +4,11 @@ using UnityEngine;
 
 namespace WireframePlexus {
 
-    [RequireComponent(typeof(MeshFilter))]
-    public class PlexusGameObject : MonoBehaviour {
+    public abstract class PlexusGameObjectBase : MonoBehaviour {
+
+        [SerializeField]
+        [Tooltip("Generate the Plexus ECS Object on Start?")]
+        bool genrateOnStart = true;
 
         [field: SerializeField]
         [Tooltip("Only draw the wireframes edge when its length is smaller than x Percent of the original length in the mesh")]
@@ -41,29 +44,29 @@ namespace WireframePlexus {
         Color edgeColor;
         public float4 EdgeColor => new float4(edgeColor.r, edgeColor.g, edgeColor.b, edgeColor.a);
 
-        int wireframePlexusObjectId;
+        protected int wireframePlexusObjectId;
 
-        private void Start() {
-            TestPlexus();
+        protected void Start() {
+            if (genrateOnStart) {
+                GenerateECSPlexusObject();
+            }
         }
 
-        private void TestPlexus() {
-            World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<SpawnSystem>().SpawnPlexusObject(ref wireframePlexusObjectId,
-                new PlexusObjectData {
-                    MaxEdgeLengthPercent = MaxEdgeLengthPercent,
-                    EdgeThickness = EdgeThickness,
-                    MaxVertexMoveDistance = MaxVertexMoveDistance,
-                    MinVertexMoveSpeed = MinVertexMoveSpeed,
-                    MaxVertexMoveSpeed = MaxVertexMoveSpeed,
-                    VertexColor = VertexColor,
-                    EdgeColor = EdgeColor,
-                    VertexSize = VertexSize,
-                },
-                this,
-                GetComponent<MeshFilter>().mesh
-                );
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
+        private void GenerateECSPlexusObject() {
+            SpawnSystem spawnSystem = World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<SpawnSystem>();
+            PlexusObjectData plexusObjectData = new PlexusObjectData {
+                MaxEdgeLengthPercent = MaxEdgeLengthPercent,
+                EdgeThickness = EdgeThickness,
+                MaxVertexMoveDistance = MaxVertexMoveDistance,
+                MinVertexMoveSpeed = MinVertexMoveSpeed,
+                MaxVertexMoveSpeed = MaxVertexMoveSpeed,
+                VertexColor = VertexColor,
+                EdgeColor = EdgeColor,
+                VertexSize = VertexSize,
+            };
+            GenerateECSPlexusObject(spawnSystem, plexusObjectData);
         }
+        protected abstract void GenerateECSPlexusObject(SpawnSystem spawnSystem, PlexusObjectData plexusObjectData);
 
         /*** Set a contact animation on the plexus object
          *         * @param contactColor the color of the contact animation

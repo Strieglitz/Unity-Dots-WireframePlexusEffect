@@ -1,0 +1,5403 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9af2637fb6172949b764434c5ff9357, type: 3}
+  m_Name: SphereData
+  m_EditorClassIdentifier: 
+  mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  precalculatedVertexMeshData:
+  - VertexId: 0
+    Position:
+      x: 0.28782713
+      y: -0.28782713
+      z: -0.28782713
+  - VertexId: 1
+    Position:
+      x: 0.28782713
+      y: -0.28782713
+      z: 0.28782713
+  - VertexId: 2
+    Position:
+      x: -0.28782713
+      y: -0.28782713
+      z: -0.28782713
+  - VertexId: 3
+    Position:
+      x: -0.28782713
+      y: -0.28782713
+      z: 0.28782713
+  - VertexId: 4
+    Position:
+      x: 0.28883544
+      y: 0.2879004
+      z: -0.28883544
+  - VertexId: 5
+    Position:
+      x: 0.28883544
+      y: 0.2879004
+      z: 0.28883544
+  - VertexId: 6
+    Position:
+      x: -0.28883544
+      y: 0.2879004
+      z: -0.28883544
+  - VertexId: 7
+    Position:
+      x: -0.28883544
+      y: 0.2879004
+      z: 0.28883544
+  - VertexId: 8
+    Position:
+      x: 0
+      y: -0.5
+      z: 0
+  - VertexId: 9
+    Position:
+      x: 0.000000004764297
+      y: 0.5
+      z: -0.0000000047683715
+  - VertexId: 10
+    Position:
+      x: 0.5
+      y: -0.000000004764297
+      z: -0.00000016391277
+  - VertexId: 11
+    Position:
+      x: 0.000000081955804
+      y: -0.000000009537071
+      z: 0.5
+  - VertexId: 12
+    Position:
+      x: -0.5
+      y: 0.000000004764297
+      z: 0
+  - VertexId: 13
+    Position:
+      x: -0.00000022351742
+      y: 3.2741808e-13
+      z: -0.5
+  - VertexId: 14
+    Position:
+      x: -0.00000005340553
+      y: -0.35251465
+      z: -0.35251465
+  - VertexId: 15
+    Position:
+      x: -0.35251465
+      y: -0.35251465
+      z: 0
+  - VertexId: 16
+    Position:
+      x: 0.000000057220458
+      y: -0.35251465
+      z: 0.35251465
+  - VertexId: 17
+    Position:
+      x: 0.35251465
+      y: -0.35251465
+      z: 0.000000038146972
+  - VertexId: 18
+    Position:
+      x: 0.3536914
+      y: 0.3527881
+      z: -0.000000114440915
+  - VertexId: 19
+    Position:
+      x: 0.000000057220458
+      y: 0.3527881
+      z: 0.3536914
+  - VertexId: 20
+    Position:
+      x: -0.3536914
+      y: 0.3527881
+      z: 0
+  - VertexId: 21
+    Position:
+      x: -0.00000015735625
+      y: 0.3527881
+      z: -0.3536914
+  - VertexId: 22
+    Position:
+      x: 0.35355225
+      y: -3.1286616e-11
+      z: 0.35355225
+  - VertexId: 23
+    Position:
+      x: 0.3536914
+      y: -0.0008836466
+      z: -0.3536914
+  - VertexId: 24
+    Position:
+      x: -0.35355225
+      y: 3.1286616e-11
+      z: 0.35355225
+  - VertexId: 25
+    Position:
+      x: -0.3536914
+      y: -0.00088361156
+      z: -0.3536914
+  - VertexId: 26
+    Position:
+      x: 0.24019286
+      y: -0.30890137
+      z: -0.30890137
+  - VertexId: 27
+    Position:
+      x: 0.1701416
+      y: -0.33134764
+      z: -0.33134764
+  - VertexId: 28
+    Position:
+      x: 0.0880603
+      y: -0.3469702
+      z: -0.3469702
+  - VertexId: 29
+    Position:
+      x: -0.24019286
+      y: -0.30890137
+      z: -0.30890137
+  - VertexId: 30
+    Position:
+      x: -0.1701416
+      y: -0.33134764
+      z: -0.33134764
+  - VertexId: 31
+    Position:
+      x: -0.0880603
+      y: -0.3469702
+      z: -0.3469702
+  - VertexId: 32
+    Position:
+      x: -0.30890137
+      y: -0.30890137
+      z: -0.24019286
+  - VertexId: 33
+    Position:
+      x: -0.33134764
+      y: -0.33134764
+      z: -0.1701416
+  - VertexId: 34
+    Position:
+      x: -0.3469702
+      y: -0.3469702
+      z: -0.0880603
+  - VertexId: 35
+    Position:
+      x: -0.30890137
+      y: -0.30890137
+      z: 0.24019286
+  - VertexId: 36
+    Position:
+      x: -0.33134764
+      y: -0.33134764
+      z: 0.1701416
+  - VertexId: 37
+    Position:
+      x: -0.3469702
+      y: -0.3469702
+      z: 0.0880603
+  - VertexId: 38
+    Position:
+      x: -0.24019286
+      y: -0.30890137
+      z: 0.30890137
+  - VertexId: 39
+    Position:
+      x: -0.1701416
+      y: -0.33134764
+      z: 0.33134764
+  - VertexId: 40
+    Position:
+      x: -0.0880603
+      y: -0.3469702
+      z: 0.3469702
+  - VertexId: 41
+    Position:
+      x: 0.24019286
+      y: -0.30890137
+      z: 0.30890137
+  - VertexId: 42
+    Position:
+      x: 0.1701416
+      y: -0.33134764
+      z: 0.33134764
+  - VertexId: 43
+    Position:
+      x: 0.0880603
+      y: -0.3469702
+      z: 0.3469702
+  - VertexId: 44
+    Position:
+      x: 0.30890137
+      y: -0.30890137
+      z: 0.24019286
+  - VertexId: 45
+    Position:
+      x: 0.33134764
+      y: -0.33134764
+      z: 0.1701416
+  - VertexId: 46
+    Position:
+      x: 0.3469702
+      y: -0.3469702
+      z: 0.0880603
+  - VertexId: 47
+    Position:
+      x: 0.30890137
+      y: -0.30890137
+      z: -0.24019286
+  - VertexId: 48
+    Position:
+      x: 0.33134764
+      y: -0.33134764
+      z: -0.1701416
+  - VertexId: 49
+    Position:
+      x: 0.3469702
+      y: -0.3469702
+      z: -0.0880603
+  - VertexId: 50
+    Position:
+      x: 0.30995116
+      y: 0.30908936
+      z: -0.24090576
+  - VertexId: 51
+    Position:
+      x: 0.33247313
+      y: 0.33156982
+      z: -0.17071289
+  - VertexId: 52
+    Position:
+      x: 0.34812742
+      y: 0.34722656
+      z: -0.08835449
+  - VertexId: 53
+    Position:
+      x: 0.30995116
+      y: 0.30908936
+      z: 0.24090576
+  - VertexId: 54
+    Position:
+      x: 0.33247313
+      y: 0.33156982
+      z: 0.17071289
+  - VertexId: 55
+    Position:
+      x: 0.34812742
+      y: 0.34722656
+      z: 0.08835449
+  - VertexId: 56
+    Position:
+      x: 0.24090576
+      y: 0.30908936
+      z: 0.30995116
+  - VertexId: 57
+    Position:
+      x: 0.17071289
+      y: 0.33156982
+      z: 0.33247313
+  - VertexId: 58
+    Position:
+      x: 0.08835449
+      y: 0.34722656
+      z: 0.34812742
+  - VertexId: 59
+    Position:
+      x: -0.24090576
+      y: 0.30908936
+      z: 0.30995116
+  - VertexId: 60
+    Position:
+      x: -0.17071289
+      y: 0.33156982
+      z: 0.33247313
+  - VertexId: 61
+    Position:
+      x: -0.08835449
+      y: 0.34722656
+      z: 0.34812742
+  - VertexId: 62
+    Position:
+      x: -0.30995116
+      y: 0.30908936
+      z: 0.24090576
+  - VertexId: 63
+    Position:
+      x: -0.33247313
+      y: 0.33156982
+      z: 0.17071289
+  - VertexId: 64
+    Position:
+      x: -0.34812742
+      y: 0.34722656
+      z: 0.08835449
+  - VertexId: 65
+    Position:
+      x: -0.30995116
+      y: 0.30908936
+      z: -0.24090576
+  - VertexId: 66
+    Position:
+      x: -0.33247313
+      y: 0.33156982
+      z: -0.17071289
+  - VertexId: 67
+    Position:
+      x: -0.34812742
+      y: 0.34722656
+      z: -0.08835449
+  - VertexId: 68
+    Position:
+      x: -0.24090576
+      y: 0.30908936
+      z: -0.30995116
+  - VertexId: 69
+    Position:
+      x: -0.17071289
+      y: 0.33156982
+      z: -0.33247313
+  - VertexId: 70
+    Position:
+      x: -0.08835449
+      y: 0.34722656
+      z: -0.34812742
+  - VertexId: 71
+    Position:
+      x: 0.24090576
+      y: 0.30908936
+      z: -0.30995116
+  - VertexId: 72
+    Position:
+      x: 0.17071289
+      y: 0.33156982
+      z: -0.33247313
+  - VertexId: 73
+    Position:
+      x: 0.08835449
+      y: 0.34722656
+      z: -0.34812742
+  - VertexId: 74
+    Position:
+      x: 0.30890137
+      y: -0.24019286
+      z: 0.30890137
+  - VertexId: 75
+    Position:
+      x: 0.33134764
+      y: -0.1701416
+      z: 0.33134764
+  - VertexId: 76
+    Position:
+      x: 0.3469702
+      y: -0.0880603
+      z: 0.3469702
+  - VertexId: 77
+    Position:
+      x: 0.30995116
+      y: 0.24017334
+      z: 0.30995116
+  - VertexId: 78
+    Position:
+      x: 0.33247313
+      y: 0.16989258
+      z: 0.33247313
+  - VertexId: 79
+    Position:
+      x: 0.34812742
+      y: 0.08750671
+      z: 0.34812742
+  - VertexId: 80
+    Position:
+      x: 0.30995116
+      y: 0.24017334
+      z: -0.30995116
+  - VertexId: 81
+    Position:
+      x: 0.33247313
+      y: 0.16989258
+      z: -0.33247313
+  - VertexId: 82
+    Position:
+      x: 0.34812742
+      y: 0.08750671
+      z: -0.34812742
+  - VertexId: 83
+    Position:
+      x: 0.30890137
+      y: -0.24019286
+      z: -0.30890137
+  - VertexId: 84
+    Position:
+      x: 0.33134764
+      y: -0.1701416
+      z: -0.33134764
+  - VertexId: 85
+    Position:
+      x: 0.3469702
+      y: -0.0880603
+      z: -0.3469702
+  - VertexId: 86
+    Position:
+      x: -0.30890137
+      y: -0.24019286
+      z: 0.30890137
+  - VertexId: 87
+    Position:
+      x: -0.33134764
+      y: -0.1701416
+      z: 0.33134764
+  - VertexId: 88
+    Position:
+      x: -0.3469702
+      y: -0.0880603
+      z: 0.3469702
+  - VertexId: 89
+    Position:
+      x: -0.30995116
+      y: 0.24017334
+      z: 0.30995116
+  - VertexId: 90
+    Position:
+      x: -0.33247313
+      y: 0.16989258
+      z: 0.33247313
+  - VertexId: 91
+    Position:
+      x: -0.34812742
+      y: 0.08750671
+      z: 0.34812742
+  - VertexId: 92
+    Position:
+      x: -0.30890137
+      y: -0.24019286
+      z: -0.30890137
+  - VertexId: 93
+    Position:
+      x: -0.33134764
+      y: -0.1701416
+      z: -0.33134764
+  - VertexId: 94
+    Position:
+      x: -0.3469702
+      y: -0.0880603
+      z: -0.3469702
+  - VertexId: 95
+    Position:
+      x: -0.30995116
+      y: 0.24017334
+      z: -0.30995116
+  - VertexId: 96
+    Position:
+      x: -0.33247313
+      y: 0.16989258
+      z: -0.33247313
+  - VertexId: 97
+    Position:
+      x: -0.34812742
+      y: 0.08750671
+      z: -0.34812742
+  - VertexId: 98
+    Position:
+      x: -0.000000018119753
+      y: -0.41236326
+      z: -0.2801587
+  - VertexId: 99
+    Position:
+      x: -0.000000039100705
+      y: -0.4585547
+      z: -0.19560547
+  - VertexId: 100
+    Position:
+      x: -0.0000000118255405
+      y: -0.4882324
+      z: -0.10079467
+  - VertexId: 101
+    Position:
+      x: -0.2801587
+      y: -0.41236326
+      z: 0.000000019073486
+  - VertexId: 102
+    Position:
+      x: -0.19560547
+      y: -0.4585547
+      z: -3.8146936e-10
+  - VertexId: 103
+    Position:
+      x: -0.100795284
+      y: -0.4882324
+      z: 0
+  - VertexId: 104
+    Position:
+      x: 0.000000047683713
+      y: -0.41236326
+      z: 0.2801587
+  - VertexId: 105
+    Position:
+      x: -0.000000020027219
+      y: -0.4585547
+      z: 0.19560547
+  - VertexId: 106
+    Position:
+      x: -0.000000021362357
+      y: -0.4882324
+      z: 0.10079467
+  - VertexId: 107
+    Position:
+      x: 0.2801587
+      y: -0.41236326
+      z: 0.000000038146972
+  - VertexId: 108
+    Position:
+      x: 0.19560547
+      y: -0.4585547
+      z: 0.000000019454891
+  - VertexId: 109
+    Position:
+      x: 0.10079467
+      y: -0.4882324
+      z: -0.000000009536743
+  - VertexId: 110
+    Position:
+      x: 0.2811499
+      y: 0.41286132
+      z: -0.00000009059906
+  - VertexId: 111
+    Position:
+      x: 0.19627564
+      y: 0.45910156
+      z: -0.00000006198883
+  - VertexId: 112
+    Position:
+      x: 0.101136476
+      y: 0.48885742
+      z: -0.000000032186506
+  - VertexId: 113
+    Position:
+      x: 0.000000047683713
+      y: 0.41286132
+      z: 0.2811499
+  - VertexId: 114
+    Position:
+      x: 0.000000030994414
+      y: 0.45910156
+      z: 0.19627564
+  - VertexId: 115
+    Position:
+      x: 0.000000015497207
+      y: 0.48885742
+      z: 0.101135865
+  - VertexId: 116
+    Position:
+      x: -0.2811499
+      y: 0.41286132
+      z: 0
+  - VertexId: 117
+    Position:
+      x: -0.19627564
+      y: 0.45910156
+      z: 0
+  - VertexId: 118
+    Position:
+      x: -0.101135865
+      y: 0.48885742
+      z: 0
+  - VertexId: 119
+    Position:
+      x: -0.00000012397766
+      y: 0.41286132
+      z: -0.2811499
+  - VertexId: 120
+    Position:
+      x: -0.000000085830685
+      y: 0.45910156
+      z: -0.19627564
+  - VertexId: 121
+    Position:
+      x: -0.000000044107438
+      y: 0.48885742
+      z: -0.101135865
+  - VertexId: 122
+    Position:
+      x: 0.41236326
+      y: -0.2801587
+      z: -0.000000038146972
+  - VertexId: 123
+    Position:
+      x: 0.4585547
+      y: -0.19560547
+      z: -0.00000007667521
+  - VertexId: 124
+    Position:
+      x: 0.4882324
+      y: -0.100795284
+      z: -0.000000038146972
+  - VertexId: 125
+    Position:
+      x: 0.41573486
+      y: 2.2700987e-11
+      z: 0.27778563
+  - VertexId: 126
+    Position:
+      x: 0.46193847
+      y: 3.4924594e-11
+      z: 0.19134155
+  - VertexId: 127
+    Position:
+      x: 0.49039063
+      y: 7.275958e-12
+      z: 0.09754516
+  - VertexId: 128
+    Position:
+      x: 0.41374755
+      y: 0.28022215
+      z: -0.0000001335144
+  - VertexId: 129
+    Position:
+      x: 0.45984372
+      y: 0.19545898
+      z: -0.00000015258789
+  - VertexId: 130
+    Position:
+      x: 0.4896582
+      y: 0.10029663
+      z: -0.00000016212464
+  - VertexId: 131
+    Position:
+      x: 0.41374755
+      y: -0.0008836472
+      z: -0.2811499
+  - VertexId: 132
+    Position:
+      x: 0.45984372
+      y: -0.0008836464
+      z: -0.19627564
+  - VertexId: 133
+    Position:
+      x: 0.4896582
+      y: -0.00088365085
+      z: -0.101135865
+  - VertexId: 134
+    Position:
+      x: 0.0000000667572
+      y: -0.2801587
+      z: 0.41236326
+  - VertexId: 135
+    Position:
+      x: 0.000000075717686
+      y: -0.19560547
+      z: 0.4585547
+  - VertexId: 136
+    Position:
+      x: 0.00000008038161
+      y: -0.100795284
+      z: 0.4882324
+  - VertexId: 137
+    Position:
+      x: -0.27778563
+      y: 3.1432135e-11
+      z: 0.41573486
+  - VertexId: 138
+    Position:
+      x: -0.19134155
+      y: -8.076313e-12
+      z: 0.46193847
+  - VertexId: 139
+    Position:
+      x: -0.09754516
+      y: 3.588866e-11
+      z: 0.49039063
+  - VertexId: 140
+    Position:
+      x: 0.0000000667572
+      y: 0.28022215
+      z: 0.41374755
+  - VertexId: 141
+    Position:
+      x: 0.000000076293944
+      y: 0.19545898
+      z: 0.45984372
+  - VertexId: 142
+    Position:
+      x: 0.000000076293944
+      y: 0.10029724
+      z: 0.4896582
+  - VertexId: 143
+    Position:
+      x: 0.27778563
+      y: -3.1432135e-11
+      z: 0.41573486
+  - VertexId: 144
+    Position:
+      x: 0.19134155
+      y: 8.076313e-12
+      z: 0.46193847
+  - VertexId: 145
+    Position:
+      x: 0.09754516
+      y: -3.605237e-11
+      z: 0.49039063
+  - VertexId: 146
+    Position:
+      x: -0.41236326
+      y: -0.2801587
+      z: 0.000000038146972
+  - VertexId: 147
+    Position:
+      x: -0.4585547
+      y: -0.19560547
+      z: 0.000000038528523
+  - VertexId: 148
+    Position:
+      x: -0.4882324
+      y: -0.10079467
+      z: 0.000000038146972
+  - VertexId: 149
+    Position:
+      x: -0.41374755
+      y: -0.00088360975
+      z: -0.2811499
+  - VertexId: 150
+    Position:
+      x: -0.45984372
+      y: -0.00088360574
+      z: -0.19627564
+  - VertexId: 151
+    Position:
+      x: -0.4896582
+      y: -0.000883606
+      z: -0.101135865
+  - VertexId: 152
+    Position:
+      x: -0.41374755
+      y: 0.28022215
+      z: 0
+  - VertexId: 153
+    Position:
+      x: -0.45984372
+      y: 0.19545898
+      z: 0
+  - VertexId: 154
+    Position:
+      x: -0.4896582
+      y: 0.10029724
+      z: 0
+  - VertexId: 155
+    Position:
+      x: -0.41573486
+      y: -2.3137544e-11
+      z: 0.27778563
+  - VertexId: 156
+    Position:
+      x: -0.46193847
+      y: -3.4924594e-11
+      z: 0.19134155
+  - VertexId: 157
+    Position:
+      x: -0.49039063
+      y: -7.275958e-12
+      z: 0.09754516
+  - VertexId: 158
+    Position:
+      x: 0.000000025939952
+      y: -0.2801587
+      z: -0.41236326
+  - VertexId: 159
+    Position:
+      x: -0.000000008392307
+      y: -0.19560547
+      z: -0.4585547
+  - VertexId: 160
+    Position:
+      x: 0.00000003356923
+      y: -0.100795284
+      z: -0.4882324
+  - VertexId: 161
+    Position:
+      x: 0.2811499
+      y: -0.0008836342
+      z: -0.41374755
+  - VertexId: 162
+    Position:
+      x: 0.19627564
+      y: -0.00088363787
+      z: -0.45984372
+  - VertexId: 163
+    Position:
+      x: 0.101135865
+      y: -0.00088362885
+      z: -0.4896582
+  - VertexId: 164
+    Position:
+      x: -0.00000018119812
+      y: 0.28022215
+      z: -0.41374755
+  - VertexId: 165
+    Position:
+      x: -0.00000020980835
+      y: 0.19545898
+      z: -0.45984372
+  - VertexId: 166
+    Position:
+      x: -0.00000021934508
+      y: 0.10029724
+      z: -0.4896582
+  - VertexId: 167
+    Position:
+      x: -0.2811499
+      y: -0.0008836147
+      z: -0.41374755
+  - VertexId: 168
+    Position:
+      x: -0.19627564
+      y: -0.00088361837
+      z: -0.45984372
+  - VertexId: 169
+    Position:
+      x: -0.101135865
+      y: -0.0008836251
+      z: -0.4896582
+  - VertexId: 170
+    Position:
+      x: 0.24850342
+      y: -0.3535864
+      z: -0.24850342
+  - VertexId: 171
+    Position:
+      x: 0.17487793
+      y: -0.3852368
+      z: -0.2637085
+  - VertexId: 172
+    Position:
+      x: 0.0902124
+      y: -0.40558106
+      z: -0.2754956
+  - VertexId: 173
+    Position:
+      x: 0.2637085
+      y: -0.3852368
+      z: -0.17487793
+  - VertexId: 174
+    Position:
+      x: 0.18394287
+      y: -0.4252783
+      z: -0.18394287
+  - VertexId: 175
+    Position:
+      x: 0.09450744
+      y: -0.45026365
+      z: -0.19199951
+  - VertexId: 176
+    Position:
+      x: 0.2754956
+      y: -0.40558106
+      z: -0.0902124
+  - VertexId: 177
+    Position:
+      x: 0.19199951
+      y: -0.45026365
+      z: -0.09450744
+  - VertexId: 178
+    Position:
+      x: 0.09875244
+      y: -0.47856933
+      z: -0.09875244
+  - VertexId: 179
+    Position:
+      x: -0.24850342
+      y: -0.3535864
+      z: -0.24850342
+  - VertexId: 180
+    Position:
+      x: -0.2637085
+      y: -0.3852368
+      z: -0.17487793
+  - VertexId: 181
+    Position:
+      x: -0.2754956
+      y: -0.40558106
+      z: -0.0902124
+  - VertexId: 182
+    Position:
+      x: -0.17487793
+      y: -0.3852368
+      z: -0.2637085
+  - VertexId: 183
+    Position:
+      x: -0.18394287
+      y: -0.4252783
+      z: -0.18394287
+  - VertexId: 184
+    Position:
+      x: -0.19199951
+      y: -0.45026365
+      z: -0.09450744
+  - VertexId: 185
+    Position:
+      x: -0.0902124
+      y: -0.40558106
+      z: -0.2754956
+  - VertexId: 186
+    Position:
+      x: -0.09450744
+      y: -0.45026365
+      z: -0.19199951
+  - VertexId: 187
+    Position:
+      x: -0.09875244
+      y: -0.47856933
+      z: -0.09875244
+  - VertexId: 188
+    Position:
+      x: -0.24850342
+      y: -0.3535864
+      z: 0.24850342
+  - VertexId: 189
+    Position:
+      x: -0.17487793
+      y: -0.3852368
+      z: 0.2637085
+  - VertexId: 190
+    Position:
+      x: -0.0902124
+      y: -0.40558106
+      z: 0.2754956
+  - VertexId: 191
+    Position:
+      x: -0.2637085
+      y: -0.3852368
+      z: 0.17487793
+  - VertexId: 192
+    Position:
+      x: -0.18394287
+      y: -0.4252783
+      z: 0.18394287
+  - VertexId: 193
+    Position:
+      x: -0.09450744
+      y: -0.45026365
+      z: 0.19199951
+  - VertexId: 194
+    Position:
+      x: -0.2754956
+      y: -0.40558106
+      z: 0.0902124
+  - VertexId: 195
+    Position:
+      x: -0.19199951
+      y: -0.45026365
+      z: 0.09450744
+  - VertexId: 196
+    Position:
+      x: -0.09875244
+      y: -0.47856933
+      z: 0.09875244
+  - VertexId: 197
+    Position:
+      x: 0.24850342
+      y: -0.3535864
+      z: 0.24850342
+  - VertexId: 198
+    Position:
+      x: 0.2637085
+      y: -0.3852368
+      z: 0.17487793
+  - VertexId: 199
+    Position:
+      x: 0.2754956
+      y: -0.40558106
+      z: 0.0902124
+  - VertexId: 200
+    Position:
+      x: 0.17487793
+      y: -0.3852368
+      z: 0.2637085
+  - VertexId: 201
+    Position:
+      x: 0.18394287
+      y: -0.4252783
+      z: 0.18394287
+  - VertexId: 202
+    Position:
+      x: 0.19199951
+      y: -0.45026365
+      z: 0.09450744
+  - VertexId: 203
+    Position:
+      x: 0.0902124
+      y: -0.40558106
+      z: 0.2754956
+  - VertexId: 204
+    Position:
+      x: 0.09450744
+      y: -0.45026365
+      z: 0.19199951
+  - VertexId: 205
+    Position:
+      x: 0.09875244
+      y: -0.47856933
+      z: 0.09875244
+  - VertexId: 206
+    Position:
+      x: 0.24923584
+      y: 0.35385984
+      z: -0.24923584
+  - VertexId: 207
+    Position:
+      x: 0.26464355
+      y: 0.3856372
+      z: -0.17545654
+  - VertexId: 208
+    Position:
+      x: 0.2764746
+      y: 0.40607908
+      z: -0.090519406
+  - VertexId: 209
+    Position:
+      x: 0.17545654
+      y: 0.3856372
+      z: -0.26464355
+  - VertexId: 210
+    Position:
+      x: 0.18456665
+      y: 0.42578125
+      z: -0.18456665
+  - VertexId: 211
+    Position:
+      x: 0.19263549
+      y: 0.45081055
+      z: -0.09482116
+  - VertexId: 212
+    Position:
+      x: 0.090519406
+      y: 0.40607908
+      z: -0.2764746
+  - VertexId: 213
+    Position:
+      x: 0.09482116
+      y: 0.45081055
+      z: -0.19263549
+  - VertexId: 214
+    Position:
+      x: 0.09908752
+      y: 0.4791992
+      z: -0.09908752
+  - VertexId: 215
+    Position:
+      x: 0.24923584
+      y: 0.35385984
+      z: 0.24923584
+  - VertexId: 216
+    Position:
+      x: 0.17545654
+      y: 0.3856372
+      z: 0.26464355
+  - VertexId: 217
+    Position:
+      x: 0.090519406
+      y: 0.40607908
+      z: 0.2764746
+  - VertexId: 218
+    Position:
+      x: 0.26464355
+      y: 0.3856372
+      z: 0.17545654
+  - VertexId: 219
+    Position:
+      x: 0.18456665
+      y: 0.42578125
+      z: 0.18456665
+  - VertexId: 220
+    Position:
+      x: 0.09482116
+      y: 0.45081055
+      z: 0.19263549
+  - VertexId: 221
+    Position:
+      x: 0.2764746
+      y: 0.40607908
+      z: 0.090519406
+  - VertexId: 222
+    Position:
+      x: 0.19263549
+      y: 0.45081055
+      z: 0.09482116
+  - VertexId: 223
+    Position:
+      x: 0.09908752
+      y: 0.4791992
+      z: 0.09908752
+  - VertexId: 224
+    Position:
+      x: -0.24923584
+      y: 0.35385984
+      z: 0.24923584
+  - VertexId: 225
+    Position:
+      x: -0.26464355
+      y: 0.3856372
+      z: 0.17545654
+  - VertexId: 226
+    Position:
+      x: -0.2764746
+      y: 0.40607908
+      z: 0.090519406
+  - VertexId: 227
+    Position:
+      x: -0.17545654
+      y: 0.3856372
+      z: 0.26464355
+  - VertexId: 228
+    Position:
+      x: -0.18456665
+      y: 0.42578125
+      z: 0.18456665
+  - VertexId: 229
+    Position:
+      x: -0.19263549
+      y: 0.45081055
+      z: 0.09482116
+  - VertexId: 230
+    Position:
+      x: -0.090519406
+      y: 0.40607908
+      z: 0.2764746
+  - VertexId: 231
+    Position:
+      x: -0.09482116
+      y: 0.45081055
+      z: 0.19263549
+  - VertexId: 232
+    Position:
+      x: -0.09908752
+      y: 0.4791992
+      z: 0.09908752
+  - VertexId: 233
+    Position:
+      x: -0.24923584
+      y: 0.35385984
+      z: -0.24923584
+  - VertexId: 234
+    Position:
+      x: -0.17545654
+      y: 0.3856372
+      z: -0.26464355
+  - VertexId: 235
+    Position:
+      x: -0.090518795
+      y: 0.40607908
+      z: -0.2764746
+  - VertexId: 236
+    Position:
+      x: -0.26464355
+      y: 0.3856372
+      z: -0.17545654
+  - VertexId: 237
+    Position:
+      x: -0.18456665
+      y: 0.42578125
+      z: -0.18456665
+  - VertexId: 238
+    Position:
+      x: -0.09482116
+      y: 0.45081055
+      z: -0.19263549
+  - VertexId: 239
+    Position:
+      x: -0.2764746
+      y: 0.40607908
+      z: -0.090519406
+  - VertexId: 240
+    Position:
+      x: -0.19263549
+      y: 0.45081055
+      z: -0.09482116
+  - VertexId: 241
+    Position:
+      x: -0.09908752
+      y: 0.4791992
+      z: -0.09908752
+  - VertexId: 242
+    Position:
+      x: 0.3535864
+      y: -0.24850342
+      z: -0.24850342
+  - VertexId: 243
+    Position:
+      x: 0.3852368
+      y: -0.2637085
+      z: -0.17487793
+  - VertexId: 244
+    Position:
+      x: 0.40558106
+      y: -0.2754956
+      z: -0.0902124
+  - VertexId: 245
+    Position:
+      x: 0.3852368
+      y: -0.17487915
+      z: -0.2637085
+  - VertexId: 246
+    Position:
+      x: 0.4252783
+      y: -0.18394287
+      z: -0.18394287
+  - VertexId: 247
+    Position:
+      x: 0.45026365
+      y: -0.19199951
+      z: -0.09450744
+  - VertexId: 248
+    Position:
+      x: 0.40558106
+      y: -0.0902124
+      z: -0.2754956
+  - VertexId: 249
+    Position:
+      x: 0.45026365
+      y: -0.09450744
+      z: -0.19199951
+  - VertexId: 250
+    Position:
+      x: 0.47856933
+      y: -0.09875244
+      z: -0.09875244
+  - VertexId: 251
+    Position:
+      x: 0.3535864
+      y: -0.24850342
+      z: 0.24850342
+  - VertexId: 252
+    Position:
+      x: 0.3852368
+      y: -0.17487915
+      z: 0.2637085
+  - VertexId: 253
+    Position:
+      x: 0.40558106
+      y: -0.0902124
+      z: 0.2754956
+  - VertexId: 254
+    Position:
+      x: 0.3852368
+      y: -0.2637085
+      z: 0.17487793
+  - VertexId: 255
+    Position:
+      x: 0.4252783
+      y: -0.18394287
+      z: 0.18394287
+  - VertexId: 256
+    Position:
+      x: 0.45026365
+      y: -0.09450744
+      z: 0.19199951
+  - VertexId: 257
+    Position:
+      x: 0.40558106
+      y: -0.2754956
+      z: 0.0902124
+  - VertexId: 258
+    Position:
+      x: 0.45026365
+      y: -0.19199951
+      z: 0.09450744
+  - VertexId: 259
+    Position:
+      x: 0.47856933
+      y: -0.09875244
+      z: 0.09875244
+  - VertexId: 260
+    Position:
+      x: 0.35475096
+      y: 0.24850342
+      z: 0.24923584
+  - VertexId: 261
+    Position:
+      x: 0.3865088
+      y: 0.26374754
+      z: 0.17545654
+  - VertexId: 262
+    Position:
+      x: 0.40696776
+      y: 0.27555177
+      z: 0.090519406
+  - VertexId: 263
+    Position:
+      x: 0.3865088
+      y: 0.1746521
+      z: 0.26464355
+  - VertexId: 264
+    Position:
+      x: 0.4265039
+      y: 0.18374267
+      z: 0.18456665
+  - VertexId: 265
+    Position:
+      x: 0.45155272
+      y: 0.19184203
+      z: 0.09482116
+  - VertexId: 266
+    Position:
+      x: 0.40696776
+      y: 0.089677125
+      z: 0.2764746
+  - VertexId: 267
+    Position:
+      x: 0.45155272
+      y: 0.09398254
+      z: 0.19263549
+  - VertexId: 268
+    Position:
+      x: 0.47995603
+      y: 0.09823791
+      z: 0.09908752
+  - VertexId: 269
+    Position:
+      x: 0.35475096
+      y: 0.24850342
+      z: -0.24923584
+  - VertexId: 270
+    Position:
+      x: 0.3865088
+      y: 0.1746521
+      z: -0.26464355
+  - VertexId: 271
+    Position:
+      x: 0.40696776
+      y: 0.089677125
+      z: -0.2764746
+  - VertexId: 272
+    Position:
+      x: 0.3865088
+      y: 0.26374754
+      z: -0.17545654
+  - VertexId: 273
+    Position:
+      x: 0.4265039
+      y: 0.18374267
+      z: -0.18456665
+  - VertexId: 274
+    Position:
+      x: 0.45155272
+      y: 0.09398254
+      z: -0.19263549
+  - VertexId: 275
+    Position:
+      x: 0.40696776
+      y: 0.27555177
+      z: -0.090518795
+  - VertexId: 276
+    Position:
+      x: 0.45155272
+      y: 0.19184203
+      z: -0.09482116
+  - VertexId: 277
+    Position:
+      x: 0.47995603
+      y: 0.09823791
+      z: -0.09908752
+  - VertexId: 278
+    Position:
+      x: 0.24850342
+      y: -0.24850342
+      z: 0.3535864
+  - VertexId: 279
+    Position:
+      x: 0.17487915
+      y: -0.2637085
+      z: 0.3852368
+  - VertexId: 280
+    Position:
+      x: 0.09021179
+      y: -0.2754956
+      z: 0.40558106
+  - VertexId: 281
+    Position:
+      x: 0.2637085
+      y: -0.17487915
+      z: 0.3852368
+  - VertexId: 282
+    Position:
+      x: 0.18394287
+      y: -0.18394287
+      z: 0.4252783
+  - VertexId: 283
+    Position:
+      x: 0.09450744
+      y: -0.19199951
+      z: 0.45026365
+  - VertexId: 284
+    Position:
+      x: 0.2754956
+      y: -0.0902124
+      z: 0.40558106
+  - VertexId: 285
+    Position:
+      x: 0.19199951
+      y: -0.09450744
+      z: 0.45026365
+  - VertexId: 286
+    Position:
+      x: 0.09875244
+      y: -0.09875244
+      z: 0.47856933
+  - VertexId: 287
+    Position:
+      x: -0.24850342
+      y: -0.24850342
+      z: 0.3535864
+  - VertexId: 288
+    Position:
+      x: -0.2637085
+      y: -0.17487793
+      z: 0.3852368
+  - VertexId: 289
+    Position:
+      x: -0.2754956
+      y: -0.0902124
+      z: 0.40558106
+  - VertexId: 290
+    Position:
+      x: -0.17487793
+      y: -0.2637085
+      z: 0.3852368
+  - VertexId: 291
+    Position:
+      x: -0.18394287
+      y: -0.18394287
+      z: 0.4252783
+  - VertexId: 292
+    Position:
+      x: -0.19199951
+      y: -0.09450744
+      z: 0.45026365
+  - VertexId: 293
+    Position:
+      x: -0.09021179
+      y: -0.2754956
+      z: 0.40558106
+  - VertexId: 294
+    Position:
+      x: -0.09450744
+      y: -0.19199951
+      z: 0.45026365
+  - VertexId: 295
+    Position:
+      x: -0.09875244
+      y: -0.09875244
+      z: 0.47856933
+  - VertexId: 296
+    Position:
+      x: -0.24923584
+      y: 0.24850342
+      z: 0.35475096
+  - VertexId: 297
+    Position:
+      x: -0.17545654
+      y: 0.26374754
+      z: 0.3865088
+  - VertexId: 298
+    Position:
+      x: -0.090519406
+      y: 0.27555177
+      z: 0.40696776
+  - VertexId: 299
+    Position:
+      x: -0.26464355
+      y: 0.17465332
+      z: 0.3865088
+  - VertexId: 300
+    Position:
+      x: -0.18456665
+      y: 0.18374267
+      z: 0.4265039
+  - VertexId: 301
+    Position:
+      x: -0.09482116
+      y: 0.19184203
+      z: 0.45155272
+  - VertexId: 302
+    Position:
+      x: -0.2764746
+      y: 0.089677125
+      z: 0.40696776
+  - VertexId: 303
+    Position:
+      x: -0.19263549
+      y: 0.09398254
+      z: 0.45155272
+  - VertexId: 304
+    Position:
+      x: -0.09908752
+      y: 0.09823791
+      z: 0.47995603
+  - VertexId: 305
+    Position:
+      x: 0.24923584
+      y: 0.24850342
+      z: 0.35475096
+  - VertexId: 306
+    Position:
+      x: 0.26464355
+      y: 0.17465332
+      z: 0.3865088
+  - VertexId: 307
+    Position:
+      x: 0.2764746
+      y: 0.089677125
+      z: 0.40696776
+  - VertexId: 308
+    Position:
+      x: 0.17545654
+      y: 0.26374754
+      z: 0.3865088
+  - VertexId: 309
+    Position:
+      x: 0.18456665
+      y: 0.18374267
+      z: 0.4265039
+  - VertexId: 310
+    Position:
+      x: 0.19263549
+      y: 0.09398254
+      z: 0.45155272
+  - VertexId: 311
+    Position:
+      x: 0.090519406
+      y: 0.27555177
+      z: 0.40696776
+  - VertexId: 312
+    Position:
+      x: 0.09482116
+      y: 0.19184203
+      z: 0.45155272
+  - VertexId: 313
+    Position:
+      x: 0.09908752
+      y: 0.09823791
+      z: 0.47995603
+  - VertexId: 314
+    Position:
+      x: -0.3535864
+      y: -0.24850342
+      z: 0.24850342
+  - VertexId: 315
+    Position:
+      x: -0.3852368
+      y: -0.2637085
+      z: 0.17487915
+  - VertexId: 316
+    Position:
+      x: -0.40558106
+      y: -0.2754956
+      z: 0.0902124
+  - VertexId: 317
+    Position:
+      x: -0.3852368
+      y: -0.17487793
+      z: 0.2637085
+  - VertexId: 318
+    Position:
+      x: -0.4252783
+      y: -0.18394287
+      z: 0.18394287
+  - VertexId: 319
+    Position:
+      x: -0.45026365
+      y: -0.19199951
+      z: 0.09450744
+  - VertexId: 320
+    Position:
+      x: -0.40558106
+      y: -0.0902124
+      z: 0.2754956
+  - VertexId: 321
+    Position:
+      x: -0.45026365
+      y: -0.09450744
+      z: 0.19199951
+  - VertexId: 322
+    Position:
+      x: -0.47856933
+      y: -0.09875244
+      z: 0.09875244
+  - VertexId: 323
+    Position:
+      x: -0.3535864
+      y: -0.24850342
+      z: -0.24850342
+  - VertexId: 324
+    Position:
+      x: -0.3852368
+      y: -0.17487793
+      z: -0.2637085
+  - VertexId: 325
+    Position:
+      x: -0.40558106
+      y: -0.0902124
+      z: -0.2754956
+  - VertexId: 326
+    Position:
+      x: -0.3852368
+      y: -0.2637085
+      z: -0.17487793
+  - VertexId: 327
+    Position:
+      x: -0.4252783
+      y: -0.18394287
+      z: -0.18394287
+  - VertexId: 328
+    Position:
+      x: -0.45026365
+      y: -0.09450744
+      z: -0.19199951
+  - VertexId: 329
+    Position:
+      x: -0.40558106
+      y: -0.2754956
+      z: -0.0902124
+  - VertexId: 330
+    Position:
+      x: -0.45026365
+      y: -0.19199951
+      z: -0.09450744
+  - VertexId: 331
+    Position:
+      x: -0.47856933
+      y: -0.09875244
+      z: -0.09875244
+  - VertexId: 332
+    Position:
+      x: -0.35475096
+      y: 0.24850342
+      z: -0.24923584
+  - VertexId: 333
+    Position:
+      x: -0.3865088
+      y: 0.26374754
+      z: -0.17545654
+  - VertexId: 334
+    Position:
+      x: -0.40696776
+      y: 0.27555177
+      z: -0.090519406
+  - VertexId: 335
+    Position:
+      x: -0.3865088
+      y: 0.17465332
+      z: -0.26464355
+  - VertexId: 336
+    Position:
+      x: -0.4265039
+      y: 0.18374267
+      z: -0.18456665
+  - VertexId: 337
+    Position:
+      x: -0.45155272
+      y: 0.19184203
+      z: -0.09482116
+  - VertexId: 338
+    Position:
+      x: -0.40696776
+      y: 0.089677125
+      z: -0.2764746
+  - VertexId: 339
+    Position:
+      x: -0.45155272
+      y: 0.09398254
+      z: -0.19263549
+  - VertexId: 340
+    Position:
+      x: -0.47995603
+      y: 0.09823791
+      z: -0.09908752
+  - VertexId: 341
+    Position:
+      x: -0.35475096
+      y: 0.24850342
+      z: 0.24923584
+  - VertexId: 342
+    Position:
+      x: -0.3865088
+      y: 0.17465332
+      z: 0.26464355
+  - VertexId: 343
+    Position:
+      x: -0.40696776
+      y: 0.089677125
+      z: 0.2764746
+  - VertexId: 344
+    Position:
+      x: -0.3865088
+      y: 0.26374754
+      z: 0.17545654
+  - VertexId: 345
+    Position:
+      x: -0.4265039
+      y: 0.18374267
+      z: 0.18456665
+  - VertexId: 346
+    Position:
+      x: -0.45155272
+      y: 0.09398254
+      z: 0.19263549
+  - VertexId: 347
+    Position:
+      x: -0.40696776
+      y: 0.27555177
+      z: 0.090519406
+  - VertexId: 348
+    Position:
+      x: -0.45155272
+      y: 0.19184203
+      z: 0.09482116
+  - VertexId: 349
+    Position:
+      x: -0.47995603
+      y: 0.09823791
+      z: 0.09908752
+  - VertexId: 350
+    Position:
+      x: -0.24850342
+      y: -0.24850342
+      z: -0.3535864
+  - VertexId: 351
+    Position:
+      x: -0.17487915
+      y: -0.2637085
+      z: -0.3852368
+  - VertexId: 352
+    Position:
+      x: -0.0902124
+      y: -0.2754956
+      z: -0.40558106
+  - VertexId: 353
+    Position:
+      x: -0.2637085
+      y: -0.17487793
+      z: -0.3852368
+  - VertexId: 354
+    Position:
+      x: -0.18394287
+      y: -0.18394287
+      z: -0.4252783
+  - VertexId: 355
+    Position:
+      x: -0.09450744
+      y: -0.19199951
+      z: -0.45026365
+  - VertexId: 356
+    Position:
+      x: -0.2754956
+      y: -0.0902124
+      z: -0.40558106
+  - VertexId: 357
+    Position:
+      x: -0.19199951
+      y: -0.09450744
+      z: -0.45026365
+  - VertexId: 358
+    Position:
+      x: -0.09875244
+      y: -0.09875244
+      z: -0.47856933
+  - VertexId: 359
+    Position:
+      x: 0.24850342
+      y: -0.24850342
+      z: -0.3535864
+  - VertexId: 360
+    Position:
+      x: 0.2637085
+      y: -0.17487915
+      z: -0.3852368
+  - VertexId: 361
+    Position:
+      x: 0.2754956
+      y: -0.0902124
+      z: -0.40558106
+  - VertexId: 362
+    Position:
+      x: 0.17487793
+      y: -0.2637085
+      z: -0.3852368
+  - VertexId: 363
+    Position:
+      x: 0.18394287
+      y: -0.18394287
+      z: -0.4252783
+  - VertexId: 364
+    Position:
+      x: 0.19199951
+      y: -0.09450744
+      z: -0.45026365
+  - VertexId: 365
+    Position:
+      x: 0.0902124
+      y: -0.2754956
+      z: -0.40558106
+  - VertexId: 366
+    Position:
+      x: 0.09450744
+      y: -0.19199951
+      z: -0.45026365
+  - VertexId: 367
+    Position:
+      x: 0.09875244
+      y: -0.09875244
+      z: -0.47856933
+  - VertexId: 368
+    Position:
+      x: 0.24923584
+      y: 0.24850342
+      z: -0.35475096
+  - VertexId: 369
+    Position:
+      x: 0.17545654
+      y: 0.26374754
+      z: -0.3865088
+  - VertexId: 370
+    Position:
+      x: 0.090518795
+      y: 0.27555177
+      z: -0.40696776
+  - VertexId: 371
+    Position:
+      x: 0.26464355
+      y: 0.17465332
+      z: -0.3865088
+  - VertexId: 372
+    Position:
+      x: 0.18456665
+      y: 0.18374267
+      z: -0.4265039
+  - VertexId: 373
+    Position:
+      x: 0.09482116
+      y: 0.19184203
+      z: -0.45155272
+  - VertexId: 374
+    Position:
+      x: 0.2764746
+      y: 0.089677125
+      z: -0.40696776
+  - VertexId: 375
+    Position:
+      x: 0.19263549
+      y: 0.09398254
+      z: -0.45155272
+  - VertexId: 376
+    Position:
+      x: 0.09908752
+      y: 0.09823791
+      z: -0.47995603
+  - VertexId: 377
+    Position:
+      x: -0.24923584
+      y: 0.24850342
+      z: -0.35475096
+  - VertexId: 378
+    Position:
+      x: -0.26464355
+      y: 0.17465332
+      z: -0.3865088
+  - VertexId: 379
+    Position:
+      x: -0.2764746
+      y: 0.089677125
+      z: -0.40696776
+  - VertexId: 380
+    Position:
+      x: -0.17545654
+      y: 0.26374754
+      z: -0.3865088
+  - VertexId: 381
+    Position:
+      x: -0.18456665
+      y: 0.18374267
+      z: -0.4265039
+  - VertexId: 382
+    Position:
+      x: -0.19263549
+      y: 0.09398254
+      z: -0.45155272
+  - VertexId: 383
+    Position:
+      x: -0.090518795
+      y: 0.27555177
+      z: -0.40696776
+  - VertexId: 384
+    Position:
+      x: -0.09482116
+      y: 0.19184203
+      z: -0.45155272
+  - VertexId: 385
+    Position:
+      x: -0.09908752
+      y: 0.09823791
+      z: -0.47995603
+  precalculatedEdgeMeshData:
+  - Vertex1Id: 109
+    Vertex2Id: 177
+    Distance: 0.13671724
+  - Vertex1Id: 109
+    Vertex2Id: 178
+    Distance: 0.099245094
+  - Vertex1Id: 177
+    Vertex2Id: 178
+    Distance: 0.097541004
+  - Vertex1Id: 174
+    Vertex2Id: 177
+    Distance: 0.09320876
+  - Vertex1Id: 174
+    Vertex2Id: 178
+    Distance: 0.13173743
+  - Vertex1Id: 173
+    Vertex2Id: 177
+    Distance: 0.12581767
+  - Vertex1Id: 173
+    Vertex2Id: 174
+    Distance: 0.089710936
+  - Vertex1Id: 173
+    Vertex2Id: 176
+    Distance: 0.08786965
+  - Vertex1Id: 176
+    Vertex2Id: 177
+    Distance: 0.09479755
+  - Vertex1Id: 108
+    Vertex2Id: 176
+    Distance: 0.13163175
+  - Vertex1Id: 108
+    Vertex2Id: 177
+    Distance: 0.094938956
+  - Vertex1Id: 108
+    Vertex2Id: 109
+    Distance: 0.099347144
+  - Vertex1Id: 8
+    Vertex2Id: 109
+    Distance: 0.10147927
+  - Vertex1Id: 8
+    Vertex2Id: 178
+    Distance: 0.14129175
+  - Vertex1Id: 109
+    Vertex2Id: 205
+    Distance: 0.09924511
+  - Vertex1Id: 108
+    Vertex2Id: 205
+    Distance: 0.13976099
+  - Vertex1Id: 175
+    Vertex2Id: 178
+    Distance: 0.097541004
+  - Vertex1Id: 174
+    Vertex2Id: 175
+    Distance: 0.09320876
+  - Vertex1Id: 100
+    Vertex2Id: 178
+    Distance: 0.099245116
+  - Vertex1Id: 100
+    Vertex2Id: 175
+    Distance: 0.13671726
+  - Vertex1Id: 8
+    Vertex2Id: 100
+    Distance: 0.10147927
+  - Vertex1Id: 170
+    Vertex2Id: 173
+    Distance: 0.08156994
+  - Vertex1Id: 170
+    Vertex2Id: 174
+    Distance: 0.11608556
+  - Vertex1Id: 171
+    Vertex2Id: 174
+    Distance: 0.089710936
+  - Vertex1Id: 171
+    Vertex2Id: 175
+    Distance: 0.12581767
+  - Vertex1Id: 170
+    Vertex2Id: 171
+    Distance: 0.08156994
+  - Vertex1Id: 48
+    Vertex2Id: 176
+    Distance: 0.12255092
+  - Vertex1Id: 48
+    Vertex2Id: 173
+    Distance: 0.08661136
+  - Vertex1Id: 47
+    Vertex2Id: 48
+    Distance: 0.07690807
+  - Vertex1Id: 47
+    Vertex2Id: 173
+    Distance: 0.1101614
+  - Vertex1Id: 47
+    Vertex2Id: 170
+    Distance: 0.075589225
+  - Vertex1Id: 0
+    Vertex2Id: 47
+    Distance: 0.056189597
+  - Vertex1Id: 0
+    Vertex2Id: 170
+    Distance: 0.086121954
+  - Vertex1Id: 26
+    Vertex2Id: 170
+    Distance: 0.075589225
+  - Vertex1Id: 0
+    Vertex2Id: 26
+    Distance: 0.056189597
+  - Vertex1Id: 26
+    Vertex2Id: 171
+    Distance: 0.1101614
+  - Vertex1Id: 48
+    Vertex2Id: 49
+    Distance: 0.08500275
+  - Vertex1Id: 49
+    Vertex2Id: 176
+    Distance: 0.09245801
+  - Vertex1Id: 27
+    Vertex2Id: 171
+    Distance: 0.08661136
+  - Vertex1Id: 26
+    Vertex2Id: 27
+    Distance: 0.07690807
+  - Vertex1Id: 49
+    Vertex2Id: 107
+    Distance: 0.12843151
+  - Vertex1Id: 107
+    Vertex2Id: 176
+    Distance: 0.090587124
+  - Vertex1Id: 17
+    Vertex2Id: 49
+    Distance: 0.08840873
+  - Vertex1Id: 17
+    Vertex2Id: 107
+    Distance: 0.09390016
+  - Vertex1Id: 107
+    Vertex2Id: 108
+    Distance: 0.09634779
+  - Vertex1Id: 171
+    Vertex2Id: 172
+    Distance: 0.08786965
+  - Vertex1Id: 27
+    Vertex2Id: 172
+    Distance: 0.12255092
+  - Vertex1Id: 172
+    Vertex2Id: 175
+    Distance: 0.09479755
+  - Vertex1Id: 28
+    Vertex2Id: 172
+    Distance: 0.09245801
+  - Vertex1Id: 27
+    Vertex2Id: 28
+    Distance: 0.08500275
+  - Vertex1Id: 107
+    Vertex2Id: 199
+    Distance: 0.09058704
+  - Vertex1Id: 17
+    Vertex2Id: 199
+    Distance: 0.1299471
+  - Vertex1Id: 17
+    Vertex2Id: 46
+    Distance: 0.08840866
+  - Vertex1Id: 46
+    Vertex2Id: 199
+    Distance: 0.09245801
+  - Vertex1Id: 108
+    Vertex2Id: 202
+    Distance: 0.09493891
+  - Vertex1Id: 107
+    Vertex2Id: 202
+    Distance: 0.13468531
+  - Vertex1Id: 199
+    Vertex2Id: 202
+    Distance: 0.09479755
+  - Vertex1Id: 202
+    Vertex2Id: 205
+    Distance: 0.097541004
+  - Vertex1Id: 99
+    Vertex2Id: 175
+    Distance: 0.09493897
+  - Vertex1Id: 99
+    Vertex2Id: 172
+    Distance: 0.13163176
+  - Vertex1Id: 99
+    Vertex2Id: 100
+    Distance: 0.099347144
+  - Vertex1Id: 98
+    Vertex2Id: 172
+    Distance: 0.090587094
+  - Vertex1Id: 28
+    Vertex2Id: 98
+    Distance: 0.1284315
+  - Vertex1Id: 98
+    Vertex2Id: 99
+    Distance: 0.09634779
+  - Vertex1Id: 14
+    Vertex2Id: 98
+    Distance: 0.09390016
+  - Vertex1Id: 14
+    Vertex2Id: 28
+    Distance: 0.08840875
+  - Vertex1Id: 198
+    Vertex2Id: 199
+    Distance: 0.08786965
+  - Vertex1Id: 46
+    Vertex2Id: 198
+    Distance: 0.12623052
+  - Vertex1Id: 45
+    Vertex2Id: 46
+    Distance: 0.08500275
+  - Vertex1Id: 45
+    Vertex2Id: 198
+    Distance: 0.08661136
+  - Vertex1Id: 201
+    Vertex2Id: 202
+    Distance: 0.09320876
+  - Vertex1Id: 199
+    Vertex2Id: 201
+    Distance: 0.13249636
+  - Vertex1Id: 198
+    Vertex2Id: 201
+    Distance: 0.089710936
+  - Vertex1Id: 98
+    Vertex2Id: 185
+    Distance: 0.090587065
+  - Vertex1Id: 14
+    Vertex2Id: 185
+    Distance: 0.1299471
+  - Vertex1Id: 31
+    Vertex2Id: 185
+    Distance: 0.09245801
+  - Vertex1Id: 14
+    Vertex2Id: 31
+    Distance: 0.08840864
+  - Vertex1Id: 99
+    Vertex2Id: 186
+    Distance: 0.0949389
+  - Vertex1Id: 98
+    Vertex2Id: 186
+    Distance: 0.13468532
+  - Vertex1Id: 185
+    Vertex2Id: 186
+    Distance: 0.09479755
+  - Vertex1Id: 100
+    Vertex2Id: 187
+    Distance: 0.09924509
+  - Vertex1Id: 99
+    Vertex2Id: 187
+    Distance: 0.13976099
+  - Vertex1Id: 186
+    Vertex2Id: 187
+    Distance: 0.097541004
+  - Vertex1Id: 197
+    Vertex2Id: 198
+    Distance: 0.08156994
+  - Vertex1Id: 45
+    Vertex2Id: 197
+    Distance: 0.1161822
+  - Vertex1Id: 44
+    Vertex2Id: 45
+    Distance: 0.07690807
+  - Vertex1Id: 44
+    Vertex2Id: 197
+    Distance: 0.075589225
+  - Vertex1Id: 182
+    Vertex2Id: 185
+    Distance: 0.08786965
+  - Vertex1Id: 31
+    Vertex2Id: 182
+    Distance: 0.12623052
+  - Vertex1Id: 30
+    Vertex2Id: 182
+    Distance: 0.08661136
+  - Vertex1Id: 30
+    Vertex2Id: 31
+    Distance: 0.08500275
+  - Vertex1Id: 100
+    Vertex2Id: 103
+    Distance: 0.14254561
+  - Vertex1Id: 103
+    Vertex2Id: 187
+    Distance: 0.09924511
+  - Vertex1Id: 8
+    Vertex2Id: 103
+    Distance: 0.10147988
+  - Vertex1Id: 102
+    Vertex2Id: 103
+    Distance: 0.099346556
+  - Vertex1Id: 102
+    Vertex2Id: 187
+    Distance: 0.13976102
+  - Vertex1Id: 102
+    Vertex2Id: 184
+    Distance: 0.09493893
+  - Vertex1Id: 184
+    Vertex2Id: 187
+    Distance: 0.097541004
+  - Vertex1Id: 184
+    Vertex2Id: 186
+    Distance: 0.1378746
+  - Vertex1Id: 101
+    Vertex2Id: 102
+    Distance: 0.09634779
+  - Vertex1Id: 101
+    Vertex2Id: 184
+    Distance: 0.13468535
+  - Vertex1Id: 183
+    Vertex2Id: 186
+    Distance: 0.09320876
+  - Vertex1Id: 183
+    Vertex2Id: 185
+    Distance: 0.13249636
+  - Vertex1Id: 183
+    Vertex2Id: 184
+    Distance: 0.09320876
+  - Vertex1Id: 182
+    Vertex2Id: 183
+    Distance: 0.089710936
+  - Vertex1Id: 101
+    Vertex2Id: 181
+    Distance: 0.09058711
+  - Vertex1Id: 181
+    Vertex2Id: 184
+    Distance: 0.09479755
+  - Vertex1Id: 181
+    Vertex2Id: 183
+    Distance: 0.13249636
+  - Vertex1Id: 15
+    Vertex2Id: 101
+    Distance: 0.09390016
+  - Vertex1Id: 15
+    Vertex2Id: 181
+    Distance: 0.12994713
+  - Vertex1Id: 15
+    Vertex2Id: 34
+    Distance: 0.08840869
+  - Vertex1Id: 34
+    Vertex2Id: 181
+    Distance: 0.09245801
+  - Vertex1Id: 180
+    Vertex2Id: 181
+    Distance: 0.08786965
+  - Vertex1Id: 180
+    Vertex2Id: 183
+    Distance: 0.089710936
+  - Vertex1Id: 34
+    Vertex2Id: 180
+    Distance: 0.12623052
+  - Vertex1Id: 180
+    Vertex2Id: 182
+    Distance: 0.1256254
+  - Vertex1Id: 33
+    Vertex2Id: 34
+    Distance: 0.08500275
+  - Vertex1Id: 33
+    Vertex2Id: 180
+    Distance: 0.08661136
+  - Vertex1Id: 179
+    Vertex2Id: 180
+    Distance: 0.08156994
+  - Vertex1Id: 179
+    Vertex2Id: 182
+    Distance: 0.08156994
+  - Vertex1Id: 33
+    Vertex2Id: 179
+    Distance: 0.1161822
+  - Vertex1Id: 30
+    Vertex2Id: 179
+    Distance: 0.1161822
+  - Vertex1Id: 32
+    Vertex2Id: 33
+    Distance: 0.07690807
+  - Vertex1Id: 32
+    Vertex2Id: 179
+    Distance: 0.075589225
+  - Vertex1Id: 29
+    Vertex2Id: 179
+    Distance: 0.075589225
+  - Vertex1Id: 29
+    Vertex2Id: 30
+    Distance: 0.07690807
+  - Vertex1Id: 29
+    Vertex2Id: 32
+    Distance: 0.097168505
+  - Vertex1Id: 2
+    Vertex2Id: 32
+    Distance: 0.056189597
+  - Vertex1Id: 2
+    Vertex2Id: 29
+    Distance: 0.056189597
+  - Vertex1Id: 8
+    Vertex2Id: 106
+    Distance: 0.10147927
+  - Vertex1Id: 106
+    Vertex2Id: 109
+    Distance: 0.14254521
+  - Vertex1Id: 8
+    Vertex2Id: 196
+    Distance: 0.14129175
+  - Vertex1Id: 106
+    Vertex2Id: 196
+    Distance: 0.09924508
+  - Vertex1Id: 193
+    Vertex2Id: 196
+    Distance: 0.097541004
+  - Vertex1Id: 106
+    Vertex2Id: 193
+    Distance: 0.13671723
+  - Vertex1Id: 105
+    Vertex2Id: 106
+    Distance: 0.099347144
+  - Vertex1Id: 105
+    Vertex2Id: 193
+    Distance: 0.09493891
+  - Vertex1Id: 106
+    Vertex2Id: 205
+    Distance: 0.09924512
+  - Vertex1Id: 105
+    Vertex2Id: 205
+    Distance: 0.13976103
+  - Vertex1Id: 204
+    Vertex2Id: 205
+    Distance: 0.097541004
+  - Vertex1Id: 105
+    Vertex2Id: 204
+    Distance: 0.094938956
+  - Vertex1Id: 202
+    Vertex2Id: 204
+    Distance: 0.1378746
+  - Vertex1Id: 201
+    Vertex2Id: 204
+    Distance: 0.09320876
+  - Vertex1Id: 104
+    Vertex2Id: 105
+    Distance: 0.09634779
+  - Vertex1Id: 104
+    Vertex2Id: 204
+    Distance: 0.1346853
+  - Vertex1Id: 203
+    Vertex2Id: 204
+    Distance: 0.09479755
+  - Vertex1Id: 201
+    Vertex2Id: 203
+    Distance: 0.13249636
+  - Vertex1Id: 104
+    Vertex2Id: 203
+    Distance: 0.09058704
+  - Vertex1Id: 190
+    Vertex2Id: 193
+    Distance: 0.09479755
+  - Vertex1Id: 105
+    Vertex2Id: 190
+    Distance: 0.13163172
+  - Vertex1Id: 104
+    Vertex2Id: 190
+    Distance: 0.090587124
+  - Vertex1Id: 200
+    Vertex2Id: 201
+    Distance: 0.089710936
+  - Vertex1Id: 200
+    Vertex2Id: 203
+    Distance: 0.08786965
+  - Vertex1Id: 198
+    Vertex2Id: 200
+    Distance: 0.1256254
+  - Vertex1Id: 197
+    Vertex2Id: 200
+    Distance: 0.08156994
+  - Vertex1Id: 16
+    Vertex2Id: 104
+    Distance: 0.09390016
+  - Vertex1Id: 16
+    Vertex2Id: 203
+    Distance: 0.12994708
+  - Vertex1Id: 40
+    Vertex2Id: 104
+    Distance: 0.12843151
+  - Vertex1Id: 16
+    Vertex2Id: 40
+    Distance: 0.08840875
+  - Vertex1Id: 40
+    Vertex2Id: 190
+    Distance: 0.09245801
+  - Vertex1Id: 43
+    Vertex2Id: 203
+    Distance: 0.09245801
+  - Vertex1Id: 16
+    Vertex2Id: 43
+    Distance: 0.08840864
+  - Vertex1Id: 43
+    Vertex2Id: 200
+    Distance: 0.12623052
+  - Vertex1Id: 42
+    Vertex2Id: 200
+    Distance: 0.08661136
+  - Vertex1Id: 42
+    Vertex2Id: 43
+    Distance: 0.08500275
+  - Vertex1Id: 42
+    Vertex2Id: 197
+    Distance: 0.1161822
+  - Vertex1Id: 41
+    Vertex2Id: 197
+    Distance: 0.075589225
+  - Vertex1Id: 41
+    Vertex2Id: 42
+    Distance: 0.07690807
+  - Vertex1Id: 41
+    Vertex2Id: 44
+    Distance: 0.097168505
+  - Vertex1Id: 1
+    Vertex2Id: 44
+    Distance: 0.056189597
+  - Vertex1Id: 1
+    Vertex2Id: 41
+    Distance: 0.056189597
+  - Vertex1Id: 39
+    Vertex2Id: 190
+    Distance: 0.12255092
+  - Vertex1Id: 39
+    Vertex2Id: 40
+    Distance: 0.08500275
+  - Vertex1Id: 39
+    Vertex2Id: 189
+    Distance: 0.08661136
+  - Vertex1Id: 189
+    Vertex2Id: 190
+    Distance: 0.08786965
+  - Vertex1Id: 38
+    Vertex2Id: 189
+    Distance: 0.1101614
+  - Vertex1Id: 38
+    Vertex2Id: 39
+    Distance: 0.07690807
+  - Vertex1Id: 189
+    Vertex2Id: 193
+    Distance: 0.12581767
+  - Vertex1Id: 38
+    Vertex2Id: 188
+    Distance: 0.075589225
+  - Vertex1Id: 188
+    Vertex2Id: 189
+    Distance: 0.08156994
+  - Vertex1Id: 3
+    Vertex2Id: 188
+    Distance: 0.086121954
+  - Vertex1Id: 3
+    Vertex2Id: 38
+    Distance: 0.056189597
+  - Vertex1Id: 3
+    Vertex2Id: 35
+    Distance: 0.056189597
+  - Vertex1Id: 35
+    Vertex2Id: 188
+    Distance: 0.075589225
+  - Vertex1Id: 189
+    Vertex2Id: 192
+    Distance: 0.089710936
+  - Vertex1Id: 192
+    Vertex2Id: 193
+    Distance: 0.09320876
+  - Vertex1Id: 188
+    Vertex2Id: 192
+    Distance: 0.11608556
+  - Vertex1Id: 192
+    Vertex2Id: 196
+    Distance: 0.13173743
+  - Vertex1Id: 35
+    Vertex2Id: 191
+    Distance: 0.1101614
+  - Vertex1Id: 188
+    Vertex2Id: 191
+    Distance: 0.08156994
+  - Vertex1Id: 191
+    Vertex2Id: 192
+    Distance: 0.089710936
+  - Vertex1Id: 35
+    Vertex2Id: 36
+    Distance: 0.07690807
+  - Vertex1Id: 36
+    Vertex2Id: 191
+    Distance: 0.08661136
+  - Vertex1Id: 192
+    Vertex2Id: 195
+    Distance: 0.09320876
+  - Vertex1Id: 195
+    Vertex2Id: 196
+    Distance: 0.097541004
+  - Vertex1Id: 191
+    Vertex2Id: 195
+    Distance: 0.12581767
+  - Vertex1Id: 36
+    Vertex2Id: 194
+    Distance: 0.12255092
+  - Vertex1Id: 191
+    Vertex2Id: 194
+    Distance: 0.08786965
+  - Vertex1Id: 194
+    Vertex2Id: 195
+    Distance: 0.09479755
+  - Vertex1Id: 36
+    Vertex2Id: 37
+    Distance: 0.08500275
+  - Vertex1Id: 37
+    Vertex2Id: 194
+    Distance: 0.09245801
+  - Vertex1Id: 103
+    Vertex2Id: 195
+    Distance: 0.13671684
+  - Vertex1Id: 103
+    Vertex2Id: 196
+    Distance: 0.09924511
+  - Vertex1Id: 102
+    Vertex2Id: 195
+    Distance: 0.09493893
+  - Vertex1Id: 102
+    Vertex2Id: 194
+    Distance: 0.13163173
+  - Vertex1Id: 101
+    Vertex2Id: 194
+    Distance: 0.09058706
+  - Vertex1Id: 37
+    Vertex2Id: 101
+    Distance: 0.12843147
+  - Vertex1Id: 15
+    Vertex2Id: 37
+    Distance: 0.08840869
+  - Vertex1Id: 121
+    Vertex2Id: 214
+    Distance: 0.099578224
+  - Vertex1Id: 9
+    Vertex2Id: 121
+    Distance: 0.10174782
+  - Vertex1Id: 9
+    Vertex2Id: 214
+    Distance: 0.14166631
+  - Vertex1Id: 121
+    Vertex2Id: 213
+    Distance: 0.1371525
+  - Vertex1Id: 213
+    Vertex2Id: 214
+    Distance: 0.09785367
+  - Vertex1Id: 210
+    Vertex2Id: 213
+    Distance: 0.093519114
+  - Vertex1Id: 210
+    Vertex2Id: 214
+    Distance: 0.13216217
+  - Vertex1Id: 211
+    Vertex2Id: 214
+    Distance: 0.09785367
+  - Vertex1Id: 210
+    Vertex2Id: 211
+    Distance: 0.093519114
+  - Vertex1Id: 112
+    Vertex2Id: 214
+    Distance: 0.09957816
+  - Vertex1Id: 112
+    Vertex2Id: 211
+    Distance: 0.13715205
+  - Vertex1Id: 9
+    Vertex2Id: 112
+    Distance: 0.10174842
+  - Vertex1Id: 120
+    Vertex2Id: 213
+    Distance: 0.09525262
+  - Vertex1Id: 120
+    Vertex2Id: 121
+    Distance: 0.09968444
+  - Vertex1Id: 209
+    Vertex2Id: 213
+    Distance: 0.12623309
+  - Vertex1Id: 209
+    Vertex2Id: 210
+    Distance: 0.090038046
+  - Vertex1Id: 120
+    Vertex2Id: 212
+    Distance: 0.13204937
+  - Vertex1Id: 212
+    Vertex2Id: 213
+    Distance: 0.0951231
+  - Vertex1Id: 209
+    Vertex2Id: 212
+    Distance: 0.08815986
+  - Vertex1Id: 207
+    Vertex2Id: 210
+    Distance: 0.090038046
+  - Vertex1Id: 207
+    Vertex2Id: 211
+    Distance: 0.12623309
+  - Vertex1Id: 206
+    Vertex2Id: 209
+    Distance: 0.08179598
+  - Vertex1Id: 206
+    Vertex2Id: 210
+    Distance: 0.11634818
+  - Vertex1Id: 206
+    Vertex2Id: 207
+    Distance: 0.08179598
+  - Vertex1Id: 72
+    Vertex2Id: 212
+    Distance: 0.122957155
+  - Vertex1Id: 72
+    Vertex2Id: 209
+    Distance: 0.08687137
+  - Vertex1Id: 71
+    Vertex2Id: 72
+    Distance: 0.077069126
+  - Vertex1Id: 71
+    Vertex2Id: 209
+    Distance: 0.11043528
+  - Vertex1Id: 71
+    Vertex2Id: 206
+    Distance: 0.075895555
+  - Vertex1Id: 4
+    Vertex2Id: 71
+    Distance: 0.056498673
+  - Vertex1Id: 4
+    Vertex2Id: 206
+    Distance: 0.08652691
+  - Vertex1Id: 50
+    Vertex2Id: 206
+    Distance: 0.075895555
+  - Vertex1Id: 4
+    Vertex2Id: 50
+    Distance: 0.056498673
+  - Vertex1Id: 50
+    Vertex2Id: 207
+    Distance: 0.11043528
+  - Vertex1Id: 72
+    Vertex2Id: 73
+    Distance: 0.08528245
+  - Vertex1Id: 73
+    Vertex2Id: 212
+    Distance: 0.09274931
+  - Vertex1Id: 51
+    Vertex2Id: 207
+    Distance: 0.08687137
+  - Vertex1Id: 50
+    Vertex2Id: 51
+    Distance: 0.077069126
+  - Vertex1Id: 73
+    Vertex2Id: 119
+    Distance: 0.12884273
+  - Vertex1Id: 119
+    Vertex2Id: 212
+    Distance: 0.09089358
+  - Vertex1Id: 119
+    Vertex2Id: 120
+    Distance: 0.096652985
+  - Vertex1Id: 21
+    Vertex2Id: 73
+    Distance: 0.08870418
+  - Vertex1Id: 21
+    Vertex2Id: 119
+    Distance: 0.09418632
+  - Vertex1Id: 207
+    Vertex2Id: 208
+    Distance: 0.08815986
+  - Vertex1Id: 51
+    Vertex2Id: 208
+    Distance: 0.122957155
+  - Vertex1Id: 208
+    Vertex2Id: 211
+    Distance: 0.0951231
+  - Vertex1Id: 52
+    Vertex2Id: 208
+    Distance: 0.09274931
+  - Vertex1Id: 51
+    Vertex2Id: 52
+    Distance: 0.08528245
+  - Vertex1Id: 119
+    Vertex2Id: 235
+    Distance: 0.090892725
+  - Vertex1Id: 21
+    Vertex2Id: 235
+    Distance: 0.13036866
+  - Vertex1Id: 21
+    Vertex2Id: 70
+    Distance: 0.08870387
+  - Vertex1Id: 70
+    Vertex2Id: 235
+    Distance: 0.0927493
+  - Vertex1Id: 120
+    Vertex2Id: 238
+    Distance: 0.09525244
+  - Vertex1Id: 119
+    Vertex2Id: 238
+    Distance: 0.13515167
+  - Vertex1Id: 235
+    Vertex2Id: 238
+    Distance: 0.09512313
+  - Vertex1Id: 111
+    Vertex2Id: 211
+    Distance: 0.09525247
+  - Vertex1Id: 111
+    Vertex2Id: 208
+    Distance: 0.13204926
+  - Vertex1Id: 111
+    Vertex2Id: 112
+    Distance: 0.09968386
+  - Vertex1Id: 110
+    Vertex2Id: 208
+    Distance: 0.090893365
+  - Vertex1Id: 52
+    Vertex2Id: 110
+    Distance: 0.12884258
+  - Vertex1Id: 110
+    Vertex2Id: 111
+    Distance: 0.096652985
+  - Vertex1Id: 18
+    Vertex2Id: 110
+    Distance: 0.09418632
+  - Vertex1Id: 18
+    Vertex2Id: 52
+    Distance: 0.088703915
+  - Vertex1Id: 234
+    Vertex2Id: 235
+    Distance: 0.08816045
+  - Vertex1Id: 70
+    Vertex2Id: 234
+    Distance: 0.12661636
+  - Vertex1Id: 69
+    Vertex2Id: 70
+    Distance: 0.08528245
+  - Vertex1Id: 69
+    Vertex2Id: 234
+    Distance: 0.08687137
+  - Vertex1Id: 110
+    Vertex2Id: 221
+    Distance: 0.090893544
+  - Vertex1Id: 18
+    Vertex2Id: 221
+    Distance: 0.13036928
+  - Vertex1Id: 55
+    Vertex2Id: 221
+    Distance: 0.09274931
+  - Vertex1Id: 18
+    Vertex2Id: 55
+    Distance: 0.08870414
+  - Vertex1Id: 111
+    Vertex2Id: 222
+    Distance: 0.09525259
+  - Vertex1Id: 110
+    Vertex2Id: 222
+    Distance: 0.13515182
+  - Vertex1Id: 221
+    Vertex2Id: 222
+    Distance: 0.0951231
+  - Vertex1Id: 112
+    Vertex2Id: 223
+    Distance: 0.099578224
+  - Vertex1Id: 111
+    Vertex2Id: 223
+    Distance: 0.1402419
+  - Vertex1Id: 222
+    Vertex2Id: 223
+    Distance: 0.09785367
+  - Vertex1Id: 218
+    Vertex2Id: 221
+    Distance: 0.08815986
+  - Vertex1Id: 55
+    Vertex2Id: 218
+    Distance: 0.12661636
+  - Vertex1Id: 54
+    Vertex2Id: 218
+    Distance: 0.08687137
+  - Vertex1Id: 54
+    Vertex2Id: 55
+    Distance: 0.08528245
+  - Vertex1Id: 219
+    Vertex2Id: 222
+    Distance: 0.093519114
+  - Vertex1Id: 219
+    Vertex2Id: 221
+    Distance: 0.13296665
+  - Vertex1Id: 218
+    Vertex2Id: 219
+    Distance: 0.090038046
+  - Vertex1Id: 215
+    Vertex2Id: 218
+    Distance: 0.08179598
+  - Vertex1Id: 54
+    Vertex2Id: 215
+    Distance: 0.11658107
+  - Vertex1Id: 53
+    Vertex2Id: 215
+    Distance: 0.075895555
+  - Vertex1Id: 53
+    Vertex2Id: 54
+    Distance: 0.077069126
+  - Vertex1Id: 56
+    Vertex2Id: 215
+    Distance: 0.075895555
+  - Vertex1Id: 53
+    Vertex2Id: 56
+    Distance: 0.09764493
+  - Vertex1Id: 5
+    Vertex2Id: 56
+    Distance: 0.056498673
+  - Vertex1Id: 5
+    Vertex2Id: 53
+    Distance: 0.056498673
+  - Vertex1Id: 57
+    Vertex2Id: 215
+    Distance: 0.11658107
+  - Vertex1Id: 56
+    Vertex2Id: 57
+    Distance: 0.077069126
+  - Vertex1Id: 216
+    Vertex2Id: 218
+    Distance: 0.12612948
+  - Vertex1Id: 215
+    Vertex2Id: 216
+    Distance: 0.08179598
+  - Vertex1Id: 57
+    Vertex2Id: 216
+    Distance: 0.08687137
+  - Vertex1Id: 216
+    Vertex2Id: 219
+    Distance: 0.090038046
+  - Vertex1Id: 58
+    Vertex2Id: 216
+    Distance: 0.12661636
+  - Vertex1Id: 57
+    Vertex2Id: 58
+    Distance: 0.08528245
+  - Vertex1Id: 216
+    Vertex2Id: 217
+    Distance: 0.08815986
+  - Vertex1Id: 58
+    Vertex2Id: 217
+    Distance: 0.09274931
+  - Vertex1Id: 217
+    Vertex2Id: 219
+    Distance: 0.13296665
+  - Vertex1Id: 19
+    Vertex2Id: 217
+    Distance: 0.13036916
+  - Vertex1Id: 19
+    Vertex2Id: 58
+    Distance: 0.08870397
+  - Vertex1Id: 220
+    Vertex2Id: 222
+    Distance: 0.13833036
+  - Vertex1Id: 219
+    Vertex2Id: 220
+    Distance: 0.093519114
+  - Vertex1Id: 217
+    Vertex2Id: 220
+    Distance: 0.0951231
+  - Vertex1Id: 220
+    Vertex2Id: 223
+    Distance: 0.09785367
+  - Vertex1Id: 113
+    Vertex2Id: 217
+    Distance: 0.09089341
+  - Vertex1Id: 19
+    Vertex2Id: 113
+    Distance: 0.09418632
+  - Vertex1Id: 113
+    Vertex2Id: 220
+    Distance: 0.13515173
+  - Vertex1Id: 19
+    Vertex2Id: 61
+    Distance: 0.08870409
+  - Vertex1Id: 61
+    Vertex2Id: 113
+    Distance: 0.12884268
+  - Vertex1Id: 114
+    Vertex2Id: 223
+    Distance: 0.14024185
+  - Vertex1Id: 114
+    Vertex2Id: 220
+    Distance: 0.0952525
+  - Vertex1Id: 113
+    Vertex2Id: 114
+    Distance: 0.096652985
+  - Vertex1Id: 113
+    Vertex2Id: 230
+    Distance: 0.0908935
+  - Vertex1Id: 61
+    Vertex2Id: 230
+    Distance: 0.09274931
+  - Vertex1Id: 114
+    Vertex2Id: 230
+    Distance: 0.13204932
+  - Vertex1Id: 60
+    Vertex2Id: 61
+    Distance: 0.08528245
+  - Vertex1Id: 60
+    Vertex2Id: 230
+    Distance: 0.122957155
+  - Vertex1Id: 115
+    Vertex2Id: 223
+    Distance: 0.099578165
+  - Vertex1Id: 114
+    Vertex2Id: 115
+    Distance: 0.09968444
+  - Vertex1Id: 112
+    Vertex2Id: 115
+    Distance: 0.14302815
+  - Vertex1Id: 9
+    Vertex2Id: 115
+    Distance: 0.10174783
+  - Vertex1Id: 227
+    Vertex2Id: 230
+    Distance: 0.08815986
+  - Vertex1Id: 60
+    Vertex2Id: 227
+    Distance: 0.08687137
+  - Vertex1Id: 59
+    Vertex2Id: 60
+    Distance: 0.077069126
+  - Vertex1Id: 59
+    Vertex2Id: 227
+    Distance: 0.11043528
+  - Vertex1Id: 114
+    Vertex2Id: 231
+    Distance: 0.09525256
+  - Vertex1Id: 230
+    Vertex2Id: 231
+    Distance: 0.0951231
+  - Vertex1Id: 115
+    Vertex2Id: 231
+    Distance: 0.13715248
+  - Vertex1Id: 227
+    Vertex2Id: 231
+    Distance: 0.12623309
+  - Vertex1Id: 224
+    Vertex2Id: 227
+    Distance: 0.08179598
+  - Vertex1Id: 59
+    Vertex2Id: 224
+    Distance: 0.075895555
+  - Vertex1Id: 7
+    Vertex2Id: 59
+    Distance: 0.056498673
+  - Vertex1Id: 7
+    Vertex2Id: 224
+    Distance: 0.08652691
+  - Vertex1Id: 62
+    Vertex2Id: 224
+    Distance: 0.075895555
+  - Vertex1Id: 7
+    Vertex2Id: 62
+    Distance: 0.056498673
+  - Vertex1Id: 115
+    Vertex2Id: 232
+    Distance: 0.099578194
+  - Vertex1Id: 231
+    Vertex2Id: 232
+    Distance: 0.09785367
+  - Vertex1Id: 9
+    Vertex2Id: 232
+    Distance: 0.14166634
+  - Vertex1Id: 228
+    Vertex2Id: 231
+    Distance: 0.093519114
+  - Vertex1Id: 227
+    Vertex2Id: 228
+    Distance: 0.090038046
+  - Vertex1Id: 224
+    Vertex2Id: 228
+    Distance: 0.11634818
+  - Vertex1Id: 228
+    Vertex2Id: 232
+    Distance: 0.13216217
+  - Vertex1Id: 224
+    Vertex2Id: 225
+    Distance: 0.08179598
+  - Vertex1Id: 62
+    Vertex2Id: 225
+    Distance: 0.11043528
+  - Vertex1Id: 225
+    Vertex2Id: 228
+    Distance: 0.090038046
+  - Vertex1Id: 63
+    Vertex2Id: 225
+    Distance: 0.08687137
+  - Vertex1Id: 62
+    Vertex2Id: 63
+    Distance: 0.077069126
+  - Vertex1Id: 229
+    Vertex2Id: 232
+    Distance: 0.09785367
+  - Vertex1Id: 228
+    Vertex2Id: 229
+    Distance: 0.093519114
+  - Vertex1Id: 225
+    Vertex2Id: 229
+    Distance: 0.12623309
+  - Vertex1Id: 225
+    Vertex2Id: 226
+    Distance: 0.08815986
+  - Vertex1Id: 63
+    Vertex2Id: 226
+    Distance: 0.122957155
+  - Vertex1Id: 226
+    Vertex2Id: 229
+    Distance: 0.0951231
+  - Vertex1Id: 64
+    Vertex2Id: 226
+    Distance: 0.09274931
+  - Vertex1Id: 63
+    Vertex2Id: 64
+    Distance: 0.08528245
+  - Vertex1Id: 118
+    Vertex2Id: 232
+    Distance: 0.09957818
+  - Vertex1Id: 118
+    Vertex2Id: 229
+    Distance: 0.13715246
+  - Vertex1Id: 9
+    Vertex2Id: 118
+    Distance: 0.10174783
+  - Vertex1Id: 117
+    Vertex2Id: 118
+    Distance: 0.09968444
+  - Vertex1Id: 117
+    Vertex2Id: 229
+    Distance: 0.09525253
+  - Vertex1Id: 117
+    Vertex2Id: 226
+    Distance: 0.1320493
+  - Vertex1Id: 116
+    Vertex2Id: 117
+    Distance: 0.096652985
+  - Vertex1Id: 116
+    Vertex2Id: 226
+    Distance: 0.090893455
+  - Vertex1Id: 64
+    Vertex2Id: 116
+    Distance: 0.12884264
+  - Vertex1Id: 20
+    Vertex2Id: 116
+    Distance: 0.09418632
+  - Vertex1Id: 20
+    Vertex2Id: 64
+    Distance: 0.08870403
+  - Vertex1Id: 65
+    Vertex2Id: 68
+    Distance: 0.09764493
+  - Vertex1Id: 6
+    Vertex2Id: 68
+    Distance: 0.056498673
+  - Vertex1Id: 6
+    Vertex2Id: 65
+    Distance: 0.056498673
+  - Vertex1Id: 65
+    Vertex2Id: 233
+    Distance: 0.075895555
+  - Vertex1Id: 68
+    Vertex2Id: 233
+    Distance: 0.075895555
+  - Vertex1Id: 69
+    Vertex2Id: 233
+    Distance: 0.11658107
+  - Vertex1Id: 68
+    Vertex2Id: 69
+    Distance: 0.077069126
+  - Vertex1Id: 66
+    Vertex2Id: 233
+    Distance: 0.11658107
+  - Vertex1Id: 65
+    Vertex2Id: 66
+    Distance: 0.077069126
+  - Vertex1Id: 233
+    Vertex2Id: 234
+    Distance: 0.08179598
+  - Vertex1Id: 66
+    Vertex2Id: 236
+    Distance: 0.08687137
+  - Vertex1Id: 233
+    Vertex2Id: 236
+    Distance: 0.08179598
+  - Vertex1Id: 234
+    Vertex2Id: 236
+    Distance: 0.12612948
+  - Vertex1Id: 67
+    Vertex2Id: 236
+    Distance: 0.12661636
+  - Vertex1Id: 66
+    Vertex2Id: 67
+    Distance: 0.08528245
+  - Vertex1Id: 236
+    Vertex2Id: 237
+    Distance: 0.090038046
+  - Vertex1Id: 234
+    Vertex2Id: 237
+    Distance: 0.090038046
+  - Vertex1Id: 235
+    Vertex2Id: 237
+    Distance: 0.13296708
+  - Vertex1Id: 237
+    Vertex2Id: 238
+    Distance: 0.093519114
+  - Vertex1Id: 67
+    Vertex2Id: 239
+    Distance: 0.09274931
+  - Vertex1Id: 236
+    Vertex2Id: 239
+    Distance: 0.08815986
+  - Vertex1Id: 237
+    Vertex2Id: 239
+    Distance: 0.13296665
+  - Vertex1Id: 20
+    Vertex2Id: 239
+    Distance: 0.1303692
+  - Vertex1Id: 20
+    Vertex2Id: 67
+    Distance: 0.08870403
+  - Vertex1Id: 116
+    Vertex2Id: 239
+    Distance: 0.090893455
+  - Vertex1Id: 239
+    Vertex2Id: 240
+    Distance: 0.0951231
+  - Vertex1Id: 237
+    Vertex2Id: 240
+    Distance: 0.093519114
+  - Vertex1Id: 116
+    Vertex2Id: 240
+    Distance: 0.13515176
+  - Vertex1Id: 238
+    Vertex2Id: 240
+    Distance: 0.13833036
+  - Vertex1Id: 117
+    Vertex2Id: 240
+    Distance: 0.09525253
+  - Vertex1Id: 240
+    Vertex2Id: 241
+    Distance: 0.09785367
+  - Vertex1Id: 238
+    Vertex2Id: 241
+    Distance: 0.09785367
+  - Vertex1Id: 117
+    Vertex2Id: 241
+    Distance: 0.14024188
+  - Vertex1Id: 120
+    Vertex2Id: 241
+    Distance: 0.1402418
+  - Vertex1Id: 118
+    Vertex2Id: 241
+    Distance: 0.09957818
+  - Vertex1Id: 121
+    Vertex2Id: 241
+    Distance: 0.099578135
+  - Vertex1Id: 118
+    Vertex2Id: 121
+    Distance: 0.14302768
+  - Vertex1Id: 44
+    Vertex2Id: 74
+    Distance: 0.097168505
+  - Vertex1Id: 1
+    Vertex2Id: 74
+    Distance: 0.056189597
+  - Vertex1Id: 44
+    Vertex2Id: 251
+    Distance: 0.075589225
+  - Vertex1Id: 74
+    Vertex2Id: 251
+    Distance: 0.075589225
+  - Vertex1Id: 45
+    Vertex2Id: 251
+    Distance: 0.1161822
+  - Vertex1Id: 75
+    Vertex2Id: 251
+    Distance: 0.1161822
+  - Vertex1Id: 74
+    Vertex2Id: 75
+    Distance: 0.07690807
+  - Vertex1Id: 45
+    Vertex2Id: 254
+    Distance: 0.08661136
+  - Vertex1Id: 251
+    Vertex2Id: 254
+    Distance: 0.08156994
+  - Vertex1Id: 46
+    Vertex2Id: 254
+    Distance: 0.12623052
+  - Vertex1Id: 251
+    Vertex2Id: 252
+    Distance: 0.08156884
+  - Vertex1Id: 75
+    Vertex2Id: 252
+    Distance: 0.08661143
+  - Vertex1Id: 252
+    Vertex2Id: 254
+    Distance: 0.12562454
+  - Vertex1Id: 76
+    Vertex2Id: 252
+    Distance: 0.12623136
+  - Vertex1Id: 75
+    Vertex2Id: 76
+    Distance: 0.08500275
+  - Vertex1Id: 46
+    Vertex2Id: 257
+    Distance: 0.09245801
+  - Vertex1Id: 254
+    Vertex2Id: 257
+    Distance: 0.08786965
+  - Vertex1Id: 17
+    Vertex2Id: 257
+    Distance: 0.1299471
+  - Vertex1Id: 252
+    Vertex2Id: 253
+    Distance: 0.08787083
+  - Vertex1Id: 76
+    Vertex2Id: 253
+    Distance: 0.09245801
+  - Vertex1Id: 22
+    Vertex2Id: 253
+    Distance: 0.13014652
+  - Vertex1Id: 22
+    Vertex2Id: 76
+    Distance: 0.0885509
+  - Vertex1Id: 254
+    Vertex2Id: 255
+    Distance: 0.089710936
+  - Vertex1Id: 252
+    Vertex2Id: 255
+    Distance: 0.08971081
+  - Vertex1Id: 255
+    Vertex2Id: 257
+    Distance: 0.13249636
+  - Vertex1Id: 253
+    Vertex2Id: 255
+    Distance: 0.13249636
+  - Vertex1Id: 17
+    Vertex2Id: 122
+    Distance: 0.09390016
+  - Vertex1Id: 122
+    Vertex2Id: 257
+    Distance: 0.090587124
+  - Vertex1Id: 49
+    Vertex2Id: 122
+    Distance: 0.12843145
+  - Vertex1Id: 125
+    Vertex2Id: 253
+    Distance: 0.0908109
+  - Vertex1Id: 22
+    Vertex2Id: 125
+    Distance: 0.09801662
+  - Vertex1Id: 22
+    Vertex2Id: 79
+    Distance: 0.087842375
+  - Vertex1Id: 79
+    Vertex2Id: 125
+    Distance: 0.13105784
+  - Vertex1Id: 255
+    Vertex2Id: 256
+    Distance: 0.09320876
+  - Vertex1Id: 253
+    Vertex2Id: 256
+    Distance: 0.09479755
+  - Vertex1Id: 125
+    Vertex2Id: 256
+    Distance: 0.13222387
+  - Vertex1Id: 257
+    Vertex2Id: 258
+    Distance: 0.09479755
+  - Vertex1Id: 255
+    Vertex2Id: 258
+    Distance: 0.09320876
+  - Vertex1Id: 122
+    Vertex2Id: 258
+    Distance: 0.13468535
+  - Vertex1Id: 256
+    Vertex2Id: 258
+    Distance: 0.1378746
+  - Vertex1Id: 49
+    Vertex2Id: 244
+    Distance: 0.09245801
+  - Vertex1Id: 122
+    Vertex2Id: 244
+    Distance: 0.09058704
+  - Vertex1Id: 48
+    Vertex2Id: 244
+    Distance: 0.12255092
+  - Vertex1Id: 125
+    Vertex2Id: 266
+    Distance: 0.09011419
+  - Vertex1Id: 79
+    Vertex2Id: 266
+    Distance: 0.092741705
+  - Vertex1Id: 78
+    Vertex2Id: 79
+    Distance: 0.08530853
+  - Vertex1Id: 78
+    Vertex2Id: 266
+    Distance: 0.12296262
+  - Vertex1Id: 122
+    Vertex2Id: 123
+    Distance: 0.09634779
+  - Vertex1Id: 123
+    Vertex2Id: 258
+    Distance: 0.094939
+  - Vertex1Id: 123
+    Vertex2Id: 244
+    Distance: 0.13163167
+  - Vertex1Id: 126
+    Vertex2Id: 256
+    Distance: 0.0952281
+  - Vertex1Id: 125
+    Vertex2Id: 126
+    Distance: 0.098017104
+  - Vertex1Id: 126
+    Vertex2Id: 266
+    Distance: 0.13531964
+  - Vertex1Id: 258
+    Vertex2Id: 259
+    Distance: 0.097541004
+  - Vertex1Id: 256
+    Vertex2Id: 259
+    Distance: 0.097541004
+  - Vertex1Id: 123
+    Vertex2Id: 259
+    Distance: 0.13976106
+  - Vertex1Id: 126
+    Vertex2Id: 259
+    Distance: 0.13638686
+  - Vertex1Id: 48
+    Vertex2Id: 243
+    Distance: 0.08661136
+  - Vertex1Id: 243
+    Vertex2Id: 244
+    Distance: 0.08786965
+  - Vertex1Id: 47
+    Vertex2Id: 243
+    Distance: 0.1101614
+  - Vertex1Id: 263
+    Vertex2Id: 266
+    Distance: 0.08820028
+  - Vertex1Id: 78
+    Vertex2Id: 263
+    Distance: 0.086852506
+  - Vertex1Id: 77
+    Vertex2Id: 78
+    Distance: 0.07716128
+  - Vertex1Id: 77
+    Vertex2Id: 263
+    Distance: 0.11048477
+  - Vertex1Id: 244
+    Vertex2Id: 247
+    Distance: 0.09479755
+  - Vertex1Id: 123
+    Vertex2Id: 247
+    Distance: 0.09493886
+  - Vertex1Id: 243
+    Vertex2Id: 247
+    Distance: 0.12581767
+  - Vertex1Id: 123
+    Vertex2Id: 124
+    Distance: 0.099346556
+  - Vertex1Id: 124
+    Vertex2Id: 259
+    Distance: 0.099245146
+  - Vertex1Id: 124
+    Vertex2Id: 247
+    Distance: 0.13671681
+  - Vertex1Id: 127
+    Vertex2Id: 259
+    Distance: 0.0994648
+  - Vertex1Id: 126
+    Vertex2Id: 127
+    Distance: 0.09801677
+  - Vertex1Id: 124
+    Vertex2Id: 127
+    Distance: 0.14028333
+  - Vertex1Id: 126
+    Vertex2Id: 267
+    Distance: 0.0945635
+  - Vertex1Id: 266
+    Vertex2Id: 267
+    Distance: 0.09505446
+  - Vertex1Id: 263
+    Vertex2Id: 267
+    Distance: 0.12618816
+  - Vertex1Id: 127
+    Vertex2Id: 267
+    Distance: 0.13922381
+  - Vertex1Id: 47
+    Vertex2Id: 242
+    Distance: 0.075589225
+  - Vertex1Id: 242
+    Vertex2Id: 243
+    Distance: 0.08156994
+  - Vertex1Id: 0
+    Vertex2Id: 242
+    Distance: 0.086121954
+  - Vertex1Id: 0
+    Vertex2Id: 83
+    Distance: 0.056189597
+  - Vertex1Id: 83
+    Vertex2Id: 242
+    Distance: 0.075589225
+  - Vertex1Id: 243
+    Vertex2Id: 246
+    Distance: 0.089710936
+  - Vertex1Id: 246
+    Vertex2Id: 247
+    Distance: 0.09320876
+  - Vertex1Id: 242
+    Vertex2Id: 246
+    Distance: 0.11608556
+  - Vertex1Id: 83
+    Vertex2Id: 245
+    Distance: 0.11016068
+  - Vertex1Id: 242
+    Vertex2Id: 245
+    Distance: 0.08156884
+  - Vertex1Id: 245
+    Vertex2Id: 246
+    Distance: 0.08971081
+  - Vertex1Id: 83
+    Vertex2Id: 84
+    Distance: 0.07690807
+  - Vertex1Id: 84
+    Vertex2Id: 245
+    Distance: 0.08661143
+  - Vertex1Id: 247
+    Vertex2Id: 250
+    Distance: 0.097541004
+  - Vertex1Id: 124
+    Vertex2Id: 250
+    Distance: 0.09924507
+  - Vertex1Id: 246
+    Vertex2Id: 250
+    Distance: 0.13173743
+  - Vertex1Id: 10
+    Vertex2Id: 124
+    Distance: 0.101479866
+  - Vertex1Id: 10
+    Vertex2Id: 127
+    Distance: 0.0980175
+  - Vertex1Id: 10
+    Vertex2Id: 250
+    Distance: 0.14129165
+  - Vertex1Id: 127
+    Vertex2Id: 268
+    Distance: 0.09880256
+  - Vertex1Id: 267
+    Vertex2Id: 268
+    Distance: 0.097857445
+  - Vertex1Id: 10
+    Vertex2Id: 268
+    Distance: 0.14096388
+  - Vertex1Id: 84
+    Vertex2Id: 248
+    Distance: 0.12255092
+  - Vertex1Id: 245
+    Vertex2Id: 248
+    Distance: 0.08787083
+  - Vertex1Id: 84
+    Vertex2Id: 85
+    Distance: 0.08500275
+  - Vertex1Id: 85
+    Vertex2Id: 248
+    Distance: 0.09245801
+  - Vertex1Id: 245
+    Vertex2Id: 249
+    Distance: 0.12581845
+  - Vertex1Id: 246
+    Vertex2Id: 249
+    Distance: 0.09320876
+  - Vertex1Id: 249
+    Vertex2Id: 250
+    Distance: 0.097541004
+  - Vertex1Id: 248
+    Vertex2Id: 249
+    Distance: 0.09479755
+  - Vertex1Id: 133
+    Vertex2Id: 250
+    Distance: 0.09852382
+  - Vertex1Id: 10
+    Vertex2Id: 133
+    Distance: 0.10166693
+  - Vertex1Id: 133
+    Vertex2Id: 249
+    Distance: 0.1362848
+  - Vertex1Id: 85
+    Vertex2Id: 131
+    Distance: 0.1280285
+  - Vertex1Id: 131
+    Vertex2Id: 248
+    Distance: 0.0898793
+  - Vertex1Id: 23
+    Vertex2Id: 85
+    Distance: 0.08769331
+  - Vertex1Id: 23
+    Vertex2Id: 131
+    Distance: 0.09417543
+  - Vertex1Id: 132
+    Vertex2Id: 248
+    Distance: 0.13114825
+  - Vertex1Id: 132
+    Vertex2Id: 249
+    Distance: 0.09420975
+  - Vertex1Id: 132
+    Vertex2Id: 133
+    Distance: 0.099701956
+  - Vertex1Id: 131
+    Vertex2Id: 132
+    Distance: 0.09658414
+  - Vertex1Id: 10
+    Vertex2Id: 130
+    Distance: 0.10082841
+  - Vertex1Id: 130
+    Vertex2Id: 133
+    Distance: 0.14305902
+  - Vertex1Id: 130
+    Vertex2Id: 268
+    Distance: 0.09958283
+  - Vertex1Id: 264
+    Vertex2Id: 267
+    Distance: 0.093538396
+  - Vertex1Id: 264
+    Vertex2Id: 268
+    Distance: 0.13219257
+  - Vertex1Id: 263
+    Vertex2Id: 264
+    Distance: 0.08996976
+  - Vertex1Id: 131
+    Vertex2Id: 271
+    Distance: 0.09093446
+  - Vertex1Id: 23
+    Vertex2Id: 271
+    Distance: 0.13039194
+  - Vertex1Id: 23
+    Vertex2Id: 82
+    Distance: 0.08873991
+  - Vertex1Id: 82
+    Vertex2Id: 271
+    Distance: 0.092741705
+  - Vertex1Id: 132
+    Vertex2Id: 274
+    Distance: 0.095297344
+  - Vertex1Id: 131
+    Vertex2Id: 274
+    Distance: 0.13514297
+  - Vertex1Id: 271
+    Vertex2Id: 274
+    Distance: 0.09505446
+  - Vertex1Id: 133
+    Vertex2Id: 277
+    Distance: 0.09961633
+  - Vertex1Id: 132
+    Vertex2Id: 277
+    Distance: 0.14026801
+  - Vertex1Id: 130
+    Vertex2Id: 277
+    Distance: 0.09958251
+  - Vertex1Id: 274
+    Vertex2Id: 277
+    Distance: 0.097857445
+  - Vertex1Id: 265
+    Vertex2Id: 268
+    Distance: 0.097911604
+  - Vertex1Id: 130
+    Vertex2Id: 265
+    Distance: 0.13719939
+  - Vertex1Id: 264
+    Vertex2Id: 265
+    Distance: 0.093526974
+  - Vertex1Id: 260
+    Vertex2Id: 263
+    Distance: 0.081853375
+  - Vertex1Id: 260
+    Vertex2Id: 264
+    Distance: 0.11629507
+  - Vertex1Id: 77
+    Vertex2Id: 260
+    Distance: 0.07591286
+  - Vertex1Id: 5
+    Vertex2Id: 77
+    Distance: 0.056299366
+  - Vertex1Id: 5
+    Vertex2Id: 260
+    Distance: 0.086400844
+  - Vertex1Id: 53
+    Vertex2Id: 260
+    Distance: 0.07580943
+  - Vertex1Id: 261
+    Vertex2Id: 264
+    Distance: 0.08990763
+  - Vertex1Id: 260
+    Vertex2Id: 261
+    Distance: 0.08175774
+  - Vertex1Id: 53
+    Vertex2Id: 261
+    Distance: 0.11045612
+  - Vertex1Id: 261
+    Vertex2Id: 265
+    Distance: 0.12610781
+  - Vertex1Id: 54
+    Vertex2Id: 261
+    Distance: 0.086845934
+  - Vertex1Id: 261
+    Vertex2Id: 262
+    Distance: 0.088160224
+  - Vertex1Id: 54
+    Vertex2Id: 262
+    Distance: 0.12295718
+  - Vertex1Id: 262
+    Vertex2Id: 265
+    Distance: 0.09494021
+  - Vertex1Id: 55
+    Vertex2Id: 262
+    Distance: 0.092758544
+  - Vertex1Id: 129
+    Vertex2Id: 130
+    Distance: 0.099723496
+  - Vertex1Id: 129
+    Vertex2Id: 265
+    Distance: 0.0952518
+  - Vertex1Id: 129
+    Vertex2Id: 262
+    Distance: 0.13192616
+  - Vertex1Id: 129
+    Vertex2Id: 277
+    Distance: 0.1402667
+  - Vertex1Id: 128
+    Vertex2Id: 262
+    Distance: 0.09089315
+  - Vertex1Id: 55
+    Vertex2Id: 128
+    Distance: 0.12884927
+  - Vertex1Id: 128
+    Vertex2Id: 129
+    Distance: 0.09648654
+  - Vertex1Id: 18
+    Vertex2Id: 128
+    Distance: 0.094194256
+  - Vertex1Id: 276
+    Vertex2Id: 277
+    Distance: 0.097911604
+  - Vertex1Id: 129
+    Vertex2Id: 276
+    Distance: 0.0952515
+  - Vertex1Id: 128
+    Vertex2Id: 276
+    Distance: 0.13502334
+  - Vertex1Id: 274
+    Vertex2Id: 276
+    Distance: 0.13836229
+  - Vertex1Id: 128
+    Vertex2Id: 275
+    Distance: 0.09089228
+  - Vertex1Id: 18
+    Vertex2Id: 275
+    Distance: 0.13037428
+  - Vertex1Id: 275
+    Vertex2Id: 276
+    Distance: 0.09494024
+  - Vertex1Id: 52
+    Vertex2Id: 275
+    Distance: 0.09275854
+  - Vertex1Id: 273
+    Vertex2Id: 274
+    Distance: 0.093538396
+  - Vertex1Id: 273
+    Vertex2Id: 276
+    Distance: 0.093526974
+  - Vertex1Id: 273
+    Vertex2Id: 275
+    Distance: 0.13287425
+  - Vertex1Id: 271
+    Vertex2Id: 273
+    Distance: 0.1329551
+  - Vertex1Id: 272
+    Vertex2Id: 275
+    Distance: 0.08816081
+  - Vertex1Id: 52
+    Vertex2Id: 272
+    Distance: 0.12660427
+  - Vertex1Id: 272
+    Vertex2Id: 273
+    Distance: 0.08990763
+  - Vertex1Id: 51
+    Vertex2Id: 272
+    Distance: 0.086845934
+  - Vertex1Id: 270
+    Vertex2Id: 271
+    Distance: 0.08820028
+  - Vertex1Id: 270
+    Vertex2Id: 273
+    Distance: 0.08996976
+  - Vertex1Id: 270
+    Vertex2Id: 272
+    Distance: 0.12606475
+  - Vertex1Id: 82
+    Vertex2Id: 270
+    Distance: 0.1266373
+  - Vertex1Id: 81
+    Vertex2Id: 82
+    Distance: 0.08530853
+  - Vertex1Id: 81
+    Vertex2Id: 270
+    Distance: 0.086852506
+  - Vertex1Id: 269
+    Vertex2Id: 272
+    Distance: 0.08175774
+  - Vertex1Id: 51
+    Vertex2Id: 269
+    Distance: 0.116456784
+  - Vertex1Id: 269
+    Vertex2Id: 270
+    Distance: 0.081853375
+  - Vertex1Id: 81
+    Vertex2Id: 269
+    Distance: 0.11663795
+  - Vertex1Id: 50
+    Vertex2Id: 269
+    Distance: 0.07580943
+  - Vertex1Id: 80
+    Vertex2Id: 81
+    Distance: 0.07716128
+  - Vertex1Id: 80
+    Vertex2Id: 269
+    Distance: 0.07591286
+  - Vertex1Id: 50
+    Vertex2Id: 80
+    Distance: 0.09755349
+  - Vertex1Id: 4
+    Vertex2Id: 80
+    Distance: 0.056299366
+  - Vertex1Id: 38
+    Vertex2Id: 86
+    Distance: 0.097168505
+  - Vertex1Id: 3
+    Vertex2Id: 86
+    Distance: 0.056189597
+  - Vertex1Id: 38
+    Vertex2Id: 287
+    Distance: 0.075589225
+  - Vertex1Id: 86
+    Vertex2Id: 287
+    Distance: 0.075589225
+  - Vertex1Id: 39
+    Vertex2Id: 287
+    Distance: 0.1161822
+  - Vertex1Id: 87
+    Vertex2Id: 287
+    Distance: 0.1161822
+  - Vertex1Id: 86
+    Vertex2Id: 87
+    Distance: 0.07690807
+  - Vertex1Id: 39
+    Vertex2Id: 290
+    Distance: 0.08661136
+  - Vertex1Id: 287
+    Vertex2Id: 290
+    Distance: 0.08156994
+  - Vertex1Id: 40
+    Vertex2Id: 290
+    Distance: 0.12623052
+  - Vertex1Id: 287
+    Vertex2Id: 288
+    Distance: 0.08156994
+  - Vertex1Id: 87
+    Vertex2Id: 288
+    Distance: 0.08661136
+  - Vertex1Id: 288
+    Vertex2Id: 290
+    Distance: 0.1256254
+  - Vertex1Id: 88
+    Vertex2Id: 288
+    Distance: 0.12623052
+  - Vertex1Id: 87
+    Vertex2Id: 88
+    Distance: 0.08500275
+  - Vertex1Id: 40
+    Vertex2Id: 293
+    Distance: 0.092457995
+  - Vertex1Id: 290
+    Vertex2Id: 293
+    Distance: 0.08787024
+  - Vertex1Id: 16
+    Vertex2Id: 293
+    Distance: 0.12994674
+  - Vertex1Id: 288
+    Vertex2Id: 289
+    Distance: 0.08786965
+  - Vertex1Id: 88
+    Vertex2Id: 289
+    Distance: 0.09245801
+  - Vertex1Id: 24
+    Vertex2Id: 289
+    Distance: 0.13014652
+  - Vertex1Id: 24
+    Vertex2Id: 88
+    Distance: 0.0885509
+  - Vertex1Id: 290
+    Vertex2Id: 291
+    Distance: 0.089710936
+  - Vertex1Id: 288
+    Vertex2Id: 291
+    Distance: 0.089710936
+  - Vertex1Id: 291
+    Vertex2Id: 293
+    Distance: 0.13249679
+  - Vertex1Id: 289
+    Vertex2Id: 291
+    Distance: 0.13249636
+  - Vertex1Id: 16
+    Vertex2Id: 134
+    Distance: 0.09390016
+  - Vertex1Id: 134
+    Vertex2Id: 293
+    Distance: 0.09058654
+  - Vertex1Id: 43
+    Vertex2Id: 134
+    Distance: 0.12843144
+  - Vertex1Id: 137
+    Vertex2Id: 289
+    Distance: 0.0908109
+  - Vertex1Id: 24
+    Vertex2Id: 137
+    Distance: 0.09801662
+  - Vertex1Id: 24
+    Vertex2Id: 91
+    Distance: 0.087842375
+  - Vertex1Id: 91
+    Vertex2Id: 137
+    Distance: 0.13105784
+  - Vertex1Id: 291
+    Vertex2Id: 292
+    Distance: 0.09320876
+  - Vertex1Id: 289
+    Vertex2Id: 292
+    Distance: 0.09479755
+  - Vertex1Id: 137
+    Vertex2Id: 292
+    Distance: 0.13222387
+  - Vertex1Id: 293
+    Vertex2Id: 294
+    Distance: 0.09479758
+  - Vertex1Id: 291
+    Vertex2Id: 294
+    Distance: 0.09320876
+  - Vertex1Id: 134
+    Vertex2Id: 294
+    Distance: 0.13468538
+  - Vertex1Id: 292
+    Vertex2Id: 294
+    Distance: 0.1378746
+  - Vertex1Id: 43
+    Vertex2Id: 280
+    Distance: 0.092457995
+  - Vertex1Id: 134
+    Vertex2Id: 280
+    Distance: 0.09058641
+  - Vertex1Id: 42
+    Vertex2Id: 280
+    Distance: 0.122551315
+  - Vertex1Id: 137
+    Vertex2Id: 302
+    Distance: 0.09011419
+  - Vertex1Id: 91
+    Vertex2Id: 302
+    Distance: 0.092741705
+  - Vertex1Id: 90
+    Vertex2Id: 91
+    Distance: 0.08530853
+  - Vertex1Id: 90
+    Vertex2Id: 302
+    Distance: 0.12296262
+  - Vertex1Id: 134
+    Vertex2Id: 135
+    Distance: 0.09634779
+  - Vertex1Id: 135
+    Vertex2Id: 294
+    Distance: 0.094939
+  - Vertex1Id: 135
+    Vertex2Id: 280
+    Distance: 0.13163126
+  - Vertex1Id: 138
+    Vertex2Id: 292
+    Distance: 0.0952281
+  - Vertex1Id: 137
+    Vertex2Id: 138
+    Distance: 0.098017104
+  - Vertex1Id: 138
+    Vertex2Id: 302
+    Distance: 0.13531964
+  - Vertex1Id: 294
+    Vertex2Id: 295
+    Distance: 0.097541004
+  - Vertex1Id: 292
+    Vertex2Id: 295
+    Distance: 0.097541004
+  - Vertex1Id: 135
+    Vertex2Id: 295
+    Distance: 0.13976106
+  - Vertex1Id: 138
+    Vertex2Id: 295
+    Distance: 0.13638686
+  - Vertex1Id: 42
+    Vertex2Id: 279
+    Distance: 0.08661143
+  - Vertex1Id: 279
+    Vertex2Id: 280
+    Distance: 0.08787142
+  - Vertex1Id: 41
+    Vertex2Id: 279
+    Distance: 0.11016068
+  - Vertex1Id: 299
+    Vertex2Id: 302
+    Distance: 0.088201456
+  - Vertex1Id: 90
+    Vertex2Id: 299
+    Distance: 0.08685257
+  - Vertex1Id: 89
+    Vertex2Id: 90
+    Distance: 0.07716128
+  - Vertex1Id: 89
+    Vertex2Id: 299
+    Distance: 0.11048404
+  - Vertex1Id: 280
+    Vertex2Id: 283
+    Distance: 0.09479758
+  - Vertex1Id: 135
+    Vertex2Id: 283
+    Distance: 0.09493886
+  - Vertex1Id: 279
+    Vertex2Id: 283
+    Distance: 0.12581845
+  - Vertex1Id: 135
+    Vertex2Id: 136
+    Distance: 0.099346556
+  - Vertex1Id: 136
+    Vertex2Id: 295
+    Distance: 0.0992452
+  - Vertex1Id: 136
+    Vertex2Id: 283
+    Distance: 0.13671678
+  - Vertex1Id: 139
+    Vertex2Id: 295
+    Distance: 0.0994648
+  - Vertex1Id: 138
+    Vertex2Id: 139
+    Distance: 0.09801677
+  - Vertex1Id: 136
+    Vertex2Id: 139
+    Distance: 0.14028336
+  - Vertex1Id: 138
+    Vertex2Id: 303
+    Distance: 0.0945635
+  - Vertex1Id: 302
+    Vertex2Id: 303
+    Distance: 0.09505446
+  - Vertex1Id: 299
+    Vertex2Id: 303
+    Distance: 0.12618893
+  - Vertex1Id: 139
+    Vertex2Id: 303
+    Distance: 0.13922381
+  - Vertex1Id: 41
+    Vertex2Id: 278
+    Distance: 0.075589225
+  - Vertex1Id: 278
+    Vertex2Id: 279
+    Distance: 0.08156884
+  - Vertex1Id: 1
+    Vertex2Id: 278
+    Distance: 0.086121954
+  - Vertex1Id: 74
+    Vertex2Id: 278
+    Distance: 0.075589225
+  - Vertex1Id: 279
+    Vertex2Id: 282
+    Distance: 0.08971081
+  - Vertex1Id: 282
+    Vertex2Id: 283
+    Distance: 0.09320876
+  - Vertex1Id: 278
+    Vertex2Id: 282
+    Distance: 0.11608556
+  - Vertex1Id: 74
+    Vertex2Id: 281
+    Distance: 0.11016068
+  - Vertex1Id: 278
+    Vertex2Id: 281
+    Distance: 0.08156884
+  - Vertex1Id: 281
+    Vertex2Id: 282
+    Distance: 0.08971081
+  - Vertex1Id: 75
+    Vertex2Id: 281
+    Distance: 0.08661143
+  - Vertex1Id: 283
+    Vertex2Id: 286
+    Distance: 0.097541004
+  - Vertex1Id: 136
+    Vertex2Id: 286
+    Distance: 0.099245034
+  - Vertex1Id: 282
+    Vertex2Id: 286
+    Distance: 0.13173743
+  - Vertex1Id: 11
+    Vertex2Id: 136
+    Distance: 0.101479866
+  - Vertex1Id: 11
+    Vertex2Id: 139
+    Distance: 0.09801742
+  - Vertex1Id: 11
+    Vertex2Id: 286
+    Distance: 0.1412917
+  - Vertex1Id: 139
+    Vertex2Id: 304
+    Distance: 0.09880256
+  - Vertex1Id: 303
+    Vertex2Id: 304
+    Distance: 0.097857445
+  - Vertex1Id: 11
+    Vertex2Id: 304
+    Distance: 0.14096384
+  - Vertex1Id: 75
+    Vertex2Id: 284
+    Distance: 0.12255092
+  - Vertex1Id: 281
+    Vertex2Id: 284
+    Distance: 0.08787083
+  - Vertex1Id: 76
+    Vertex2Id: 284
+    Distance: 0.09245801
+  - Vertex1Id: 281
+    Vertex2Id: 285
+    Distance: 0.12581845
+  - Vertex1Id: 282
+    Vertex2Id: 285
+    Distance: 0.09320876
+  - Vertex1Id: 285
+    Vertex2Id: 286
+    Distance: 0.097541004
+  - Vertex1Id: 284
+    Vertex2Id: 285
+    Distance: 0.09479755
+  - Vertex1Id: 145
+    Vertex2Id: 286
+    Distance: 0.0994648
+  - Vertex1Id: 11
+    Vertex2Id: 145
+    Distance: 0.09801726
+  - Vertex1Id: 145
+    Vertex2Id: 285
+    Distance: 0.13951148
+  - Vertex1Id: 76
+    Vertex2Id: 143
+    Distance: 0.13141422
+  - Vertex1Id: 143
+    Vertex2Id: 284
+    Distance: 0.0908109
+  - Vertex1Id: 22
+    Vertex2Id: 143
+    Distance: 0.09801662
+  - Vertex1Id: 144
+    Vertex2Id: 284
+    Distance: 0.1356331
+  - Vertex1Id: 144
+    Vertex2Id: 285
+    Distance: 0.0952281
+  - Vertex1Id: 144
+    Vertex2Id: 145
+    Distance: 0.09801677
+  - Vertex1Id: 143
+    Vertex2Id: 144
+    Distance: 0.098017104
+  - Vertex1Id: 11
+    Vertex2Id: 142
+    Distance: 0.10082902
+  - Vertex1Id: 142
+    Vertex2Id: 145
+    Distance: 0.1399111
+  - Vertex1Id: 142
+    Vertex2Id: 304
+    Distance: 0.099582754
+  - Vertex1Id: 300
+    Vertex2Id: 303
+    Distance: 0.093538396
+  - Vertex1Id: 300
+    Vertex2Id: 304
+    Distance: 0.13219257
+  - Vertex1Id: 299
+    Vertex2Id: 300
+    Distance: 0.089969635
+  - Vertex1Id: 143
+    Vertex2Id: 307
+    Distance: 0.09011419
+  - Vertex1Id: 22
+    Vertex2Id: 307
+    Distance: 0.12975426
+  - Vertex1Id: 79
+    Vertex2Id: 307
+    Distance: 0.092741705
+  - Vertex1Id: 144
+    Vertex2Id: 310
+    Distance: 0.0945635
+  - Vertex1Id: 143
+    Vertex2Id: 310
+    Distance: 0.13178082
+  - Vertex1Id: 307
+    Vertex2Id: 310
+    Distance: 0.09505446
+  - Vertex1Id: 145
+    Vertex2Id: 313
+    Distance: 0.09880256
+  - Vertex1Id: 144
+    Vertex2Id: 313
+    Distance: 0.1359637
+  - Vertex1Id: 142
+    Vertex2Id: 313
+    Distance: 0.099582605
+  - Vertex1Id: 310
+    Vertex2Id: 313
+    Distance: 0.097857445
+  - Vertex1Id: 301
+    Vertex2Id: 304
+    Distance: 0.097911604
+  - Vertex1Id: 142
+    Vertex2Id: 301
+    Distance: 0.13719893
+  - Vertex1Id: 300
+    Vertex2Id: 301
+    Distance: 0.093526974
+  - Vertex1Id: 296
+    Vertex2Id: 299
+    Distance: 0.08185227
+  - Vertex1Id: 296
+    Vertex2Id: 300
+    Distance: 0.11629507
+  - Vertex1Id: 89
+    Vertex2Id: 296
+    Distance: 0.07591286
+  - Vertex1Id: 7
+    Vertex2Id: 89
+    Distance: 0.056299366
+  - Vertex1Id: 7
+    Vertex2Id: 296
+    Distance: 0.086400844
+  - Vertex1Id: 59
+    Vertex2Id: 296
+    Distance: 0.07580943
+  - Vertex1Id: 297
+    Vertex2Id: 300
+    Distance: 0.08990763
+  - Vertex1Id: 296
+    Vertex2Id: 297
+    Distance: 0.08175774
+  - Vertex1Id: 59
+    Vertex2Id: 297
+    Distance: 0.11045612
+  - Vertex1Id: 297
+    Vertex2Id: 301
+    Distance: 0.12610781
+  - Vertex1Id: 60
+    Vertex2Id: 297
+    Distance: 0.086845934
+  - Vertex1Id: 297
+    Vertex2Id: 298
+    Distance: 0.088160224
+  - Vertex1Id: 60
+    Vertex2Id: 298
+    Distance: 0.12295718
+  - Vertex1Id: 298
+    Vertex2Id: 301
+    Distance: 0.09494021
+  - Vertex1Id: 61
+    Vertex2Id: 298
+    Distance: 0.092758544
+  - Vertex1Id: 141
+    Vertex2Id: 142
+    Distance: 0.099722914
+  - Vertex1Id: 141
+    Vertex2Id: 301
+    Distance: 0.095251724
+  - Vertex1Id: 141
+    Vertex2Id: 298
+    Distance: 0.1319261
+  - Vertex1Id: 141
+    Vertex2Id: 313
+    Distance: 0.14026676
+  - Vertex1Id: 140
+    Vertex2Id: 298
+    Distance: 0.09089308
+  - Vertex1Id: 61
+    Vertex2Id: 140
+    Distance: 0.12884921
+  - Vertex1Id: 140
+    Vertex2Id: 141
+    Distance: 0.09648654
+  - Vertex1Id: 19
+    Vertex2Id: 140
+    Distance: 0.094194256
+  - Vertex1Id: 312
+    Vertex2Id: 313
+    Distance: 0.097911604
+  - Vertex1Id: 141
+    Vertex2Id: 312
+    Distance: 0.09525157
+  - Vertex1Id: 140
+    Vertex2Id: 312
+    Distance: 0.13502339
+  - Vertex1Id: 310
+    Vertex2Id: 312
+    Distance: 0.13836229
+  - Vertex1Id: 140
+    Vertex2Id: 311
+    Distance: 0.090892956
+  - Vertex1Id: 19
+    Vertex2Id: 311
+    Distance: 0.13037473
+  - Vertex1Id: 311
+    Vertex2Id: 312
+    Distance: 0.09494021
+  - Vertex1Id: 58
+    Vertex2Id: 311
+    Distance: 0.092758544
+  - Vertex1Id: 309
+    Vertex2Id: 310
+    Distance: 0.093538396
+  - Vertex1Id: 309
+    Vertex2Id: 312
+    Distance: 0.093526974
+  - Vertex1Id: 309
+    Vertex2Id: 311
+    Distance: 0.13287383
+  - Vertex1Id: 307
+    Vertex2Id: 309
+    Distance: 0.1329551
+  - Vertex1Id: 308
+    Vertex2Id: 311
+    Distance: 0.088160224
+  - Vertex1Id: 58
+    Vertex2Id: 308
+    Distance: 0.12660427
+  - Vertex1Id: 308
+    Vertex2Id: 309
+    Distance: 0.08990763
+  - Vertex1Id: 57
+    Vertex2Id: 308
+    Distance: 0.086845934
+  - Vertex1Id: 306
+    Vertex2Id: 307
+    Distance: 0.088201456
+  - Vertex1Id: 306
+    Vertex2Id: 309
+    Distance: 0.089969635
+  - Vertex1Id: 306
+    Vertex2Id: 308
+    Distance: 0.12606388
+  - Vertex1Id: 79
+    Vertex2Id: 306
+    Distance: 0.12663814
+  - Vertex1Id: 78
+    Vertex2Id: 306
+    Distance: 0.08685257
+  - Vertex1Id: 305
+    Vertex2Id: 308
+    Distance: 0.08175774
+  - Vertex1Id: 57
+    Vertex2Id: 305
+    Distance: 0.116456784
+  - Vertex1Id: 305
+    Vertex2Id: 306
+    Distance: 0.08185227
+  - Vertex1Id: 78
+    Vertex2Id: 305
+    Distance: 0.11663795
+  - Vertex1Id: 56
+    Vertex2Id: 305
+    Distance: 0.07580943
+  - Vertex1Id: 77
+    Vertex2Id: 305
+    Distance: 0.07591286
+  - Vertex1Id: 56
+    Vertex2Id: 77
+    Distance: 0.09755349
+  - Vertex1Id: 37
+    Vertex2Id: 146
+    Distance: 0.12843145
+  - Vertex1Id: 15
+    Vertex2Id: 146
+    Distance: 0.09390016
+  - Vertex1Id: 37
+    Vertex2Id: 316
+    Distance: 0.09245801
+  - Vertex1Id: 146
+    Vertex2Id: 316
+    Distance: 0.09058704
+  - Vertex1Id: 36
+    Vertex2Id: 316
+    Distance: 0.12255092
+  - Vertex1Id: 147
+    Vertex2Id: 316
+    Distance: 0.1316317
+  - Vertex1Id: 146
+    Vertex2Id: 147
+    Distance: 0.09634779
+  - Vertex1Id: 36
+    Vertex2Id: 315
+    Distance: 0.08661143
+  - Vertex1Id: 315
+    Vertex2Id: 316
+    Distance: 0.08787083
+  - Vertex1Id: 35
+    Vertex2Id: 315
+    Distance: 0.11016068
+  - Vertex1Id: 316
+    Vertex2Id: 319
+    Distance: 0.09479755
+  - Vertex1Id: 147
+    Vertex2Id: 319
+    Distance: 0.0949389
+  - Vertex1Id: 315
+    Vertex2Id: 319
+    Distance: 0.12581845
+  - Vertex1Id: 148
+    Vertex2Id: 319
+    Distance: 0.13671722
+  - Vertex1Id: 147
+    Vertex2Id: 148
+    Distance: 0.099347144
+  - Vertex1Id: 35
+    Vertex2Id: 314
+    Distance: 0.075589225
+  - Vertex1Id: 314
+    Vertex2Id: 315
+    Distance: 0.08156884
+  - Vertex1Id: 3
+    Vertex2Id: 314
+    Distance: 0.086121954
+  - Vertex1Id: 86
+    Vertex2Id: 314
+    Distance: 0.075589225
+  - Vertex1Id: 315
+    Vertex2Id: 318
+    Distance: 0.08971081
+  - Vertex1Id: 318
+    Vertex2Id: 319
+    Distance: 0.09320876
+  - Vertex1Id: 314
+    Vertex2Id: 318
+    Distance: 0.11608556
+  - Vertex1Id: 319
+    Vertex2Id: 322
+    Distance: 0.097541004
+  - Vertex1Id: 148
+    Vertex2Id: 322
+    Distance: 0.099245064
+  - Vertex1Id: 318
+    Vertex2Id: 322
+    Distance: 0.13173743
+  - Vertex1Id: 12
+    Vertex2Id: 322
+    Distance: 0.14129177
+  - Vertex1Id: 12
+    Vertex2Id: 148
+    Distance: 0.10147928
+  - Vertex1Id: 86
+    Vertex2Id: 317
+    Distance: 0.1101614
+  - Vertex1Id: 314
+    Vertex2Id: 317
+    Distance: 0.08156994
+  - Vertex1Id: 317
+    Vertex2Id: 318
+    Distance: 0.089710936
+  - Vertex1Id: 87
+    Vertex2Id: 317
+    Distance: 0.08661136
+  - Vertex1Id: 318
+    Vertex2Id: 321
+    Distance: 0.09320876
+  - Vertex1Id: 321
+    Vertex2Id: 322
+    Distance: 0.097541004
+  - Vertex1Id: 317
+    Vertex2Id: 321
+    Distance: 0.12581767
+  - Vertex1Id: 157
+    Vertex2Id: 322
+    Distance: 0.0994648
+  - Vertex1Id: 12
+    Vertex2Id: 157
+    Distance: 0.09801734
+  - Vertex1Id: 157
+    Vertex2Id: 321
+    Distance: 0.13951148
+  - Vertex1Id: 12
+    Vertex2Id: 154
+    Distance: 0.100829005
+  - Vertex1Id: 154
+    Vertex2Id: 157
+    Distance: 0.13991116
+  - Vertex1Id: 87
+    Vertex2Id: 320
+    Distance: 0.12255092
+  - Vertex1Id: 317
+    Vertex2Id: 320
+    Distance: 0.08786965
+  - Vertex1Id: 320
+    Vertex2Id: 321
+    Distance: 0.09479755
+  - Vertex1Id: 88
+    Vertex2Id: 320
+    Distance: 0.09245801
+  - Vertex1Id: 157
+    Vertex2Id: 349
+    Distance: 0.09880256
+  - Vertex1Id: 154
+    Vertex2Id: 349
+    Distance: 0.09958268
+  - Vertex1Id: 153
+    Vertex2Id: 154
+    Distance: 0.099722914
+  - Vertex1Id: 153
+    Vertex2Id: 349
+    Distance: 0.1402668
+  - Vertex1Id: 156
+    Vertex2Id: 321
+    Distance: 0.0952281
+  - Vertex1Id: 156
+    Vertex2Id: 157
+    Distance: 0.09801677
+  - Vertex1Id: 156
+    Vertex2Id: 320
+    Distance: 0.1356331
+  - Vertex1Id: 156
+    Vertex2Id: 349
+    Distance: 0.1359637
+  - Vertex1Id: 88
+    Vertex2Id: 155
+    Distance: 0.13141422
+  - Vertex1Id: 155
+    Vertex2Id: 320
+    Distance: 0.0908109
+  - Vertex1Id: 155
+    Vertex2Id: 156
+    Distance: 0.098017104
+  - Vertex1Id: 24
+    Vertex2Id: 155
+    Distance: 0.09801662
+  - Vertex1Id: 348
+    Vertex2Id: 349
+    Distance: 0.097911604
+  - Vertex1Id: 153
+    Vertex2Id: 348
+    Distance: 0.09525164
+  - Vertex1Id: 152
+    Vertex2Id: 153
+    Distance: 0.09648654
+  - Vertex1Id: 152
+    Vertex2Id: 348
+    Distance: 0.13502343
+  - Vertex1Id: 156
+    Vertex2Id: 346
+    Distance: 0.0945635
+  - Vertex1Id: 346
+    Vertex2Id: 349
+    Distance: 0.097857445
+  - Vertex1Id: 155
+    Vertex2Id: 346
+    Distance: 0.13178082
+  - Vertex1Id: 346
+    Vertex2Id: 348
+    Distance: 0.13836229
+  - Vertex1Id: 155
+    Vertex2Id: 343
+    Distance: 0.09011419
+  - Vertex1Id: 24
+    Vertex2Id: 343
+    Distance: 0.12975426
+  - Vertex1Id: 343
+    Vertex2Id: 346
+    Distance: 0.09505446
+  - Vertex1Id: 91
+    Vertex2Id: 343
+    Distance: 0.092741705
+  - Vertex1Id: 347
+    Vertex2Id: 348
+    Distance: 0.09494021
+  - Vertex1Id: 152
+    Vertex2Id: 347
+    Distance: 0.09089302
+  - Vertex1Id: 20
+    Vertex2Id: 152
+    Distance: 0.094194256
+  - Vertex1Id: 20
+    Vertex2Id: 347
+    Distance: 0.13037477
+  - Vertex1Id: 64
+    Vertex2Id: 347
+    Distance: 0.092758544
+  - Vertex1Id: 345
+    Vertex2Id: 346
+    Distance: 0.093538396
+  - Vertex1Id: 345
+    Vertex2Id: 348
+    Distance: 0.093526974
+  - Vertex1Id: 343
+    Vertex2Id: 345
+    Distance: 0.1329551
+  - Vertex1Id: 345
+    Vertex2Id: 347
+    Distance: 0.13287383
+  - Vertex1Id: 342
+    Vertex2Id: 343
+    Distance: 0.088201456
+  - Vertex1Id: 91
+    Vertex2Id: 342
+    Distance: 0.12663814
+  - Vertex1Id: 342
+    Vertex2Id: 345
+    Distance: 0.089969635
+  - Vertex1Id: 90
+    Vertex2Id: 342
+    Distance: 0.08685257
+  - Vertex1Id: 344
+    Vertex2Id: 347
+    Distance: 0.088160224
+  - Vertex1Id: 64
+    Vertex2Id: 344
+    Distance: 0.12660427
+  - Vertex1Id: 344
+    Vertex2Id: 345
+    Distance: 0.08990763
+  - Vertex1Id: 342
+    Vertex2Id: 344
+    Distance: 0.12606388
+  - Vertex1Id: 63
+    Vertex2Id: 344
+    Distance: 0.086845934
+  - Vertex1Id: 341
+    Vertex2Id: 342
+    Distance: 0.08185227
+  - Vertex1Id: 90
+    Vertex2Id: 341
+    Distance: 0.11663795
+  - Vertex1Id: 341
+    Vertex2Id: 344
+    Distance: 0.08175774
+  - Vertex1Id: 63
+    Vertex2Id: 341
+    Distance: 0.116456784
+  - Vertex1Id: 89
+    Vertex2Id: 341
+    Distance: 0.07591286
+  - Vertex1Id: 62
+    Vertex2Id: 341
+    Distance: 0.07580943
+  - Vertex1Id: 62
+    Vertex2Id: 89
+    Distance: 0.09755349
+  - Vertex1Id: 32
+    Vertex2Id: 92
+    Distance: 0.097168505
+  - Vertex1Id: 2
+    Vertex2Id: 92
+    Distance: 0.056189597
+  - Vertex1Id: 32
+    Vertex2Id: 323
+    Distance: 0.075589225
+  - Vertex1Id: 92
+    Vertex2Id: 323
+    Distance: 0.075589225
+  - Vertex1Id: 33
+    Vertex2Id: 323
+    Distance: 0.1161822
+  - Vertex1Id: 93
+    Vertex2Id: 323
+    Distance: 0.1161822
+  - Vertex1Id: 92
+    Vertex2Id: 93
+    Distance: 0.07690807
+  - Vertex1Id: 33
+    Vertex2Id: 326
+    Distance: 0.08661136
+  - Vertex1Id: 323
+    Vertex2Id: 326
+    Distance: 0.08156994
+  - Vertex1Id: 34
+    Vertex2Id: 326
+    Distance: 0.12623052
+  - Vertex1Id: 323
+    Vertex2Id: 324
+    Distance: 0.08156994
+  - Vertex1Id: 93
+    Vertex2Id: 324
+    Distance: 0.08661136
+  - Vertex1Id: 324
+    Vertex2Id: 326
+    Distance: 0.1256254
+  - Vertex1Id: 94
+    Vertex2Id: 324
+    Distance: 0.12623052
+  - Vertex1Id: 93
+    Vertex2Id: 94
+    Distance: 0.08500275
+  - Vertex1Id: 34
+    Vertex2Id: 329
+    Distance: 0.09245801
+  - Vertex1Id: 326
+    Vertex2Id: 329
+    Distance: 0.08786965
+  - Vertex1Id: 15
+    Vertex2Id: 329
+    Distance: 0.12994713
+  - Vertex1Id: 146
+    Vertex2Id: 329
+    Distance: 0.090587124
+  - Vertex1Id: 324
+    Vertex2Id: 325
+    Distance: 0.08786965
+  - Vertex1Id: 94
+    Vertex2Id: 325
+    Distance: 0.09245801
+  - Vertex1Id: 25
+    Vertex2Id: 325
+    Distance: 0.1295637
+  - Vertex1Id: 25
+    Vertex2Id: 94
+    Distance: 0.08769335
+  - Vertex1Id: 326
+    Vertex2Id: 327
+    Distance: 0.089710936
+  - Vertex1Id: 324
+    Vertex2Id: 327
+    Distance: 0.089710936
+  - Vertex1Id: 327
+    Vertex2Id: 329
+    Distance: 0.13249636
+  - Vertex1Id: 325
+    Vertex2Id: 327
+    Distance: 0.13249636
+  - Vertex1Id: 146
+    Vertex2Id: 330
+    Distance: 0.13468535
+  - Vertex1Id: 329
+    Vertex2Id: 330
+    Distance: 0.09479755
+  - Vertex1Id: 327
+    Vertex2Id: 330
+    Distance: 0.09320876
+  - Vertex1Id: 147
+    Vertex2Id: 330
+    Distance: 0.09493897
+  - Vertex1Id: 149
+    Vertex2Id: 325
+    Distance: 0.089879334
+  - Vertex1Id: 25
+    Vertex2Id: 149
+    Distance: 0.09417543
+  - Vertex1Id: 25
+    Vertex2Id: 97
+    Distance: 0.08873987
+  - Vertex1Id: 97
+    Vertex2Id: 149
+    Distance: 0.12885976
+  - Vertex1Id: 327
+    Vertex2Id: 328
+    Distance: 0.09320876
+  - Vertex1Id: 325
+    Vertex2Id: 328
+    Distance: 0.09479755
+  - Vertex1Id: 328
+    Vertex2Id: 330
+    Distance: 0.1378746
+  - Vertex1Id: 149
+    Vertex2Id: 328
+    Distance: 0.13433778
+  - Vertex1Id: 147
+    Vertex2Id: 331
+    Distance: 0.13976105
+  - Vertex1Id: 330
+    Vertex2Id: 331
+    Distance: 0.097541004
+  - Vertex1Id: 328
+    Vertex2Id: 331
+    Distance: 0.097541004
+  - Vertex1Id: 148
+    Vertex2Id: 331
+    Distance: 0.09924514
+  - Vertex1Id: 149
+    Vertex2Id: 338
+    Distance: 0.09093443
+  - Vertex1Id: 97
+    Vertex2Id: 338
+    Distance: 0.092741705
+  - Vertex1Id: 96
+    Vertex2Id: 97
+    Distance: 0.08530853
+  - Vertex1Id: 96
+    Vertex2Id: 338
+    Distance: 0.12296262
+  - Vertex1Id: 150
+    Vertex2Id: 328
+    Distance: 0.09420979
+  - Vertex1Id: 149
+    Vertex2Id: 150
+    Distance: 0.09658414
+  - Vertex1Id: 150
+    Vertex2Id: 331
+    Distance: 0.13942644
+  - Vertex1Id: 150
+    Vertex2Id: 338
+    Distance: 0.1320189
+  - Vertex1Id: 148
+    Vertex2Id: 151
+    Distance: 0.14217146
+  - Vertex1Id: 151
+    Vertex2Id: 331
+    Distance: 0.09852386
+  - Vertex1Id: 150
+    Vertex2Id: 151
+    Distance: 0.099701956
+  - Vertex1Id: 12
+    Vertex2Id: 151
+    Distance: 0.10166709
+  - Vertex1Id: 335
+    Vertex2Id: 338
+    Distance: 0.088201456
+  - Vertex1Id: 96
+    Vertex2Id: 335
+    Distance: 0.08685257
+  - Vertex1Id: 95
+    Vertex2Id: 96
+    Distance: 0.07716128
+  - Vertex1Id: 95
+    Vertex2Id: 335
+    Distance: 0.11048404
+  - Vertex1Id: 150
+    Vertex2Id: 339
+    Distance: 0.095297314
+  - Vertex1Id: 338
+    Vertex2Id: 339
+    Distance: 0.09505446
+  - Vertex1Id: 151
+    Vertex2Id: 339
+    Distance: 0.13719985
+  - Vertex1Id: 335
+    Vertex2Id: 339
+    Distance: 0.12618893
+  - Vertex1Id: 151
+    Vertex2Id: 340
+    Distance: 0.09961628
+  - Vertex1Id: 12
+    Vertex2Id: 340
+    Distance: 0.14096376
+  - Vertex1Id: 339
+    Vertex2Id: 340
+    Distance: 0.097857445
+  - Vertex1Id: 154
+    Vertex2Id: 340
+    Distance: 0.09958268
+  - Vertex1Id: 332
+    Vertex2Id: 335
+    Distance: 0.08185227
+  - Vertex1Id: 95
+    Vertex2Id: 332
+    Distance: 0.07591286
+  - Vertex1Id: 6
+    Vertex2Id: 95
+    Distance: 0.056299366
+  - Vertex1Id: 6
+    Vertex2Id: 332
+    Distance: 0.086400844
+  - Vertex1Id: 65
+    Vertex2Id: 332
+    Distance: 0.07580943
+  - Vertex1Id: 336
+    Vertex2Id: 339
+    Distance: 0.093538396
+  - Vertex1Id: 335
+    Vertex2Id: 336
+    Distance: 0.089969635
+  - Vertex1Id: 336
+    Vertex2Id: 340
+    Distance: 0.13219257
+  - Vertex1Id: 332
+    Vertex2Id: 336
+    Distance: 0.11629507
+  - Vertex1Id: 337
+    Vertex2Id: 340
+    Distance: 0.097911604
+  - Vertex1Id: 154
+    Vertex2Id: 337
+    Distance: 0.13719887
+  - Vertex1Id: 336
+    Vertex2Id: 337
+    Distance: 0.093526974
+  - Vertex1Id: 153
+    Vertex2Id: 337
+    Distance: 0.09525164
+  - Vertex1Id: 332
+    Vertex2Id: 333
+    Distance: 0.08175774
+  - Vertex1Id: 65
+    Vertex2Id: 333
+    Distance: 0.11045612
+  - Vertex1Id: 333
+    Vertex2Id: 336
+    Distance: 0.08990763
+  - Vertex1Id: 333
+    Vertex2Id: 337
+    Distance: 0.12610781
+  - Vertex1Id: 66
+    Vertex2Id: 333
+    Distance: 0.086845934
+  - Vertex1Id: 334
+    Vertex2Id: 337
+    Distance: 0.09494021
+  - Vertex1Id: 153
+    Vertex2Id: 334
+    Distance: 0.13192606
+  - Vertex1Id: 333
+    Vertex2Id: 334
+    Distance: 0.088160224
+  - Vertex1Id: 66
+    Vertex2Id: 334
+    Distance: 0.12295718
+  - Vertex1Id: 152
+    Vertex2Id: 334
+    Distance: 0.09089302
+  - Vertex1Id: 67
+    Vertex2Id: 334
+    Distance: 0.092758544
+  - Vertex1Id: 67
+    Vertex2Id: 152
+    Distance: 0.12884916
+  - Vertex1Id: 26
+    Vertex2Id: 83
+    Distance: 0.097168505
+  - Vertex1Id: 26
+    Vertex2Id: 359
+    Distance: 0.075589225
+  - Vertex1Id: 83
+    Vertex2Id: 359
+    Distance: 0.075589225
+  - Vertex1Id: 27
+    Vertex2Id: 359
+    Distance: 0.1161822
+  - Vertex1Id: 84
+    Vertex2Id: 359
+    Distance: 0.1161822
+  - Vertex1Id: 27
+    Vertex2Id: 362
+    Distance: 0.08661136
+  - Vertex1Id: 359
+    Vertex2Id: 362
+    Distance: 0.08156994
+  - Vertex1Id: 28
+    Vertex2Id: 362
+    Distance: 0.12623052
+  - Vertex1Id: 359
+    Vertex2Id: 360
+    Distance: 0.08156884
+  - Vertex1Id: 84
+    Vertex2Id: 360
+    Distance: 0.08661143
+  - Vertex1Id: 360
+    Vertex2Id: 362
+    Distance: 0.12562454
+  - Vertex1Id: 85
+    Vertex2Id: 360
+    Distance: 0.12623136
+  - Vertex1Id: 28
+    Vertex2Id: 365
+    Distance: 0.09245801
+  - Vertex1Id: 362
+    Vertex2Id: 365
+    Distance: 0.08786965
+  - Vertex1Id: 14
+    Vertex2Id: 365
+    Distance: 0.12994717
+  - Vertex1Id: 360
+    Vertex2Id: 361
+    Distance: 0.08787083
+  - Vertex1Id: 85
+    Vertex2Id: 361
+    Distance: 0.09245801
+  - Vertex1Id: 23
+    Vertex2Id: 361
+    Distance: 0.12956367
+  - Vertex1Id: 362
+    Vertex2Id: 363
+    Distance: 0.089710936
+  - Vertex1Id: 360
+    Vertex2Id: 363
+    Distance: 0.08971081
+  - Vertex1Id: 363
+    Vertex2Id: 365
+    Distance: 0.13249636
+  - Vertex1Id: 361
+    Vertex2Id: 363
+    Distance: 0.13249636
+  - Vertex1Id: 14
+    Vertex2Id: 158
+    Distance: 0.09390016
+  - Vertex1Id: 158
+    Vertex2Id: 365
+    Distance: 0.09058706
+  - Vertex1Id: 31
+    Vertex2Id: 158
+    Distance: 0.1284315
+  - Vertex1Id: 161
+    Vertex2Id: 361
+    Distance: 0.08987931
+  - Vertex1Id: 23
+    Vertex2Id: 161
+    Distance: 0.09417543
+  - Vertex1Id: 82
+    Vertex2Id: 161
+    Distance: 0.12885977
+  - Vertex1Id: 363
+    Vertex2Id: 364
+    Distance: 0.09320876
+  - Vertex1Id: 361
+    Vertex2Id: 364
+    Distance: 0.09479755
+  - Vertex1Id: 161
+    Vertex2Id: 364
+    Distance: 0.13433777
+  - Vertex1Id: 365
+    Vertex2Id: 366
+    Distance: 0.09479755
+  - Vertex1Id: 363
+    Vertex2Id: 366
+    Distance: 0.09320876
+  - Vertex1Id: 158
+    Vertex2Id: 366
+    Distance: 0.13468531
+  - Vertex1Id: 364
+    Vertex2Id: 366
+    Distance: 0.1378746
+  - Vertex1Id: 31
+    Vertex2Id: 352
+    Distance: 0.09245801
+  - Vertex1Id: 158
+    Vertex2Id: 352
+    Distance: 0.09058711
+  - Vertex1Id: 30
+    Vertex2Id: 352
+    Distance: 0.12255092
+  - Vertex1Id: 161
+    Vertex2Id: 374
+    Distance: 0.09093445
+  - Vertex1Id: 82
+    Vertex2Id: 374
+    Distance: 0.092741705
+  - Vertex1Id: 81
+    Vertex2Id: 374
+    Distance: 0.12296262
+  - Vertex1Id: 158
+    Vertex2Id: 159
+    Distance: 0.09634779
+  - Vertex1Id: 159
+    Vertex2Id: 366
+    Distance: 0.09493894
+  - Vertex1Id: 159
+    Vertex2Id: 352
+    Distance: 0.13163173
+  - Vertex1Id: 162
+    Vertex2Id: 364
+    Distance: 0.09420976
+  - Vertex1Id: 161
+    Vertex2Id: 162
+    Distance: 0.09658414
+  - Vertex1Id: 162
+    Vertex2Id: 374
+    Distance: 0.13201891
+  - Vertex1Id: 366
+    Vertex2Id: 367
+    Distance: 0.097541004
+  - Vertex1Id: 364
+    Vertex2Id: 367
+    Distance: 0.097541004
+  - Vertex1Id: 159
+    Vertex2Id: 367
+    Distance: 0.13976102
+  - Vertex1Id: 162
+    Vertex2Id: 367
+    Distance: 0.13942641
+  - Vertex1Id: 30
+    Vertex2Id: 351
+    Distance: 0.08661143
+  - Vertex1Id: 351
+    Vertex2Id: 352
+    Distance: 0.08787083
+  - Vertex1Id: 29
+    Vertex2Id: 351
+    Distance: 0.11016068
+  - Vertex1Id: 371
+    Vertex2Id: 374
+    Distance: 0.088201456
+  - Vertex1Id: 81
+    Vertex2Id: 371
+    Distance: 0.08685257
+  - Vertex1Id: 80
+    Vertex2Id: 371
+    Distance: 0.11048404
+  - Vertex1Id: 352
+    Vertex2Id: 355
+    Distance: 0.09479755
+  - Vertex1Id: 159
+    Vertex2Id: 355
+    Distance: 0.09493893
+  - Vertex1Id: 351
+    Vertex2Id: 355
+    Distance: 0.12581845
+  - Vertex1Id: 159
+    Vertex2Id: 160
+    Distance: 0.099346556
+  - Vertex1Id: 160
+    Vertex2Id: 367
+    Distance: 0.09924507
+  - Vertex1Id: 160
+    Vertex2Id: 355
+    Distance: 0.13671686
+  - Vertex1Id: 163
+    Vertex2Id: 367
+    Distance: 0.09852384
+  - Vertex1Id: 162
+    Vertex2Id: 163
+    Distance: 0.099701956
+  - Vertex1Id: 160
+    Vertex2Id: 163
+    Distance: 0.14217183
+  - Vertex1Id: 162
+    Vertex2Id: 375
+    Distance: 0.095297344
+  - Vertex1Id: 374
+    Vertex2Id: 375
+    Distance: 0.09505446
+  - Vertex1Id: 371
+    Vertex2Id: 375
+    Distance: 0.12618893
+  - Vertex1Id: 163
+    Vertex2Id: 375
+    Distance: 0.13719986
+  - Vertex1Id: 29
+    Vertex2Id: 350
+    Distance: 0.075589225
+  - Vertex1Id: 350
+    Vertex2Id: 351
+    Distance: 0.08156884
+  - Vertex1Id: 2
+    Vertex2Id: 350
+    Distance: 0.086121954
+  - Vertex1Id: 92
+    Vertex2Id: 350
+    Distance: 0.075589225
+  - Vertex1Id: 351
+    Vertex2Id: 354
+    Distance: 0.08971081
+  - Vertex1Id: 354
+    Vertex2Id: 355
+    Distance: 0.09320876
+  - Vertex1Id: 350
+    Vertex2Id: 354
+    Distance: 0.11608556
+  - Vertex1Id: 92
+    Vertex2Id: 353
+    Distance: 0.1101614
+  - Vertex1Id: 350
+    Vertex2Id: 353
+    Distance: 0.08156994
+  - Vertex1Id: 353
+    Vertex2Id: 354
+    Distance: 0.089710936
+  - Vertex1Id: 93
+    Vertex2Id: 353
+    Distance: 0.08661136
+  - Vertex1Id: 355
+    Vertex2Id: 358
+    Distance: 0.097541004
+  - Vertex1Id: 160
+    Vertex2Id: 358
+    Distance: 0.099245146
+  - Vertex1Id: 354
+    Vertex2Id: 358
+    Distance: 0.13173743
+  - Vertex1Id: 13
+    Vertex2Id: 160
+    Distance: 0.10147988
+  - Vertex1Id: 13
+    Vertex2Id: 163
+    Distance: 0.10166731
+  - Vertex1Id: 13
+    Vertex2Id: 358
+    Distance: 0.1412916
+  - Vertex1Id: 163
+    Vertex2Id: 376
+    Distance: 0.099616304
+  - Vertex1Id: 375
+    Vertex2Id: 376
+    Distance: 0.097857445
+  - Vertex1Id: 13
+    Vertex2Id: 376
+    Distance: 0.14096393
+  - Vertex1Id: 93
+    Vertex2Id: 356
+    Distance: 0.12255092
+  - Vertex1Id: 353
+    Vertex2Id: 356
+    Distance: 0.08786965
+  - Vertex1Id: 94
+    Vertex2Id: 356
+    Distance: 0.09245801
+  - Vertex1Id: 353
+    Vertex2Id: 357
+    Distance: 0.12581767
+  - Vertex1Id: 354
+    Vertex2Id: 357
+    Distance: 0.09320876
+  - Vertex1Id: 357
+    Vertex2Id: 358
+    Distance: 0.097541004
+  - Vertex1Id: 356
+    Vertex2Id: 357
+    Distance: 0.09479755
+  - Vertex1Id: 169
+    Vertex2Id: 358
+    Distance: 0.09852385
+  - Vertex1Id: 13
+    Vertex2Id: 169
+    Distance: 0.10166687
+  - Vertex1Id: 169
+    Vertex2Id: 357
+    Distance: 0.13628483
+  - Vertex1Id: 94
+    Vertex2Id: 167
+    Distance: 0.12802851
+  - Vertex1Id: 167
+    Vertex2Id: 356
+    Distance: 0.08987933
+  - Vertex1Id: 25
+    Vertex2Id: 167
+    Distance: 0.09417543
+  - Vertex1Id: 168
+    Vertex2Id: 356
+    Distance: 0.13114826
+  - Vertex1Id: 168
+    Vertex2Id: 357
+    Distance: 0.09420978
+  - Vertex1Id: 168
+    Vertex2Id: 169
+    Distance: 0.099701956
+  - Vertex1Id: 167
+    Vertex2Id: 168
+    Distance: 0.09658414
+  - Vertex1Id: 13
+    Vertex2Id: 166
+    Distance: 0.10082901
+  - Vertex1Id: 166
+    Vertex2Id: 169
+    Distance: 0.14305939
+  - Vertex1Id: 166
+    Vertex2Id: 376
+    Distance: 0.099582896
+  - Vertex1Id: 372
+    Vertex2Id: 375
+    Distance: 0.093538396
+  - Vertex1Id: 372
+    Vertex2Id: 376
+    Distance: 0.13219257
+  - Vertex1Id: 371
+    Vertex2Id: 372
+    Distance: 0.089969635
+  - Vertex1Id: 167
+    Vertex2Id: 379
+    Distance: 0.09093443
+  - Vertex1Id: 25
+    Vertex2Id: 379
+    Distance: 0.13039191
+  - Vertex1Id: 97
+    Vertex2Id: 379
+    Distance: 0.092741705
+  - Vertex1Id: 168
+    Vertex2Id: 382
+    Distance: 0.09529732
+  - Vertex1Id: 167
+    Vertex2Id: 382
+    Distance: 0.13514295
+  - Vertex1Id: 379
+    Vertex2Id: 382
+    Distance: 0.09505446
+  - Vertex1Id: 169
+    Vertex2Id: 385
+    Distance: 0.0996163
+  - Vertex1Id: 168
+    Vertex2Id: 385
+    Distance: 0.140268
+  - Vertex1Id: 166
+    Vertex2Id: 385
+    Distance: 0.09958246
+  - Vertex1Id: 382
+    Vertex2Id: 385
+    Distance: 0.097857445
+  - Vertex1Id: 373
+    Vertex2Id: 376
+    Distance: 0.097911604
+  - Vertex1Id: 166
+    Vertex2Id: 373
+    Distance: 0.13719901
+  - Vertex1Id: 372
+    Vertex2Id: 373
+    Distance: 0.093526974
+  - Vertex1Id: 368
+    Vertex2Id: 371
+    Distance: 0.08185227
+  - Vertex1Id: 368
+    Vertex2Id: 372
+    Distance: 0.11629507
+  - Vertex1Id: 80
+    Vertex2Id: 368
+    Distance: 0.07591286
+  - Vertex1Id: 4
+    Vertex2Id: 368
+    Distance: 0.086400844
+  - Vertex1Id: 71
+    Vertex2Id: 368
+    Distance: 0.07580943
+  - Vertex1Id: 369
+    Vertex2Id: 372
+    Distance: 0.08990763
+  - Vertex1Id: 368
+    Vertex2Id: 369
+    Distance: 0.08175774
+  - Vertex1Id: 71
+    Vertex2Id: 369
+    Distance: 0.11045612
+  - Vertex1Id: 369
+    Vertex2Id: 373
+    Distance: 0.12610781
+  - Vertex1Id: 72
+    Vertex2Id: 369
+    Distance: 0.086845934
+  - Vertex1Id: 369
+    Vertex2Id: 370
+    Distance: 0.08816081
+  - Vertex1Id: 72
+    Vertex2Id: 370
+    Distance: 0.12295757
+  - Vertex1Id: 370
+    Vertex2Id: 373
+    Distance: 0.09494024
+  - Vertex1Id: 73
+    Vertex2Id: 370
+    Distance: 0.09275854
+  - Vertex1Id: 165
+    Vertex2Id: 166
+    Distance: 0.099722914
+  - Vertex1Id: 165
+    Vertex2Id: 373
+    Distance: 0.09525185
+  - Vertex1Id: 165
+    Vertex2Id: 370
+    Distance: 0.13192579
+  - Vertex1Id: 165
+    Vertex2Id: 385
+    Distance: 0.14026666
+  - Vertex1Id: 164
+    Vertex2Id: 370
+    Distance: 0.09089259
+  - Vertex1Id: 73
+    Vertex2Id: 164
+    Distance: 0.1288493
+  - Vertex1Id: 164
+    Vertex2Id: 165
+    Distance: 0.09648654
+  - Vertex1Id: 21
+    Vertex2Id: 164
+    Distance: 0.094194256
+  - Vertex1Id: 384
+    Vertex2Id: 385
+    Distance: 0.097911604
+  - Vertex1Id: 165
+    Vertex2Id: 384
+    Distance: 0.09525144
+  - Vertex1Id: 164
+    Vertex2Id: 384
+    Distance: 0.13502331
+  - Vertex1Id: 382
+    Vertex2Id: 384
+    Distance: 0.13836229
+  - Vertex1Id: 164
+    Vertex2Id: 383
+    Distance: 0.09089223
+  - Vertex1Id: 21
+    Vertex2Id: 383
+    Distance: 0.13037424
+  - Vertex1Id: 383
+    Vertex2Id: 384
+    Distance: 0.09494024
+  - Vertex1Id: 70
+    Vertex2Id: 383
+    Distance: 0.09275854
+  - Vertex1Id: 381
+    Vertex2Id: 382
+    Distance: 0.093538396
+  - Vertex1Id: 381
+    Vertex2Id: 384
+    Distance: 0.093526974
+  - Vertex1Id: 381
+    Vertex2Id: 383
+    Distance: 0.13287425
+  - Vertex1Id: 379
+    Vertex2Id: 381
+    Distance: 0.1329551
+  - Vertex1Id: 380
+    Vertex2Id: 383
+    Distance: 0.08816081
+  - Vertex1Id: 70
+    Vertex2Id: 380
+    Distance: 0.12660427
+  - Vertex1Id: 380
+    Vertex2Id: 381
+    Distance: 0.08990763
+  - Vertex1Id: 69
+    Vertex2Id: 380
+    Distance: 0.086845934
+  - Vertex1Id: 378
+    Vertex2Id: 379
+    Distance: 0.088201456
+  - Vertex1Id: 378
+    Vertex2Id: 381
+    Distance: 0.089969635
+  - Vertex1Id: 378
+    Vertex2Id: 380
+    Distance: 0.12606388
+  - Vertex1Id: 97
+    Vertex2Id: 378
+    Distance: 0.12663814
+  - Vertex1Id: 96
+    Vertex2Id: 378
+    Distance: 0.08685257
+  - Vertex1Id: 377
+    Vertex2Id: 380
+    Distance: 0.08175774
+  - Vertex1Id: 69
+    Vertex2Id: 377
+    Distance: 0.116456784
+  - Vertex1Id: 377
+    Vertex2Id: 378
+    Distance: 0.08185227
+  - Vertex1Id: 96
+    Vertex2Id: 377
+    Distance: 0.11663795
+  - Vertex1Id: 68
+    Vertex2Id: 377
+    Distance: 0.07580943
+  - Vertex1Id: 95
+    Vertex2Id: 377
+    Distance: 0.07591286
+  - Vertex1Id: 68
+    Vertex2Id: 95
+    Distance: 0.09755349
