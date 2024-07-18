@@ -14,12 +14,13 @@ namespace WireframePlexus {
         EntityQuery edgeEntityQuery;
 
         SharedComponentTypeHandle<PlexusObjectIdData> idTypeHandle;
+        NativeHashMap<int, PlexusObjectData> plexusObjectDataById;
 
         public void OnCreate(ref SystemState state) {
             plexusObjectEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<PlexusObjectData>().Build(ref state);
             edgeEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<LocalTransform, EdgeData, PostTransformMatrix, PlexusObjectIdData, EdgeAlphaData>().Build(ref state);
-
             idTypeHandle = state.GetSharedComponentTypeHandle<PlexusObjectIdData>();
+            plexusObjectDataById = new NativeHashMap<int, PlexusObjectData>(0, Allocator.Persistent);
         }
 
 
@@ -27,10 +28,15 @@ namespace WireframePlexus {
         public void OnUpdate(ref SystemState state) {
             idTypeHandle.Update(ref state);
             var plexusObjectEntries = plexusObjectEntityQuery.ToEntityArray(Allocator.Temp);
-            NativeHashMap<int, PlexusObjectData> plexusObjectDataById = new NativeHashMap<int, PlexusObjectData>(plexusObjectEntries.Length, Allocator.Temp);
+
+            if (plexusObjectDataById.Count != plexusObjectEntries.Length) {
+                plexusObjectDataById.Dispose();
+                plexusObjectDataById = new NativeHashMap<int, PlexusObjectData>(plexusObjectEntries.Length, Allocator.Persistent);
+            }
+
             foreach (Entity plexusObject in plexusObjectEntries) {
                 var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
-                plexusObjectDataById.Add(plexusObjectData.WireframePlexusObjectId, plexusObjectData);
+                plexusObjectDataById[plexusObjectData.WireframePlexusObjectId] = plexusObjectData;
             }
 
 

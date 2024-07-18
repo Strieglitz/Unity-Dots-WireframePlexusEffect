@@ -15,6 +15,7 @@ namespace WireframePlexus {
         EntityQuery vertexEntityQuery;
         EntityQuery edgeEntityQuery;
         SharedComponentTypeHandle<PlexusObjectIdData> idTypeHandle;
+        NativeHashMap<int, PlexusObjectData> plexusObjectDataById;
 
         [BurstCompile]
         public void OnCreate(ref SystemState state) {
@@ -23,21 +24,28 @@ namespace WireframePlexus {
             vertexEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<VertexColorData>().WithAll<PlexusObjectIdData>().Build(ref state);
             edgeEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<EdgeColorData>().WithAll<PlexusObjectIdData>().Build(ref state);
             idTypeHandle = state.GetSharedComponentTypeHandle<PlexusObjectIdData>();
+            plexusObjectDataById = new NativeHashMap<int, PlexusObjectData>(0, Allocator.Persistent);
         }
 
 
         public void OnUpdate(ref SystemState state) {
             idTypeHandle.Update(ref state);
-            NativeHashMap<int, PlexusObjectData> plexusObjectDataById = new NativeHashMap<int, PlexusObjectData>(0, Allocator.Temp);
-            
             var plexusObjectEntries = plexusObjectEntityQuery.ToEntityArray(Allocator.Temp);
+
+            if (plexusObjectDataById.Count != plexusObjectEntries.Length) {
+                plexusObjectDataById.Dispose();
+                plexusObjectDataById = new NativeHashMap<int, PlexusObjectData>(plexusObjectEntries.Length, Allocator.Persistent);
+            }
+
             foreach (Entity plexusObject in plexusObjectEntries) {
                 var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
                 plexusObjectDataById.Add(plexusObjectData.WireframePlexusObjectId, plexusObjectData);
             }
             new UpdateVertexJob { PlexusObjectDataById = plexusObjectDataById, IdTypeHandle = idTypeHandle }.ScheduleParallel(vertexEntityQuery);
             new UpdateEdgeJob { PlexusObjectDataById = plexusObjectDataById, IdTypeHandle = idTypeHandle }.ScheduleParallel(edgeEntityQuery);
-            
+
+            // id love to do that but iterating over the same query with toArray and with a IEntityJob
+            // seems to be a problem instead used plexusObjectSystem to reset the dataUpdated flag
             //new UpdatePlexusObjectJob { }.ScheduleParallel(plexusObjectEntityQuery);
         }
     }

@@ -17,6 +17,7 @@ namespace WireframePlexus {
         EntityQuery plexusObjectEntityQuery;
         EntityQuery vertexEntityQuery;
         SharedComponentTypeHandle<PlexusObjectIdData> idTypeHandle;
+        NativeHashMap<int, PlexusObjectData> plexusObjectDataById;
 
         [BurstCompile]
         public void OnCreate(ref SystemState state) {
@@ -24,16 +25,22 @@ namespace WireframePlexus {
             plexusObjectEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<PlexusObjectData>().Build(ref state);
             vertexEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<LocalTransform, VertexMovementData>().WithAll<PlexusObjectIdData, VertexAdditionalMovementData>().Build(ref state);
             idTypeHandle = state.GetSharedComponentTypeHandle<PlexusObjectIdData>();
+            plexusObjectDataById = new NativeHashMap<int, PlexusObjectData>(0, Allocator.Persistent);
         }
 
 
         public void OnUpdate(ref SystemState state) {
             idTypeHandle.Update(ref state);
             var plexusObjectEntries = plexusObjectEntityQuery.ToEntityArray(Allocator.Temp);
-            NativeHashMap<int, PlexusObjectData> plexusObjectDataById = new NativeHashMap<int, PlexusObjectData>(plexusObjectEntries.Length, Allocator.Temp);
+
+            if(plexusObjectDataById.Count != plexusObjectEntries.Length) {
+                plexusObjectDataById.Dispose();
+                plexusObjectDataById = new NativeHashMap<int, PlexusObjectData>(plexusObjectEntries.Length, Allocator.Persistent);
+            }
+
             foreach (Entity plexusObject in plexusObjectEntries) {
                 var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
-                plexusObjectDataById.Add(plexusObjectData.WireframePlexusObjectId, plexusObjectData);
+                plexusObjectDataById[plexusObjectData.WireframePlexusObjectId] = plexusObjectData;
             }
 
             new PlexusVertexMovementJob { DeltaTime = SystemAPI.Time.DeltaTime, CameraWolrdPos = (float3)Camera.main.transform.position, PlexusObjectDataById = plexusObjectDataById, IdTypeHandle = idTypeHandle }.ScheduleParallel(vertexEntityQuery);
