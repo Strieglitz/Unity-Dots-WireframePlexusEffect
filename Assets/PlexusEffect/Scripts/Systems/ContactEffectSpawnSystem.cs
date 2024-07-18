@@ -6,6 +6,7 @@ using Unity.Transforms;
 
 namespace WireframePlexus {
 
+    [UpdateAfter(typeof(PlexusObjectSystem))]
     public partial class ContactEffectSpawnSystem : SystemBase {
 
         EntityQuery plexusObjectEntityQuery;

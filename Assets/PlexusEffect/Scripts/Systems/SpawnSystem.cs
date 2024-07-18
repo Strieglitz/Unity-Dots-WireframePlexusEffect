@@ -10,7 +10,7 @@ namespace WireframePlexus {
 
     public partial class SpawnSystem : SystemBase {
 
-        int plexusObjectId = 0;
+        int nextPlexusObjectId = 0;
         Unity.Mathematics.Random random = new Unity.Mathematics.Random(1);
 
         protected override void OnCreate() {
@@ -20,7 +20,7 @@ namespace WireframePlexus {
         }
 
         public void SpawnPlexusObject( ref int PlexusObjectToSpawnId, 
-                                                    PlexusObjectData plexusObjectData, 
+                                                    PlexusGameObjectData plexusGameObjectData, 
                                                     PlexusGameObjectBase plexusGameObject, 
                                                     PlexusObjectPrecalculatedMeshData plexusObjectPrecalculatedMeshData) {
             // get spawn data singletons
@@ -39,6 +39,10 @@ namespace WireframePlexus {
             }
             wireframePlexusEdgeSpawnData = SystemAPI.GetSingleton<EdgeSpawnData>();
 
+            PlexusObjectToSpawnId = nextPlexusObjectId;
+            nextPlexusObjectId++;
+            PlexusObjectData plexusObjectData = plexusGameObjectData.ToPlexusObjectData();
+            plexusObjectData.WireframePlexusObjectId = PlexusObjectToSpawnId;
 
             // fill ecb to cache all strucutral changes and execute them at once later on ecb play
             var ecb = new EntityCommandBuffer(Allocator.Temp);
@@ -67,27 +71,26 @@ namespace WireframePlexus {
                 movementData.PointId = vertexId;
 
                 ecb.SetComponent(plexusVertexEntity, movementData);
-                ecb.SetComponent(plexusVertexEntity, new LocalTransform { Position = pos, Scale = plexusObjectData.VertexSize });
+                ecb.SetComponent(plexusVertexEntity, new LocalTransform { Position = pos, Scale = plexusGameObjectData.VertexSize });
                 ecb.SetComponent(plexusVertexEntity, new VertexColorData { Value = plexusObjectData.VertexColor });
-                ecb.AddSharedComponent(plexusVertexEntity, new PlexusObjectIdData { PlexusObjectId = plexusObjectId });
+                ecb.AddSharedComponent(plexusVertexEntity, new PlexusObjectIdData { PlexusObjectId = PlexusObjectToSpawnId });
                 ecb.AddComponent(plexusVertexEntity, new Parent { Value = wireframePlexusObjectEntity });
             }
 
             // create parent plexusObjectData because now the number of vertices is known
             plexusObjectData.ContactAnimationColorData = new NativeList<ContactEffectData>(Allocator.Persistent);
             plexusObjectData.VertexPositions = new NativeArray<float3>(plexusObjectPrecalculatedMeshData.precalculatedVertexMeshData.Length + 1, Allocator.Persistent);
-            plexusObjectData.WireframePlexusObjectId = plexusObjectId;
+            plexusObjectData.WireframePlexusObjectId = PlexusObjectToSpawnId;
             ecb.AddComponent(wireframePlexusObjectEntity, plexusObjectData);
 
             foreach (var edgeData in plexusObjectPrecalculatedMeshData.precalculatedEdgeMeshData) {
-                AddPlexusEdge(ref ecb, wireframePlexusEdgeSpawnData.WireframePlexusEdgeEntityPrefab, edgeData.Vertex1Id, edgeData.Vertex2Id, edgeData.Distance, wireframePlexusObjectEntity, plexusObjectData);
+                AddPlexusEdge(ref ecb, wireframePlexusEdgeSpawnData.WireframePlexusEdgeEntityPrefab, PlexusObjectToSpawnId, edgeData.Vertex1Id, edgeData.Vertex2Id, edgeData.Distance, wireframePlexusObjectEntity, plexusObjectData);
             }
-            PlexusObjectToSpawnId = plexusObjectId;
-            plexusObjectId++;
+
             ecb.Playback(EntityManager);
         }
 
-        public void SpawnPlexusObject(ref int PlexusObjectToSpawnId, PlexusObjectData plexusObjectData, PlexusGameObjectBase plexusGameObject, Mesh mesh) {
+        public void SpawnPlexusObject(ref int PlexusObjectToSpawnId, PlexusGameObjectData plexusGameObjectData, PlexusGameObjectBase plexusGameObject, Mesh mesh) {
             // get spawn data singletons
             if (!SystemAPI.TryGetSingleton<VertexSpawnData>(out VertexSpawnData wireframePlexusVertexSpawnData)) {
                 World.EntityManager.CreateSingleton<VertexSpawnData>();
@@ -103,6 +106,12 @@ namespace WireframePlexus {
                 World.EntityManager.CreateSingleton<EdgeSpawnData>();
             }
             wireframePlexusEdgeSpawnData = SystemAPI.GetSingleton<EdgeSpawnData>();
+
+
+            PlexusObjectToSpawnId = nextPlexusObjectId;
+            nextPlexusObjectId++;
+            PlexusObjectData plexusObjectData = plexusGameObjectData.ToPlexusObjectData();
+            plexusObjectData.WireframePlexusObjectId = PlexusObjectToSpawnId;
 
 
             // fill ecb to cache all strucutral changes and execute them at once later on ecb play
@@ -146,7 +155,7 @@ namespace WireframePlexus {
                 ecb.SetComponent(plexusVertexEntity, movementData);
                 ecb.SetComponent(plexusVertexEntity, new LocalTransform { Position = pos, Scale = plexusObjectData.VertexSize });
                 ecb.SetComponent(plexusVertexEntity, new VertexColorData { Value = plexusObjectData.VertexColor });
-                ecb.AddSharedComponent(plexusVertexEntity, new PlexusObjectIdData { PlexusObjectId = plexusObjectId });
+                ecb.AddSharedComponent(plexusVertexEntity, new PlexusObjectIdData { PlexusObjectId = PlexusObjectToSpawnId });
                 ecb.AddComponent(plexusVertexEntity, new Parent { Value = wireframePlexusObjectEntity });
 
                 pointId++;
@@ -158,7 +167,7 @@ namespace WireframePlexus {
                 EdgeColor = plexusObjectData.EdgeColor,
                 VertexColor = plexusObjectData.VertexColor,
                 VertexPositions = new NativeArray<float3>(pointId + 1, Allocator.Persistent),
-                WireframePlexusObjectId = plexusObjectId,
+                WireframePlexusObjectId = PlexusObjectToSpawnId,
                 EdgeThickness = plexusObjectData.EdgeThickness,
                 VertexSize = plexusObjectData.VertexSize,
                 MaxEdgeLengthPercent = plexusObjectData.MaxEdgeLengthPercent,
@@ -178,21 +187,18 @@ namespace WireframePlexus {
 
                 if (edgeConnections.Contains(EdgePair(pos1Id, pos2Id)) == false) {
                     edgeConnections.Add(EdgePair(pos1Id, pos2Id));
-                    AddPlexusEdge(ref ecb, wireframePlexusEdgeSpawnData.WireframePlexusEdgeEntityPrefab, pos1Id, pos2Id, math.distance(usedPositionById[pos1Id], usedPositionById[pos2Id]), wireframePlexusObjectEntity, plexusObjectData);
+                    AddPlexusEdge(ref ecb, wireframePlexusEdgeSpawnData.WireframePlexusEdgeEntityPrefab,PlexusObjectToSpawnId, pos1Id, pos2Id, math.distance(usedPositionById[pos1Id], usedPositionById[pos2Id]), wireframePlexusObjectEntity, plexusObjectData);
                 }
                 if (edgeConnections.Contains(EdgePair(pos2Id, pos3Id)) == false) {
                     edgeConnections.Add(EdgePair(pos2Id, pos3Id));
-                    AddPlexusEdge(ref ecb, wireframePlexusEdgeSpawnData.WireframePlexusEdgeEntityPrefab, pos2Id, pos3Id, math.distance(usedPositionById[pos2Id], usedPositionById[pos3Id]), wireframePlexusObjectEntity, plexusObjectData);
+                    AddPlexusEdge(ref ecb, wireframePlexusEdgeSpawnData.WireframePlexusEdgeEntityPrefab, PlexusObjectToSpawnId, pos2Id, pos3Id, math.distance(usedPositionById[pos2Id], usedPositionById[pos3Id]), wireframePlexusObjectEntity, plexusObjectData);
                 }
                 if (edgeConnections.Contains(EdgePair(pos1Id, pos3Id)) == false) {
                     edgeConnections.Add(EdgePair(pos1Id, pos3Id));
-                    AddPlexusEdge(ref ecb, wireframePlexusEdgeSpawnData.WireframePlexusEdgeEntityPrefab, pos1Id, pos3Id, math.distance(usedPositionById[pos3Id], usedPositionById[pos1Id]), wireframePlexusObjectEntity, plexusObjectData);
+                    AddPlexusEdge(ref ecb, wireframePlexusEdgeSpawnData.WireframePlexusEdgeEntityPrefab, PlexusObjectToSpawnId, pos1Id, pos3Id, math.distance(usedPositionById[pos3Id], usedPositionById[pos1Id]), wireframePlexusObjectEntity, plexusObjectData);
                 }
 
             }
-
-            PlexusObjectToSpawnId = plexusObjectId;
-            plexusObjectId++;
             ecb.Playback(EntityManager);
         }
         public static Tuple<int, int> EdgePair(int id1, int id2) {
@@ -205,13 +211,14 @@ namespace WireframePlexus {
 
         private void AddPlexusEdge(ref EntityCommandBuffer ecb,
                                 Entity plexusEdgePrefabEntity,
+                                int edgePlexusObjectId,
                                 int pointId1,
                                 int pointId2,
                                 float edgeLength,
                                 Entity parentEntity,
                                 PlexusObjectData plexusObjectData) {
             Entity plexusEdgeEntity = ecb.Instantiate(plexusEdgePrefabEntity);
-            ecb.AddSharedComponent(plexusEdgeEntity, new PlexusObjectIdData { PlexusObjectId = plexusObjectId });
+            ecb.AddSharedComponent(plexusEdgeEntity, new PlexusObjectIdData { PlexusObjectId = edgePlexusObjectId });
             ecb.SetComponent(plexusEdgeEntity, new EdgeData { Vertex1Index = pointId1, Vertex2Index = pointId2, Length = edgeLength });
             ecb.SetComponent(plexusEdgeEntity, new EdgeColorData { Value = plexusObjectData.EdgeColor });
             ecb.AddComponent(plexusEdgeEntity, new Parent { Value = parentEntity });

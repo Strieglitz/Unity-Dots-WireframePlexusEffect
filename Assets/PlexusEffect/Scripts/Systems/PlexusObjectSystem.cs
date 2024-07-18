@@ -6,6 +6,7 @@ using Unity.Transforms;
 
 namespace WireframePlexus {
 
+    [UpdateAfter(typeof(PlexusObjectDeleteSystem))]
     public partial class PlexusObjectSystem : SystemBase {
 
         EntityQuery plexusObjectEntityQuery;
@@ -30,7 +31,8 @@ namespace WireframePlexus {
                 var plexusObjectData = EntityManager.GetComponentData<PlexusObjectData>(entity);
                 plexusObjectData.WorldRotation = gameobjectReference.PlexusGameObject.transform.rotation;
                 plexusObjectData.WorldPosition = gameobjectReference.PlexusGameObject.transform.position;
-                //plexusObjectData.DataUpdated = false;
+                // set the update flag to false, because a new frame beginns and updated happen afterwards
+                plexusObjectData.DataUpdated = false;
                 EntityManager.SetComponentData(entity, plexusObjectData);
 
             }

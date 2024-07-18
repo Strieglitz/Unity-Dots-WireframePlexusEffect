@@ -5,11 +5,12 @@ using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
 
 
+
 namespace WireframePlexus {
 
     [UpdateBefore(typeof(ContactEffectAnimationSystem))]
-    [UpdateAfter(typeof(PlexusObjectSystem))]
-    public partial struct PlexusObjectUpdateSystem : ISystem {
+    [UpdateAfter(typeof(PlexusObjectRecieveUpdatedDataSystem))]
+    public partial struct PlexusObjectUpdateDataSystem : ISystem {
 
         EntityQuery plexusObjectEntityQuery;
         EntityQuery vertexEntityQuery;
@@ -39,7 +40,7 @@ namespace WireframePlexus {
 
             foreach (Entity plexusObject in plexusObjectEntries) {
                 var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
-                plexusObjectDataById.Add(plexusObjectData.WireframePlexusObjectId, plexusObjectData);
+                plexusObjectDataById[plexusObjectData.WireframePlexusObjectId] = plexusObjectData;
             }
             new UpdateVertexJob { PlexusObjectDataById = plexusObjectDataById, IdTypeHandle = idTypeHandle }.ScheduleParallel(vertexEntityQuery);
             new UpdateEdgeJob { PlexusObjectDataById = plexusObjectDataById, IdTypeHandle = idTypeHandle }.ScheduleParallel(edgeEntityQuery);

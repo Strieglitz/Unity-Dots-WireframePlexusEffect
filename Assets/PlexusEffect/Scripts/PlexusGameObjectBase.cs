@@ -11,52 +11,14 @@ namespace WireframePlexus {
         bool genrateOnStart = true;
 
         [SerializeField]
-        [Tooltip("If this gameobject has a Meshrenderer should it get disableb when the plexusObject is created")]
+        [Tooltip("If this gameobject has a MeshRenderer should it get disableb when the plexusObject is created")]
         bool disableMeshRenderer = true;
 
-        [Tooltip("Only draw the wireframes edge when its length is smaller than x Percent of the original length in the mesh")]
-        public float MaxEdgeLengthPercent;
-
-        [Tooltip("how thick the edges gonna be")]
-        public float EdgeThickness;
-
-        [Tooltip("The size of the visible vertex particle")]
-        public float VertexSize;
-
-        [Tooltip("The vertices are always in motion, relative to their original position in the mesh, this value sets how far from the original possition they can go")]
-        public float MaxVertexMoveDistance;
-
-        [Tooltip("The Minimum Speed a Vertex will have to move randomly around its original position in the mesh")]
-        public float MinVertexMoveSpeed;
-
-        [Tooltip("The Maximum Speed a Vertex will have to move randomly around its original position in the mesh")]
-        public float MaxVertexMoveSpeed;
-
-
-        [ColorUsage(true, true)]
-        public Color VertexColor;
-        public float4 VertexColorFloat4 => new float4(VertexColor.r, VertexColor.g, VertexColor.b, VertexColor.a);
-
-
-        [ColorUsage(true, true)]
-        public Color EdgeColor;
-        public float4 EdgeColorFloat4 => new float4(EdgeColor.r, EdgeColor.g, EdgeColor.b, EdgeColor.a);
+        [SerializeField]
+        [Tooltip("If this is checked, when this gameobject gets destoryed the plexusObject also gets destroyed, recommended otherwise it will live as ling as the subscene or until it gets destriyed by hand")]
+        bool destroyPlexusObjectWhenGameobjectGetsDestroyed = true;
 
         protected int wireframePlexusObjectId;
-
-        private PlexusObjectData getPlexusObjectData => new PlexusObjectData {
-            WireframePlexusObjectId = wireframePlexusObjectId,
-            MaxEdgeLengthPercent = MaxEdgeLengthPercent,
-            EdgeThickness = EdgeThickness,
-            MaxVertexMoveDistance = MaxVertexMoveDistance,
-            MinVertexMoveSpeed = MinVertexMoveSpeed,
-            MaxVertexMoveSpeed = MaxVertexMoveSpeed,
-            VertexColor = VertexColorFloat4,
-            EdgeColor = EdgeColorFloat4,
-            VertexSize = VertexSize,
-            WorldPosition = transform.position,
-            WorldRotation = transform.rotation,
-        };
 
         protected void Start() {
             if (genrateOnStart) {
@@ -64,23 +26,33 @@ namespace WireframePlexus {
             }
         }
 
+        private void OnDestroy() {
+            if (destroyPlexusObjectWhenGameobjectGetsDestroyed) {
+                try {
+                    World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<PlexusObjectDeleteSystem>().DeletePlexusObject(wireframePlexusObjectId);
+                } catch { 
+                    Debug.LogWarning("PlexusObjectDeleteSystem not found when destroying the PlexusObject, this is normal if the scene gets destroyed");
+                }
+                
+            }
+        }
+
+        public PlexusGameObjectData PlexusGameObjectObjectData;
 
         public void UpdatePlexusObjectData() {
-            PlexusObjectData plexusObjectData = getPlexusObjectData;
-            World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<PlexusObjectUpdateRecieveSystem>().UpdatePlexusObjectData(plexusObjectData);
+            World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<PlexusObjectRecieveUpdatedDataSystem>().UpdatePlexusObjectData(PlexusGameObjectObjectData, wireframePlexusObjectId);
         }
 
         public void GenerateECSPlexusObject() {
             SpawnSystem spawnSystem = World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<SpawnSystem>();
-            PlexusObjectData plexusObjectData = getPlexusObjectData;
-            GenerateECSPlexusObject(spawnSystem, plexusObjectData);
+            GenerateECSPlexusObject(spawnSystem, PlexusGameObjectObjectData);
             if (disableMeshRenderer) {
                 if (GetComponent<MeshRenderer>()) {
                     GetComponent<MeshRenderer>().enabled = false;
                 }
             }
         }
-        protected abstract void GenerateECSPlexusObject(SpawnSystem spawnSystem, PlexusObjectData plexusObjectData);
+        protected abstract void GenerateECSPlexusObject(SpawnSystem spawnSystem, PlexusGameObjectData plexusGameObjectData);
 
         /*** Set a contact animation on the plexus object
          *         * @param contactColor the color of the contact animation
