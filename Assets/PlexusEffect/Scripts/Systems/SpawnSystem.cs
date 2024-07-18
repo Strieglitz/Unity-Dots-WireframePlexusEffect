@@ -62,13 +62,13 @@ namespace WireframePlexus {
                 movementData.Position = pos;
                 movementData.PositionTarget = pos;
 
-                movementData.MoveSpeed = UnityEngine.Random.Range(plexusGameObject.MinVertexMoveSpeed, plexusGameObject.MaxVertexMoveSpeed);
+                movementData.MoveSpeed = UnityEngine.Random.Range(plexusObjectData.MinVertexMoveSpeed, plexusObjectData.MaxVertexMoveSpeed);
                 movementData.Random = new Unity.Mathematics.Random(random.NextUInt());
                 movementData.PointId = vertexId;
 
                 ecb.SetComponent(plexusVertexEntity, movementData);
-                ecb.SetComponent(plexusVertexEntity, new LocalTransform { Position = pos, Scale = plexusGameObject.VertexSize });
-                ecb.SetComponent(plexusVertexEntity, new VertexColorData { Value = plexusGameObject.VertexColor });
+                ecb.SetComponent(plexusVertexEntity, new LocalTransform { Position = pos, Scale = plexusObjectData.VertexSize });
+                ecb.SetComponent(plexusVertexEntity, new VertexColorData { Value = plexusObjectData.VertexColor });
                 ecb.AddSharedComponent(plexusVertexEntity, new PlexusObjectIdData { PlexusObjectId = plexusObjectId });
                 ecb.AddComponent(plexusVertexEntity, new Parent { Value = wireframePlexusObjectEntity });
             }
@@ -77,8 +77,6 @@ namespace WireframePlexus {
             plexusObjectData.ContactAnimationColorData = new NativeList<ContactEffectData>(Allocator.Persistent);
             plexusObjectData.VertexPositions = new NativeArray<float3>(plexusObjectPrecalculatedMeshData.precalculatedVertexMeshData.Length + 1, Allocator.Persistent);
             plexusObjectData.WireframePlexusObjectId = plexusObjectId;
-            plexusObjectData.WorldPosition = plexusGameObject.transform.position;
-            plexusObjectData.WorldRotation = plexusGameObject.transform.rotation;
             ecb.AddComponent(wireframePlexusObjectEntity, plexusObjectData);
 
             foreach (var edgeData in plexusObjectPrecalculatedMeshData.precalculatedEdgeMeshData) {
@@ -141,13 +139,13 @@ namespace WireframePlexus {
                 movementData.Position = pos;
                 movementData.PositionTarget = pos;
 
-                movementData.MoveSpeed = UnityEngine.Random.Range(plexusGameObject.MinVertexMoveSpeed, plexusGameObject.MaxVertexMoveSpeed);
+                movementData.MoveSpeed = UnityEngine.Random.Range(plexusObjectData.MinVertexMoveSpeed, plexusObjectData.MaxVertexMoveSpeed);
                 movementData.Random = new Unity.Mathematics.Random(random.NextUInt());
                 movementData.PointId = pointId;
 
                 ecb.SetComponent(plexusVertexEntity, movementData);
-                ecb.SetComponent(plexusVertexEntity, new LocalTransform { Position = pos, Scale = plexusGameObject.VertexSize });
-                ecb.SetComponent(plexusVertexEntity, new VertexColorData { Value = plexusGameObject.VertexColor });
+                ecb.SetComponent(plexusVertexEntity, new LocalTransform { Position = pos, Scale = plexusObjectData.VertexSize });
+                ecb.SetComponent(plexusVertexEntity, new VertexColorData { Value = plexusObjectData.VertexColor });
                 ecb.AddSharedComponent(plexusVertexEntity, new PlexusObjectIdData { PlexusObjectId = plexusObjectId });
                 ecb.AddComponent(plexusVertexEntity, new Parent { Value = wireframePlexusObjectEntity });
 
@@ -167,8 +165,8 @@ namespace WireframePlexus {
                 MaxVertexMoveSpeed = plexusObjectData.MaxVertexMoveSpeed,
                 MinVertexMoveSpeed = plexusObjectData.MinVertexMoveSpeed,
                 MaxVertexMoveDistance = plexusObjectData.MaxVertexMoveDistance,
-                WorldPosition = plexusGameObject.transform.position,
-                WorldRotation = plexusGameObject.transform.rotation
+                WorldPosition = plexusObjectData.WorldPosition,
+                WorldRotation = plexusObjectData.WorldRotation
 
             });
             // create the edge entities without duplicates

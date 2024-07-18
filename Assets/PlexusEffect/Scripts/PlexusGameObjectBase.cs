@@ -10,41 +10,53 @@ namespace WireframePlexus {
         [Tooltip("Generate the Plexus ECS Object on Start?")]
         bool genrateOnStart = true;
 
-        [field: SerializeField]
+        [SerializeField]
+        [Tooltip("If this gameobject has a Meshrenderer should it get disableb when the plexusObject is created")]
+        bool disableMeshRenderer = true;
+
         [Tooltip("Only draw the wireframes edge when its length is smaller than x Percent of the original length in the mesh")]
-        public float MaxEdgeLengthPercent { get; private set; }
+        public float MaxEdgeLengthPercent;
 
-        [field: SerializeField]
         [Tooltip("how thick the edges gonna be")]
-        public float EdgeThickness { get; private set; }
+        public float EdgeThickness;
 
-        [field: SerializeField]
         [Tooltip("The size of the visible vertex particle")]
-        public float VertexSize { get; private set; }
+        public float VertexSize;
 
-        [field: SerializeField]
         [Tooltip("The vertices are always in motion, relative to their original position in the mesh, this value sets how far from the original possition they can go")]
-        public float MaxVertexMoveDistance { get; private set; }
+        public float MaxVertexMoveDistance;
 
-        [field: SerializeField]
         [Tooltip("The Minimum Speed a Vertex will have to move randomly around its original position in the mesh")]
-        public float MinVertexMoveSpeed { get; private set; }
+        public float MinVertexMoveSpeed;
 
-        [field: SerializeField]
         [Tooltip("The Maximum Speed a Vertex will have to move randomly around its original position in the mesh")]
-        public float MaxVertexMoveSpeed { get; private set; }
+        public float MaxVertexMoveSpeed;
 
-        [field: SerializeField]
-        [ColorUsage(true, true)]
-        Color vertexColor;
-        public float4 VertexColor => new float4(vertexColor.r, vertexColor.g, vertexColor.b, vertexColor.a);
 
-        [field: SerializeField]
         [ColorUsage(true, true)]
-        Color edgeColor;
-        public float4 EdgeColor => new float4(edgeColor.r, edgeColor.g, edgeColor.b, edgeColor.a);
+        public Color VertexColor;
+        public float4 VertexColorFloat4 => new float4(VertexColor.r, VertexColor.g, VertexColor.b, VertexColor.a);
+
+
+        [ColorUsage(true, true)]
+        public Color EdgeColor;
+        public float4 EdgeColorFloat4 => new float4(EdgeColor.r, EdgeColor.g, EdgeColor.b, EdgeColor.a);
 
         protected int wireframePlexusObjectId;
+
+        private PlexusObjectData getPlexusObjectData => new PlexusObjectData {
+            WireframePlexusObjectId = wireframePlexusObjectId,
+            MaxEdgeLengthPercent = MaxEdgeLengthPercent,
+            EdgeThickness = EdgeThickness,
+            MaxVertexMoveDistance = MaxVertexMoveDistance,
+            MinVertexMoveSpeed = MinVertexMoveSpeed,
+            MaxVertexMoveSpeed = MaxVertexMoveSpeed,
+            VertexColor = VertexColorFloat4,
+            EdgeColor = EdgeColorFloat4,
+            VertexSize = VertexSize,
+            WorldPosition = transform.position,
+            WorldRotation = transform.rotation,
+        };
 
         protected void Start() {
             if (genrateOnStart) {
@@ -52,19 +64,21 @@ namespace WireframePlexus {
             }
         }
 
-        private void GenerateECSPlexusObject() {
+
+        public void UpdatePlexusObjectData() {
+            PlexusObjectData plexusObjectData = getPlexusObjectData;
+            World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<PlexusObjectUpdateRecieveSystem>().UpdatePlexusObjectData(plexusObjectData);
+        }
+
+        public void GenerateECSPlexusObject() {
             SpawnSystem spawnSystem = World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<SpawnSystem>();
-            PlexusObjectData plexusObjectData = new PlexusObjectData {
-                MaxEdgeLengthPercent = MaxEdgeLengthPercent,
-                EdgeThickness = EdgeThickness,
-                MaxVertexMoveDistance = MaxVertexMoveDistance,
-                MinVertexMoveSpeed = MinVertexMoveSpeed,
-                MaxVertexMoveSpeed = MaxVertexMoveSpeed,
-                VertexColor = VertexColor,
-                EdgeColor = EdgeColor,
-                VertexSize = VertexSize,
-            };
+            PlexusObjectData plexusObjectData = getPlexusObjectData;
             GenerateECSPlexusObject(spawnSystem, plexusObjectData);
+            if (disableMeshRenderer) {
+                if (GetComponent<MeshRenderer>()) {
+                    GetComponent<MeshRenderer>().enabled = false;
+                }
+            }
         }
         protected abstract void GenerateECSPlexusObject(SpawnSystem spawnSystem, PlexusObjectData plexusObjectData);
 

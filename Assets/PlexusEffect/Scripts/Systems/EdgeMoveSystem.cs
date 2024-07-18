@@ -11,35 +11,30 @@ namespace WireframePlexus {
     [UpdateAfter(typeof(VertexMoveSystem))]
     public partial struct EdgeMoveSystem : ISystem {
         EntityQuery plexusObjectEntityQuery;
-        EntityQuery plexusEdgeEntityQuery;
-        NativeHashMap<int, PlexusObjectData> plexusObjectDataById;
+        EntityQuery edgeEntityQuery;
 
         SharedComponentTypeHandle<PlexusObjectIdData> idTypeHandle;
 
         public void OnCreate(ref SystemState state) {
             plexusObjectEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<PlexusObjectData>().Build(ref state);
-            plexusEdgeEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<LocalTransform, EdgeData, PostTransformMatrix, PlexusObjectIdData, EdgeAlphaData>().Build(ref state);
-            plexusObjectDataById = new NativeHashMap<int, PlexusObjectData>(0, Allocator.Persistent);
+            edgeEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<LocalTransform, EdgeData, PostTransformMatrix, PlexusObjectIdData, EdgeAlphaData>().Build(ref state);
+
             idTypeHandle = state.GetSharedComponentTypeHandle<PlexusObjectIdData>();
         }
 
-        public void OnDestroy(ref SystemState state) {
-            plexusObjectDataById.Dispose();
-        }
+
 
         public void OnUpdate(ref SystemState state) {
             idTypeHandle.Update(ref state);
             var plexusObjectEntries = plexusObjectEntityQuery.ToEntityArray(Allocator.Temp);
-            if (plexusObjectEntries.Length != plexusObjectDataById.Count) {
-                plexusObjectDataById.Dispose();
-                plexusObjectDataById = new NativeHashMap<int, PlexusObjectData>(plexusObjectEntries.Length, Allocator.Persistent);
-                foreach (Entity plexusObject in plexusObjectEntries) {
-                    var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
-                    plexusObjectDataById.Add(plexusObjectData.WireframePlexusObjectId, plexusObjectData);
-                }
+            NativeHashMap<int, PlexusObjectData> plexusObjectDataById = new NativeHashMap<int, PlexusObjectData>(plexusObjectEntries.Length, Allocator.Temp);
+            foreach (Entity plexusObject in plexusObjectEntries) {
+                var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
+                plexusObjectDataById.Add(plexusObjectData.WireframePlexusObjectId, plexusObjectData);
             }
 
-            new PlexusEdgeMovementJob { DeltaTime = SystemAPI.Time.DeltaTime, IdTypeHandle = idTypeHandle, PlexusObjectDataById = plexusObjectDataById }.ScheduleParallel(plexusEdgeEntityQuery);
+
+            new PlexusEdgeMovementJob { DeltaTime = SystemAPI.Time.DeltaTime, IdTypeHandle = idTypeHandle, PlexusObjectDataById = plexusObjectDataById }.ScheduleParallel(edgeEntityQuery);
         }
 
         [BurstCompile]

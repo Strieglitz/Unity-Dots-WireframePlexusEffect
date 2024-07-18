@@ -9,7 +9,7 @@ namespace WireframePlexus {
 
         protected override void GenerateECSPlexusObject(SpawnSystem spawnSystem, PlexusObjectData plexusObjectData) {
             spawnSystem.SpawnPlexusObject(ref wireframePlexusObjectId,plexusObjectData, this, GetComponent<MeshFilter>().mesh);
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
+
         }
     }
 }

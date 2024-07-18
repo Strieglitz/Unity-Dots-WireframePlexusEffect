@@ -20,6 +20,7 @@ namespace WireframePlexus {
         public int WireframePlexusObjectId;
         public float3 WorldPosition;
         public quaternion WorldRotation;
+        public bool DataUpdated;
 
         public void Dispose() {
             VertexPositions.Dispose();
