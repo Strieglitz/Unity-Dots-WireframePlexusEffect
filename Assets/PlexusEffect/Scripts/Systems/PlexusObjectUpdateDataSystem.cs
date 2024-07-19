@@ -3,6 +3,7 @@ using Unity.Burst.Intrinsics;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
+using Unity.Transforms;
 
 
 
@@ -22,7 +23,7 @@ namespace WireframePlexus {
         public void OnCreate(ref SystemState state) {
             state.RequireForUpdate<VertexMovementData>();
             plexusObjectEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<PlexusObjectData>().Build(ref state);
-            vertexEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<VertexColorData>().WithAll<PlexusObjectIdData>().Build(ref state);
+            vertexEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<VertexColorData, LocalTransform>().WithAll<PlexusObjectIdData>().Build(ref state);
             edgeEntityQuery = new EntityQueryBuilder(Allocator.Temp).WithAllRW<EdgeColorData>().WithAll<PlexusObjectIdData>().Build(ref state);
             idTypeHandle = state.GetSharedComponentTypeHandle<PlexusObjectIdData>();
             plexusObjectDataById = new NativeHashMap<int, PlexusObjectData>(0, Allocator.Persistent);
@@ -62,10 +63,10 @@ namespace WireframePlexus {
             return PlexusObjectDataById[plexusObjectId].DataUpdated;
         }
 
-        public void Execute(ref VertexColorData colorData) {
+        public void Execute(ref VertexColorData colorData, ref LocalTransform localTransform) {
             PlexusObjectData plexusObjectData = PlexusObjectDataById[plexusObjectId];
-            
             colorData.Value = plexusObjectData.VertexColor;
+            localTransform.Scale =plexusObjectData.VertexSize;
         }
 
         public void OnChunkEnd(in ArchetypeChunk chunk, int unfilteredChunkIndex, bool useEnabledMask, in v128 chunkEnabledMask, bool chunkWasExecuted) {

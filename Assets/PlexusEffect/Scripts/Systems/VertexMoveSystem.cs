@@ -75,7 +75,7 @@ namespace WireframePlexus {
 
             } else {
                 if (movementData.CurrentMovementDuration <= 0) {
-                    localTransform = localTransform.WithPosition(movementData.PositionTarget + vertexAdditionalMovementData.AdditionalLocalPosition);
+                    localTransform.Position = movementData.PositionTarget + vertexAdditionalMovementData.AdditionalLocalPosition;
                     movementData.MoveSpeed = movementData.Random.NextFloat(plexusObjectData.MinVertexMoveSpeed, plexusObjectData.MaxVertexMoveSpeed);
                     movementData.PositionOrigin = movementData.PositionTarget;
                     movementData.PositionTarget = movementData.Position + movementData.Random.NextFloat3(-plexusObjectData.MaxVertexMoveDistance, plexusObjectData.MaxVertexMoveDistance);
@@ -85,7 +85,7 @@ namespace WireframePlexus {
                     movementData.CurrentMovementDuration -= DeltaTime;
                     float interpolationPercent = 1 - (movementData.CurrentMovementDuration / movementData.TotalMovementDuration);
                     float3 newPosition = math.lerp(movementData.PositionOrigin, movementData.PositionTarget, interpolationPercent);
-                    localTransform = localTransform.WithPosition(newPosition + vertexAdditionalMovementData.AdditionalLocalPosition);
+                    localTransform.Position = newPosition + vertexAdditionalMovementData.AdditionalLocalPosition;
                 }
                 plexusObjectData.VertexPositions[movementData.PointId] = localTransform.Position;
             }
