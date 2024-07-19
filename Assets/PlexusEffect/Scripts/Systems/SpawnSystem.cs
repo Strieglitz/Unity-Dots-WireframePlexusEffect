@@ -10,7 +10,7 @@ namespace WireframePlexus {
 
     public partial class SpawnSystem : SystemBase {
 
-        int nextPlexusObjectId = 0;
+        int nextPlexusObjectId = 1;
         Unity.Mathematics.Random random = new Unity.Mathematics.Random(1);
         
         List<SpawnDataMesh> spawnDataListMesh = new List<SpawnDataMesh>();
