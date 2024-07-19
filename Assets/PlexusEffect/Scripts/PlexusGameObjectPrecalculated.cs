@@ -11,8 +11,8 @@ namespace WireframePlexus {
         public PlexusObjectPrecalculatedMeshData PlexusObjectPrecalculatedMeshData { get; private set; }
        
 
-        protected override void GenerateECSPlexusObject(SpawnSystem spawnSystem, PlexusGameObjectData plexusGameObjectData) {
-            spawnSystem.SpawnPlexusObject(ref wireframePlexusObjectId, plexusGameObjectData, this, PlexusObjectPrecalculatedMeshData);
+        protected override int GenerateECSPlexusObject(SpawnSystem spawnSystem, PlexusGameObjectData plexusGameObjectData) {
+            return spawnSystem.SpawnPlexusObject(plexusGameObjectData, this, PlexusObjectPrecalculatedMeshData);
         }
 
     }

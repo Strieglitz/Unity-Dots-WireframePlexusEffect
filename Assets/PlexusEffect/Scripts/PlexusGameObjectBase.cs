@@ -17,6 +17,7 @@ namespace WireframePlexus {
         [SerializeField]
         [Tooltip("If this is checked, when this gameobject gets destoryed the plexusObject also gets destroyed, recommended otherwise it will live as ling as the subscene or until it gets destriyed by hand")]
         bool destroyPlexusObjectWhenGameobjectGetsDestroyed = true;
+       
 
         protected int wireframePlexusObjectId;
 
@@ -45,14 +46,14 @@ namespace WireframePlexus {
 
         public void GenerateECSPlexusObject() {
             SpawnSystem spawnSystem = World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<SpawnSystem>();
-            GenerateECSPlexusObject(spawnSystem, PlexusGameObjectObjectData);
+            wireframePlexusObjectId = GenerateECSPlexusObject(spawnSystem, PlexusGameObjectObjectData);
             if (disableMeshRenderer) {
                 if (GetComponent<MeshRenderer>()) {
                     GetComponent<MeshRenderer>().enabled = false;
                 }
             }
         }
-        protected abstract void GenerateECSPlexusObject(SpawnSystem spawnSystem, PlexusGameObjectData plexusGameObjectData);
+        protected abstract int GenerateECSPlexusObject(SpawnSystem spawnSystem, PlexusGameObjectData plexusGameObjectData);
 
         /*** Set a contact animation on the plexus object
          *         * @param contactColor the color of the contact animation
