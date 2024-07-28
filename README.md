@@ -7,6 +7,18 @@ You can set any mesh and andjust some values like how fast and far the vertecies
 
 There is still tonns of room for improvements like adding lots of options to make the the effect more variable. If you have an idea or an request pleas let me know.
 
+## How to Use
+the Unity Project was build with the URP Renderpipeline. If you want to use the HDRP Renderpipeline you just have to convert the 2 Shaders that are used in the project. im not sure if you can automaticly upgrade them to hdrp in a hdrp project. but you can always rebuild them. in the URP project just open the shadres with the shadergraph editor and you can see how the shader is built. then open the HDRP project and rebuilt the Shader in Shadergraph.
+
+### how to use the repo projcet
+after donwloading or cloning the repo open it with the corresponding Unity version. The opne the "SampleScene" from "Assets/Scenes/". 
+In the Scene you have to make sure the "EntitySubScene" is activated (is ticked) ![grafik](https://github.com/user-attachments/assets/200b3a8f-5acc-428c-94f6-6f722e4d659f)
+Then when you enter the Playmode the PlexusObjects should load and animate due to the parameters.
+Now you can change the paramters, exit the PlayMode select the Gameobject "PlexeusObjectSphere" and change the parameters, then restart the playmode to what changed.
+
+### import the package
+
+
 # Example with the buildin sphere mesh
 
 ![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect.gif)
