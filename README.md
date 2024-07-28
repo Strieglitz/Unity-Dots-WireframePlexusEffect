@@ -17,7 +17,7 @@ Then when you enter the Playmode the PlexusObjects should load and animate due t
 Now you can change the paramters, exit the PlayMode select the Gameobject "PlexeusObjectSphere" and change the parameters, then restart the playmode to what changed.
 
 ### import the package
-
+todo
 
 # Example with the buildin sphere mesh
 
