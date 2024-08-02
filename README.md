@@ -12,7 +12,10 @@ the Unity Project was build with the URP Renderpipeline. If you want to use the 
 
 ### how to use the repo projcet
 after donwloading or cloning the repo open it with the corresponding Unity version. The opne the "SampleScene" from "Assets/Scenes/". 
-In the Scene you have to make sure the "EntitySubScene" is activated (is ticked) ![grafik](https://github.com/user-attachments/assets/200b3a8f-5acc-428c-94f6-6f722e4d659f)
+In the Scene you have to make sure the "EntitySubScene" is activated (is ticked) 
+
+![grafik](https://github.com/user-attachments/assets/200b3a8f-5acc-428c-94f6-6f722e4d659f)
+
 Then when you enter the Playmode the PlexusObjects should load and animate due to the parameters.
 Now you can change the paramters, exit the PlayMode select the Gameobject "PlexeusObjectSphere" and change the parameters, then restart the playmode to what changed.
 
