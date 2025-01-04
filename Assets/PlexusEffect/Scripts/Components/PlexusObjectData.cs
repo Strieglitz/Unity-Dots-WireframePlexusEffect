@@ -21,6 +21,7 @@ namespace WireframePlexus {
         public float3 WorldPosition;
         public quaternion WorldRotation;
         public bool DataUpdated;
+        public bool Visible;
 
         public void Dispose() {
             VertexPositions.Dispose();

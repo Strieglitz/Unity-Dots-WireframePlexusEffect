@@ -45,10 +45,6 @@ namespace WireframePlexus {
             }
             new UpdateVertexJob { PlexusObjectDataById = plexusObjectDataById, IdTypeHandle = idTypeHandle }.ScheduleParallel(vertexEntityQuery);
             new UpdateEdgeJob { PlexusObjectDataById = plexusObjectDataById, IdTypeHandle = idTypeHandle }.ScheduleParallel(edgeEntityQuery);
-
-            // id love to do that but iterating over the same query with toArray and with a IEntityJob
-            // seems to be a problem instead used plexusObjectSystem to reset the dataUpdated flag
-            //new UpdatePlexusObjectJob { }.ScheduleParallel(plexusObjectEntityQuery);
         }
     }
 
