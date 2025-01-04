@@ -10,7 +10,7 @@ using Unity.Transforms;
 namespace WireframePlexus {
     [UpdateAfter(typeof(VertexMoveSystem))]
     public partial struct EdgeMoveSystem : ISystem {
-        EntityQuery plexusObjectEntityQuery;
+        EntityQuery plexusObjectEntityQuery; 
         EntityQuery edgeEntityQuery;
 
         SharedComponentTypeHandle<PlexusObjectIdData> idTypeHandle;

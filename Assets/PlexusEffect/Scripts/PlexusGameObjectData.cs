@@ -20,6 +20,8 @@ namespace WireframePlexus {
         public float MinVertexMoveSpeed;
         [Tooltip("The Maximum Speed a Vertex will have to move randomly around its original position in the mesh")]
         public float MaxVertexMoveSpeed;
+        [Tooltip("should the plexus object gets drawn?")]
+        public bool Visible;
 
         [ColorUsage(true, true)]
         public Color VertexColor;
@@ -35,7 +37,8 @@ namespace WireframePlexus {
                 MinVertexMoveSpeed = MinVertexMoveSpeed,
                 MaxVertexMoveSpeed = MaxVertexMoveSpeed,
                 VertexColor = new float4(VertexColor.r, VertexColor.g, VertexColor.b, VertexColor.a),
-                EdgeColor = new float4(EdgeColor.r, EdgeColor.g, EdgeColor.b, EdgeColor.a)
+                EdgeColor = new float4(EdgeColor.r, EdgeColor.g, EdgeColor.b, EdgeColor.a),
+                Visible = Visible
             };
         }
     }

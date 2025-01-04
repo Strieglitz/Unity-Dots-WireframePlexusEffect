@@ -23,7 +23,7 @@ namespace WireframePlexus {
             var plexusObjectEntities = plexusObjectEntityQuery.ToEntityArray(Allocator.Temp);
             foreach (Entity entity in plexusObjectEntities) {
                 var plexusObjectData = EntityManager.GetComponentData<PlexusObjectData>(entity);
-                if (plexusObjectData.WireframePlexusObjectId == plexusObjectId) {
+                if (plexusObjectData.WireframePlexusObjectId == plexusObjectId && plexusObjectData.Visible == true) {
                     plexusObjectData.ContactAnimationColorData.Add(contactEffectData);
                     EntityManager.SetComponentData(entity, plexusObjectData);
                     break;

@@ -67,6 +67,7 @@ namespace WireframePlexus {
 
             ecb.AddComponent(wireframePlexusObjectEntity, parentReference);
 
+
             foreach ( var vertexData in plexusObjectPrecalculatedMeshData.precalculatedVertexMeshData) {
 
                 float3 pos = vertexData.Position;
