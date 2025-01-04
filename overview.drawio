@@ -1,106 +1,127 @@
 <mxfile host="65bd71144e">
     <diagram id="-_sJZ-9OhW_i1UguKcxo" name="Page-1">
-        <mxGraphModel dx="1442" dy="956" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#808080" math="0" shadow="0">
+        <mxGraphModel dx="1079" dy="775" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#808080" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="34" value="Actual Plexus GameObject Data" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#CCCCCC;fontColor=#1A1A1A;verticalAlign=top;fontSize=20;" vertex="1" parent="1">
+                <mxCell id="34" value="Actual Plexus GameObject Data" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#CCCCCC;fontColor=#1A1A1A;verticalAlign=top;fontSize=20;" parent="1" vertex="1">
                     <mxGeometry x="880" y="160" width="860" height="620" as="geometry"/>
                 </mxCell>
-                <mxCell id="2" value="PlexusGameObject" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="2" value="PlexusGameObject" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="140" y="340" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="4" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="2">
+                <mxCell id="4" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="2" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="310" y="430" as="sourcePoint"/>
                         <mxPoint x="360" y="370" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="9" value="PlexusGameObjectData" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="9" value="PlexusGameObjectData" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="360" y="340" width="150" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="10" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="9">
+                <mxCell id="10" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="9" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="550" y="420" as="sourcePoint"/>
                         <mxPoint x="600" y="370" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="11" value="PlexusObjectData" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="11" value="PlexusObjectData" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="600" y="340" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="12" value="SpawnSystem" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="12" value="SpawnSystem" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="600" y="90" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="13" value="&amp;nbsp; PlexusObjectEntity" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+                <mxCell id="13" value="&amp;nbsp; PlexusObjectEntity" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
                     <mxGeometry x="912.5" y="200" width="795" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="14" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="12" target="13">
+                <mxCell id="14" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="12" target="13" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="760" y="150" as="sourcePoint"/>
                         <mxPoint x="810" y="100" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="15" value="Generate" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="14">
+                <mxCell id="15" value="Generate" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="14" vertex="1" connectable="0">
                     <mxGeometry x="0.1385" y="-1" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="17" value="EdgeEntity" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
-                    <mxGeometry x="912.5" y="325" width="797.5" height="90" as="geometry"/>
+                <mxCell id="17" value="&amp;nbsp; EdgeEntity" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="960" y="325" width="747.5" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="20" value="VertexEntity" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="1595" y="480" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="23" value="EdgeEntity" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="905" y="560" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="24" value="EdgeEntity" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="905" y="640" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="25" value="VertexEntity" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="1595" y="560" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="26" value="VertexEntity" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="1595" y="640" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="28" value="PlexusObject_IdSharedEntity" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="1335" y="480" width="240" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="29" value="PlexusObject_IdSharedEntity" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="1335" y="560" width="240" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="30" value="PlexusObject_IdSharedEntity" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="1335" y="640" width="240" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="31" value="PlexusObject_IdSharedEntity" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="1045" y="480" width="240" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="32" value="PlexusObject_IdSharedEntity" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="1045" y="560" width="240" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="33" value="PlexusObject_IdSharedEntity" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="1045" y="640" width="240" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="35" value="SyncEntityPosition-ToGameobjectPositionData" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FFFF99;" vertex="1" parent="1">
+                <mxCell id="35" value="SyncEntityPosition-ToGameobjectPositionData" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FFFF99;" parent="1" vertex="1">
                     <mxGeometry x="1147.5" y="215" width="210" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="36" value="&amp;nbsp; &amp;nbsp;PlexusObjectData" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FFFF99;align=left;" vertex="1" parent="1">
+                <mxCell id="36" value="&amp;nbsp; &amp;nbsp;PlexusObjectData" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FFFF99;align=left;" parent="1" vertex="1">
                     <mxGeometry x="1377.5" y="215" width="250" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="37" value="PlexusObject_Id" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FF6666;" vertex="1" parent="1">
+                <mxCell id="37" value="PlexusObject_Id" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FF6666;" parent="1" vertex="1">
                     <mxGeometry x="1507.5" y="230" width="110" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="38" value="&amp;nbsp; Entity" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+                <mxCell id="38" value="&amp;nbsp; Entity" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
                     <mxGeometry x="1022.5" y="20" width="717.5" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="39" value="&amp;nbsp; ComponentData" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FFFF99;align=left;" vertex="1" parent="1">
+                <mxCell id="39" value="&amp;nbsp; ComponentData" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FFFF99;align=left;" parent="1" vertex="1">
                     <mxGeometry x="1110" y="35" width="470" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="40" value="ComponentVariable" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FF6666;" vertex="1" parent="1">
+                <mxCell id="40" value="ComponentVariable" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FF6666;" parent="1" vertex="1">
                     <mxGeometry x="1385" y="47.5" width="160" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="44" value="Legende:" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=17;fontColor=#1A1A1A;fontStyle=1" vertex="1" parent="1">
+                <mxCell id="44" value="Legende:" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=17;fontColor=#1A1A1A;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="905" y="60" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="&amp;nbsp; &amp;nbsp;PlexusObject_IdData" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FFFF99;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="1052.5" y="340" width="275" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="PlexusObject_Id" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FF6666;" vertex="1" parent="1">
+                    <mxGeometry x="1207.5" y="355" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="&amp;nbsp; &amp;nbsp;EdgeData" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FFFF99;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="1350" y="340" width="92.5" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="&amp;nbsp; &amp;nbsp;EdgeColorData" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FFFF99;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="1460" y="340" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="&amp;nbsp; Parent" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FFFF99;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="1607.5" y="340" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="&amp;nbsp; EdgeEntity" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="960" y="425" width="747.5" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="&amp;nbsp; &amp;nbsp;PlexusObject_IdData" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FFFF99;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="1052.5" y="440" width="275" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="PlexusObject_Id" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FF6666;" vertex="1" parent="1">
+                    <mxGeometry x="1207.5" y="455" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="&amp;nbsp; &amp;nbsp;EdgeData" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FFFF99;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="1350" y="440" width="92.5" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="&amp;nbsp; &amp;nbsp;EdgeColorData" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FFFF99;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="1460" y="440" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="&amp;nbsp; Parent" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FFFF99;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="1607.5" y="440" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="&amp;nbsp; EdgeEntity" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="960" y="530" width="747.5" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="&amp;nbsp; &amp;nbsp;PlexusObject_IdData" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FFFF99;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="1052.5" y="545" width="275" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="PlexusObject_Id" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FF6666;" vertex="1" parent="1">
+                    <mxGeometry x="1207.5" y="560" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="&amp;nbsp; &amp;nbsp;EdgeData" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FFFF99;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="1350" y="545" width="92.5" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="&amp;nbsp; &amp;nbsp;EdgeColorData" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FFFF99;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="1460" y="545" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="&amp;nbsp; Parent" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;fontColor=#1A1A1A;fillColor=#FFFF99;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="1607.5" y="545" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value=".&lt;br&gt;.&lt;br&gt;.&lt;br&gt;.&lt;br&gt;.&lt;br&gt;.&lt;br&gt;.&lt;br&gt;.&lt;br&gt;.&lt;br&gt;.&lt;br&gt;.&lt;br&gt;.&lt;br&gt;.&lt;br&gt;.&lt;br&gt;.&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="910" y="325" width="40" height="295" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
