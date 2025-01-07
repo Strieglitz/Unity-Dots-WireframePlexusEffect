@@ -18,6 +18,7 @@ namespace WireframePlexus {
         [Tooltip("If this is checked, when this gameobject gets destoryed the plexusObject also gets destroyed, recommended otherwise it will live as ling as the subscene or until it gets destriyed by hand")]
         bool destroyPlexusObjectWhenGameobjectGetsDestroyed = true;
        
+        public PlexusGameObjectData PlexusGameObjectObjectData;
 
         protected int wireframePlexusObjectId;
 
@@ -38,7 +39,6 @@ namespace WireframePlexus {
             }
         }
 
-        public PlexusGameObjectData PlexusGameObjectObjectData;
 
         public void UpdatePlexusObjectData() {
             World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<PlexusObjectRecieveUpdatedDataSystem>().UpdatePlexusObjectData(PlexusGameObjectObjectData, wireframePlexusObjectId);
@@ -75,6 +75,10 @@ namespace WireframePlexus {
                 EasingType = easeType
             };
             World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<ContactEffectSpawnSystem>().SpawnContactEffect(contactColorAnimationData, wireframePlexusObjectId);
+        }
+
+        public void SetEnabled(bool enabled) {
+            World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<PlexusObjectEnabledDisabledSystem>().SetEntityEnabled(wireframePlexusObjectId,enabled);
         }
     }
 }

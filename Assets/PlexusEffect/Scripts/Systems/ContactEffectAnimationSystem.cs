@@ -24,10 +24,6 @@ namespace WireframePlexus {
             var plexusObjectEntries = plexusObjectEntityQuery.ToEntityArray(Allocator.Temp);
             foreach (Entity plexusObject in plexusObjectEntries) {
                 var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
-                if(plexusObjectData.Visible == false) {
-                    plexusObjectData.ContactAnimationColorData.Clear();
-                    continue;
-                }
 
                 for (int i = 0; i < plexusObjectData.ContactAnimationColorData.Length; i++) {
                     ContactEffectData contactColorAnimationData = plexusObjectData.ContactAnimationColorData[i];

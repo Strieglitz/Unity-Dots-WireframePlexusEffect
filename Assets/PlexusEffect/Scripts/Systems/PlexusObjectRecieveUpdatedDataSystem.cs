@@ -41,7 +41,6 @@ namespace WireframePlexus {
                         currentPlexusObjectData.MinVertexMoveSpeed = newPlexusObjectData.MinVertexMoveSpeed;
                         currentPlexusObjectData.VertexColor = newPlexusObjectData.VertexColor;
                         currentPlexusObjectData.EdgeColor = newPlexusObjectData.EdgeColor;
-                        currentPlexusObjectData.Visible = newPlexusObjectData.Visible;
                         currentPlexusObjectData.DataUpdated = true;
                         EntityManager.SetComponentData(entity, currentPlexusObjectData);
                     }

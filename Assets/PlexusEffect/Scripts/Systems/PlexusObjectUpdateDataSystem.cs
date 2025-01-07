@@ -42,6 +42,7 @@ namespace WireframePlexus {
             foreach (Entity plexusObject in plexusObjectEntries) {
                 var plexusObjectData = state.EntityManager.GetComponentData<PlexusObjectData>(plexusObject);
                 plexusObjectDataById[plexusObjectData.WireframePlexusObjectId] = plexusObjectData;
+                
             }
             new UpdateVertexJob { PlexusObjectDataById = plexusObjectDataById, IdTypeHandle = idTypeHandle }.ScheduleParallel(vertexEntityQuery);
             new UpdateEdgeJob { PlexusObjectDataById = plexusObjectDataById, IdTypeHandle = idTypeHandle }.ScheduleParallel(edgeEntityQuery);
