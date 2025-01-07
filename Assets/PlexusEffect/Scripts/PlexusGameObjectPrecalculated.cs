@@ -15,5 +15,8 @@ namespace WireframePlexus {
             return spawnSystem.SpawnPlexusObject(plexusGameObjectData, this, PlexusObjectPrecalculatedMeshData);
         }
 
+        protected override Bounds GetMeshBounds() {
+            return PlexusObjectPrecalculatedMeshData.mesh.bounds;
+        }
     }
 }

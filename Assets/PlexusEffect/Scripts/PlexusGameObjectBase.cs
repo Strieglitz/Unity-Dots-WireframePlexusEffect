@@ -17,12 +17,16 @@ namespace WireframePlexus {
         [SerializeField]
         [Tooltip("If this is checked, when this gameobject gets destoryed the plexusObject also gets destroyed, recommended otherwise it will live as ling as the subscene or until it gets destriyed by hand")]
         bool destroyPlexusObjectWhenGameobjectGetsDestroyed = true;
-       
-        public PlexusGameObjectData PlexusGameObjectObjectData;
+
+        public PlexusGameObjectData PlexusGameObjectData;
+        Bounds defaultBounds;
+        Bounds bounds;
+        public Bounds Bounds => bounds;
 
         protected int wireframePlexusObjectId;
 
         protected void Start() {
+            defaultBounds = GetMeshBounds();
             if (genrateOnStart) {
                 GenerateECSPlexusObject();
             }
@@ -32,28 +36,40 @@ namespace WireframePlexus {
             if (destroyPlexusObjectWhenGameobjectGetsDestroyed) {
                 try {
                     World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<PlexusObjectDeleteSystem>().DeletePlexusObject(wireframePlexusObjectId);
-                } catch { 
+                } catch {
                     Debug.LogWarning("PlexusObjectDeleteSystem not found when destroying the PlexusObject, this is normal if the scene gets destroyed");
                 }
-                
+
             }
         }
 
 
         public void UpdatePlexusObjectData() {
-            World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<PlexusObjectRecieveUpdatedDataSystem>().UpdatePlexusObjectData(PlexusGameObjectObjectData, wireframePlexusObjectId);
+            World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<PlexusObjectRecieveUpdatedDataSystem>().UpdatePlexusObjectData(PlexusGameObjectData, wireframePlexusObjectId);
+            CalcBounds();
+        }
+
+
+        private void CalcBounds() {
+            bounds = defaultBounds;
+            bounds.center = transform.position;
+            bounds.extents = defaultBounds.extents * transform.localScale.x;
+            bounds.Expand(PlexusGameObjectData.MaxVertexMoveDistance*2);
         }
 
         public void GenerateECSPlexusObject() {
             SpawnSystem spawnSystem = World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<SpawnSystem>();
-            wireframePlexusObjectId = GenerateECSPlexusObject(spawnSystem, PlexusGameObjectObjectData);
+            wireframePlexusObjectId = GenerateECSPlexusObject(spawnSystem, PlexusGameObjectData);
             if (disableMeshRenderer) {
                 if (GetComponent<MeshRenderer>()) {
                     GetComponent<MeshRenderer>().enabled = false;
                 }
             }
+            CalcBounds();
         }
         protected abstract int GenerateECSPlexusObject(SpawnSystem spawnSystem, PlexusGameObjectData plexusGameObjectData);
+        protected abstract Bounds GetMeshBounds();
+
 
         /*** Set a contact animation on the plexus object
          *         * @param contactColor the color of the contact animation
@@ -77,8 +93,8 @@ namespace WireframePlexus {
             World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<ContactEffectSpawnSystem>().SpawnContactEffect(contactColorAnimationData, wireframePlexusObjectId);
         }
 
-        public void SetEnabled(bool enabled) {
-            World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<PlexusObjectEnabledDisabledSystem>().SetEntityEnabled(wireframePlexusObjectId,enabled);
+        public void SetPlexusObjectEnabled(bool enabled) {
+            World.DefaultGameObjectInjectionWorld.GetExistingSystemManaged<PlexusObjectEnabledDisabledSystem>().SetEntityEnabled(wireframePlexusObjectId, enabled);
         }
     }
 }
