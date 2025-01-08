@@ -42,7 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -118,6 +119,117 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &901542145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 901542149}
+  - component: {fileID: 901542148}
+  - component: {fileID: 901542147}
+  - component: {fileID: 901542146}
+  m_Layer: 0
+  m_Name: PlexeusObjectSphere (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &901542146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901542145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0168fef59c5764997105929affa1f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  genrateOnStart: 1
+  disableMeshRenderer: 1
+  destroyPlexusObjectWhenGameobjectGetsDestroyed: 1
+  PlexusGameObjectData:
+    MaxEdgeLengthPercent: 1
+    EdgeThickness: 0.0005
+    VertexSize: 0.015
+    MaxVertexMoveDistance: 0.03
+    MinVertexMoveSpeed: 0.005
+    MaxVertexMoveSpeed: 0.01
+    VertexColor: {r: 0, g: 0.68213385, b: 1.6055588, a: 1}
+    EdgeColor: {r: 0, g: 0.38041875, b: 1.7207953, a: 1}
+--- !u!23 &901542147
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901542145}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 20109922aef017a4c922b72c3fad3075, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &901542148
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901542145}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &901542149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901542145}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0005704495, y: -0.9987739, z: 0.04806189, w: 0.011854222}
+  m_LocalPosition: {x: -0.55, y: 0.33, z: -7.92}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1266777448
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,15 +264,15 @@ MonoBehaviour:
   genrateOnStart: 1
   disableMeshRenderer: 1
   destroyPlexusObjectWhenGameobjectGetsDestroyed: 1
-  PlexusGameObjectObjectData:
-    MaxEdgeLengthPercent: 1.15
+  PlexusGameObjectData:
+    MaxEdgeLengthPercent: 1.1
     EdgeThickness: 0.002
-    VertexSize: 0.025
-    MaxVertexMoveDistance: 0.03
+    VertexSize: 0.04
+    MaxVertexMoveDistance: 0.02
     MinVertexMoveSpeed: 0.005
     MaxVertexMoveSpeed: 0.01
-    VertexColor: {r: 1, g: 1, b: 1, a: 1}
-    EdgeColor: {r: 0.030967765, g: 0.25366804, b: 0.9378803, a: 1}
+    VertexColor: {r: 0, g: 0.68213385, b: 1.6055588, a: 1}
+    EdgeColor: {r: 0, g: 0.38041875, b: 1.7207953, a: 1}
 --- !u!23 &1266777452
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -223,8 +335,8 @@ Transform:
   m_GameObject: {fileID: 1266777448}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0005704495, y: -0.9987739, z: 0.04806189, w: 0.011854222}
-  m_LocalPosition: {x: -0.569, y: 0.634, z: -8.874}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.55, y: 0.33, z: -7.92}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -316,15 +428,15 @@ MonoBehaviour:
   genrateOnStart: 1
   disableMeshRenderer: 1
   destroyPlexusObjectWhenGameobjectGetsDestroyed: 1
-  PlexusGameObjectObjectData:
-    MaxEdgeLengthPercent: 5
-    EdgeThickness: 0.01
-    VertexSize: 0.05
-    MaxVertexMoveDistance: 0.5
-    MinVertexMoveSpeed: 0.3
-    MaxVertexMoveSpeed: 1
-    VertexColor: {r: 4.780104, g: 1.1780182, b: 0, a: 1}
-    EdgeColor: {r: 1.7358491, g: 0, b: 0.1212846, a: 1}
+  PlexusGameObjectData:
+    MaxEdgeLengthPercent: 0
+    EdgeThickness: 0
+    VertexSize: 0
+    MaxVertexMoveDistance: 0
+    MinVertexMoveSpeed: 0
+    MaxVertexMoveSpeed: 0
+    VertexColor: {r: 0, g: 0, b: 0, a: 0}
+    EdgeColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!23 &1576886233
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -450,15 +562,15 @@ MonoBehaviour:
   genrateOnStart: 1
   disableMeshRenderer: 1
   destroyPlexusObjectWhenGameobjectGetsDestroyed: 1
-  PlexusGameObjectObjectData:
-    MaxEdgeLengthPercent: 30
-    EdgeThickness: 0.005
+  PlexusGameObjectData:
+    MaxEdgeLengthPercent: 0
+    EdgeThickness: 0
     VertexSize: 0
     MaxVertexMoveDistance: 0
     MinVertexMoveSpeed: 0
     MaxVertexMoveSpeed: 0
     VertexColor: {r: 0, g: 0, b: 0, a: 0}
-    EdgeColor: {r: 0, g: 0.3137255, b: 0.12770556, a: 1}
+    EdgeColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!23 &1959526356
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -664,6 +776,117 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
+--- !u!1 &1987040892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1987040896}
+  - component: {fileID: 1987040895}
+  - component: {fileID: 1987040894}
+  - component: {fileID: 1987040893}
+  m_Layer: 0
+  m_Name: PlexeusObjectSphere (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1987040893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987040892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0168fef59c5764997105929affa1f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  genrateOnStart: 1
+  disableMeshRenderer: 1
+  destroyPlexusObjectWhenGameobjectGetsDestroyed: 1
+  PlexusGameObjectData:
+    MaxEdgeLengthPercent: 1.1
+    EdgeThickness: 0.002
+    VertexSize: 0.04
+    MaxVertexMoveDistance: 0.02
+    MinVertexMoveSpeed: 0.005
+    MaxVertexMoveSpeed: 0.01
+    VertexColor: {r: 0, g: 0.68213385, b: 1.6055588, a: 1}
+    EdgeColor: {r: 0, g: 0.38041875, b: 1.7207953, a: 1}
+--- !u!23 &1987040894
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987040892}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 20109922aef017a4c922b72c3fad3075, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1987040895
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987040892}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1987040896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987040892}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0005704495, y: -0.9987739, z: 0.04806189, w: 0.011854222}
+  m_LocalPosition: {x: -0.55, y: 0.33, z: -7.92}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2055354841
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,11 +936,125 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2143090916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2143090920}
+  - component: {fileID: 2143090919}
+  - component: {fileID: 2143090918}
+  - component: {fileID: 2143090917}
+  m_Layer: 0
+  m_Name: PlexeusObjectSphere (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2143090917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143090916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0168fef59c5764997105929affa1f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  genrateOnStart: 1
+  disableMeshRenderer: 1
+  destroyPlexusObjectWhenGameobjectGetsDestroyed: 1
+  PlexusGameObjectData:
+    MaxEdgeLengthPercent: 1.1
+    EdgeThickness: 0.002
+    VertexSize: 0.04
+    MaxVertexMoveDistance: 0.02
+    MinVertexMoveSpeed: 0.005
+    MaxVertexMoveSpeed: 0.01
+    VertexColor: {r: 0, g: 0.68213385, b: 1.6055588, a: 1}
+    EdgeColor: {r: 0, g: 0.38041875, b: 1.7207953, a: 1}
+--- !u!23 &2143090918
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143090916}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 20109922aef017a4c922b72c3fad3075, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2143090919
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143090916}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &2143090920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143090916}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0005704495, y: -0.9987739, z: 0.04806189, w: 0.011854222}
+  m_LocalPosition: {x: -0.55, y: 0.33, z: -7.92}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1266777454}
+  - {fileID: 1987040896}
+  - {fileID: 2143090920}
+  - {fileID: 901542149}
   - {fileID: 1959526358}
   - {fileID: 1576886235}
   - {fileID: 1369207857}
