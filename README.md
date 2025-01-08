@@ -41,3 +41,8 @@ todo
 # Contact animation with vertex distortion
 
 ![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect5.gif)
+
+# multiple spheres stacked on top of each other
+
+![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect6.gif)
+
