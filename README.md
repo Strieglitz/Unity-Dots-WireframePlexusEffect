@@ -85,13 +85,11 @@ in this example we create a simple PlexusEffect on a Unity-sphere
 - the effect could look much better, with the default settings you will see aliasing and hard edges, so lets set the AntiAliasing. In this case with an URP Proejct you can set the AA in the PC_RP.asset  
 ![NewPorject](TutorialImages/Step19_IncreaseAntiAliasing.png)
 
-- the effect could look much better, with the default settings you will see aliasing and hard edges, so lets set the AntiAliasing. In this case with an URP Proejct you can set the AA in the PC_RP.asset  
-![NewPorject](TutorialImages/Step19_IncreaseAntiAliasing.png)
+- Postprocessing will also help, increasing the Bloom will also result in a better look with softer edges on the edges and vertecies.
+![NewPorject](TutorialImages/Step20_IncreaseBloom.png)
 
-
-
-
-more instructions will follow in some minutes
+- Now you have a working example and can play around with the values and find out cool combinations and visuals. 
+![NewPorject](TutorialImages/Step21_PlayAround.png)
 
 # Example with the buildin sphere mesh
 
