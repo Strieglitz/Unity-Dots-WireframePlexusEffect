@@ -1,6 +1,7 @@
 # Unity-Dots-WireframePlexusEffect
 
 A Plexus like effect with glowing vertecies and connection-lines based on the wireframe of the mesh. When the vertecies move around they connect and disconnect based on the distance. Implemented with ECS, parallel running jobs and burst compile.
+
 ![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect6.gif)
 
 Had no idea how to implement this effect in Shadergraph or Effectgraph so i tried it with ecs/dots. Would love to know how to achieve this with Shadergraph or an Effectgraph!
@@ -30,8 +31,11 @@ Now you can change the paramters, exit the PlayMode select the Gameobject "Plexe
 
 ### How to import the package to your Project
 
-- Download this Repository and open it with Unity.
+here is an example on how to import the effect into a fresh project. 
 
+- Download this Repository.
+- Create a new Project
+![NewPorject](TutorialImages/Step1_createProject.png)
 
 # Example with the buildin sphere mesh
 
