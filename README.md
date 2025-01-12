@@ -1,6 +1,19 @@
 # Unity-Dots-WireframePlexusEffect
 
-# Table of contents
+## Table of contents ##
+1. [Overview](#overview)
+    1. [Render Pipeline Compability](#renderPipeline)
+    2. [Unity Version Compability](#unityVersion)
+3. [Getting Started](#gettingStarted)
+    1. [Play around in the Repository ExampleScene](#exampleScene)
+    2. [Import to new project and setup](#import)
+    3. [How to Spawn a PlexusEffect](#spawn)
+4. [How it actualy works](#implementation)
+5. [Tips](#tips)
+6. [Visual Examples](#examples)
+
+  
+## Overview <a name="overview"></a>
 
 A Plexus like effect with glowing vertecies and connection-lines based on the wireframe of the mesh. When the vertecies move around they connect and disconnect based on the distance. Implemented with ECS, parallel running jobs and burst compile.
 
@@ -12,17 +25,16 @@ You can set any mesh and andjust some values like how fast and far the vertecies
 
 There is still tonns of room for improvements like adding lots of options to make the the effect more variable. If you have an idea or an request please let me know.
 
-## How to Use
-
-### RenderPipeline
-
+### Render Pipeline Compability <a name="renderPipeline"></a>
 The effect does not run on heavy Shaders and can be used in **ALL RenderPipelines**. The development Unity Project was build with the URP Renderpipeline. If you want to use the HDRP Renderpipeline you just have to convert the 2 Shaders that are used in the project. Im not sure if you can automaticly upgrade them to HDRD in a HDRP-Project. But you can always rebuild them. In the URP-Project just open the shaders with the shadergraph editor and you can see how the shader is built. then open the HDRP project and rebuilt the Shader in a new Shadergraph.
 
-### Unity Version
+### Unity Version Compability <a name="unityVersion"></a>
+i built the Project with Unity 6 but i dont know in which version it will break. I tried out with 2022.3.55f1 and it worked just like described, so i just assume the 2023 will work too until some says otherwise.
 
-i built the Project with Unity 6 but i dont know in which version it will break. I tried out with 2022.3.55f1 and it worked just like described.
+## Getting Started <a name="gettingStarted"></a>
+how to get started with this repository. you can just download it an play around in the sampleScene, create a new project and play around or load it into a existing one.
 
-### The Project Repository
+### Play around in the Repository ExampleScene <a name="exampleScene"></a> 
 
 After donwloading or cloning the repo, open it with the corresponding Unity version. The opne the "SampleScene" from "Assets/PlexusEffect/ExampleScene/".
 In the Scene you have to make sure the "EntitySubScene" is activated (is ticked)
@@ -31,7 +43,7 @@ In the Scene you have to make sure the "EntitySubScene" is activated (is ticked)
 Then when you enter the Playmode the PlexusObjects should load and animate due to the parameters.
 Now you can change the paramters, exit the PlayMode select the Gameobject "PlexeusObjectSphere" and change the parameters, then restart the playmode to what changed.
 
-### How to import the package to your Project and setup
+### Import it into your Project and Setup <a name="import"></a>
 
 here is an example on how to import the effect into a fresh project. 
 
@@ -65,7 +77,8 @@ here is an example on how to import the effect into a fresh project.
 
 Great, now the PlexusEffect stuff is setup and ready to be used to actualy render something! 
 
-### Use the PlexusEffect
+### Spawn PlexusEffects in your Project <a name="spawn"></a> 
+
 in this example we create a simple PlexusEffect on a Unity-sphere
 
 - In our regular Scene lets create a new Gameobject and choose the default Sphere, with rightclick into the "Hierarchy" and select GameObject->3D Object->Sphere 
@@ -93,22 +106,28 @@ in this example we create a simple PlexusEffect on a Unity-sphere
 - Now you have a working example and can play around with the values and find out cool combinations and visuals. 
 ![NewPorject](TutorialImages/Step21_PlayAround.png)
 
-# Example with the buildin sphere mesh
+## How it works <a name="implementation"></a>
+Todo
+## Tips <a name="tips"></a>
+
+## Examples <a name="examples"></a>
+
+### Example with the buildin sphere mesh
 
 ![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect.gif)
 
-# Or you can abuse it as a Wireframe Shader, when setting the vertices to not move around
+### Or you can abuse it as a Wireframe Shader, when setting the vertices to not move around
 
 ![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect2.gif)
 
-# Multi Object setup with different settings, meshes and colors
+### Multi Object setup with different settings, meshes and colors
 
 ![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect3.gif)
 
-# An contact color change animation for later use in a game
+### An contact color change animation for later use in a game
 
 ![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect4.gif)
 
-# Contact animation with vertex distortion
+### Contact animation with vertex distortion
 
 ![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect5.gif)
