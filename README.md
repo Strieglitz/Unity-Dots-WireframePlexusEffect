@@ -36,7 +36,8 @@ here is an example on how to import the effect into a fresh project.
 - Download this Repository.
 - Create a new Project
 ![NewPorject](TutorialImages/Step1_createProject.png)
-
+- Open The Package Manager Window to import the needed ECS dependencies
+![NewPorject](TutorialImages/Step2_goToPackageManager.png)
 # Example with the buildin sphere mesh
 
 ![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect.gif)
