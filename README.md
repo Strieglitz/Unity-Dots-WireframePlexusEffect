@@ -73,14 +73,23 @@ in this example we create a simple PlexusEffect on a Unity-sphere
 ![NewPorject](TutorialImages/Step15_AddPlexusGameobjectFromMeshComponent.png)
 
 - now the Spehere is a "PlexusGameObject" but you will not be able to see it, because there are no values in the "PlexusGameObjectData" Field of the "PlexusGameobjectFromMesh" Component. So lets fill it with some values.
-- 
+
 ![NewPorject](TutorialImages/Step16_FillTheCompoenntWithValues.png)
 
 - to better see the actual Plexus Effect, move the Sphere Closer to the Camera, because the position of the PlexusEffect will be synced with the position of the Sphere, even at runtime. 
 ![NewPorject](TutorialImages/Step17_MoveSphereCloserToCamera.png)
 
-- test out the Effect and press the play button 
+- test out the Effect and press the play button. If you used the values from the previous section, you should get a blue Sphere with the plexusEffect.   
 ![NewPorject](TutorialImages/Step18_TestEffect.png)
+
+- the effect could look much better, with the default settings you will see aliasing and hard edges, so lets set the AntiAliasing. In this case with an URP Proejct you can set the AA in the PC_RP.asset  
+![NewPorject](TutorialImages/Step19_IncreaseAntiAliasing.png)
+
+- the effect could look much better, with the default settings you will see aliasing and hard edges, so lets set the AntiAliasing. In this case with an URP Proejct you can set the AA in the PC_RP.asset  
+![NewPorject](TutorialImages/Step19_IncreaseAntiAliasing.png)
+
+
+
 
 more instructions will follow in some minutes
 
