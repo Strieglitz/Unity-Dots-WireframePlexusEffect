@@ -18,8 +18,7 @@ The effect does not run on heavy Shaders and can be used in **ALL RenderPipeline
 
 after donwloading or cloning the repo open it with the corresponding Unity version. The opne the "SampleScene" from "Assets/Scenes/".
 In the Scene you have to make sure the "EntitySubScene" is activated (is ticked)
-
-![grafik](https://github.com/user-attachments/assets/200b3a8f-5acc-428c-94f6-6f722e4d659f)
+![grafik](https://github.com/user-attachments/assets/cb68dfd6-d566-433b-991a-22d6cb2642c5)
 
 Then when you enter the Playmode the PlexusObjects should load and animate due to the parameters.
 Now you can change the paramters, exit the PlayMode select the Gameobject "PlexeusObjectSphere" and change the parameters, then restart the playmode to what changed.
