@@ -2,10 +2,10 @@
 
 ## Table of contents ##
 1. [Overview](#overview)
-    1. [Render Pipeline Compability](#renderPipeline)
-    2. [Unity Version Compability](#unityVersion)
-3. [Getting Started](#gettingStarted)
-    1. [Play around in the Repository ExampleScene](#exampleScene)
+    1. [Render Pipeline Compability](#renderpipeline)
+    2. [Unity Version Compability](#unityversion)
+3. [Getting Started](#gettingstarted)
+    1. [Play around in the Repository ExampleScene](#examplescene)
     2. [Import to new project and setup](#import)
     3. [How to Spawn a PlexusEffect](#spawn)
 4. [How it actualy works](#implementation)
@@ -25,16 +25,16 @@ You can set any mesh and andjust some values like how fast and far the vertecies
 
 There is still tonns of room for improvements like adding lots of options to make the the effect more variable. If you have an idea or an request please let me know.
 
-### Render Pipeline Compability <a name="renderPipeline"></a>
+### Render Pipeline Compability <a name="renderpipeline"></a>
 The effect does not run on heavy Shaders and can be used in **ALL RenderPipelines**. The development Unity Project was build with the URP Renderpipeline. If you want to use the HDRP Renderpipeline you just have to convert the 2 Shaders that are used in the project. Im not sure if you can automaticly upgrade them to HDRD in a HDRP-Project. But you can always rebuild them. In the URP-Project just open the shaders with the shadergraph editor and you can see how the shader is built. then open the HDRP project and rebuilt the Shader in a new Shadergraph.
 
-### Unity Version Compability <a name="unityVersion"></a>
+### Unity Version Compability <a name="unityversion"></a>
 i built the Project with Unity 6 but i dont know in which version it will break. I tried out with 2022.3.55f1 and it worked just like described, so i just assume the 2023 will work too until some says otherwise.
 
-## Getting Started <a name="gettingStarted"></a>
+## Getting Started <a name="gettingstarted"></a>
 how to get started with this repository. you can just download it an play around in the sampleScene, create a new project and play around or load it into a existing one.
 
-### Play around in the Repository ExampleScene <a name="exampleScene"></a> 
+### Play around in the Repository ExampleScene <a name="examplescene"></a> 
 
 After donwloading or cloning the repo, open it with the corresponding Unity version. The opne the "SampleScene" from "Assets/PlexusEffect/ExampleScene/".
 In the Scene you have to make sure the "EntitySubScene" is activated (is ticked)
