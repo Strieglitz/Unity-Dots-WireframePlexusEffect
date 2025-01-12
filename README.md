@@ -4,13 +4,14 @@
 1. [Overview](#overview)
     1. [Render Pipeline Compability](#renderpipeline)
     2. [Unity Version Compability](#unityversion)
-3. [Getting Started](#gettingstarted)
+2. [Getting Started](#gettingstarted)
     1. [Play around in the Repository ExampleScene](#examplescene)
     2. [Import to new project and setup](#import)
     3. [How to Spawn a PlexusEffect](#spawn)
-4. [How it actualy works](#implementation)
-5. [Tips](#tips)
-6. [Visual Examples](#examples)
+3. [How it actualy works](#implementation)
+4. [Tips](#tips)
+    1. [loading performance gain with Precalculated PlexusGameObject ](#precalculated)
+5. [Visual Examples](#examples)
 
   
 ## Overview <a name="overview"></a>
@@ -109,6 +110,10 @@ in this example we create a simple PlexusEffect on a Unity-sphere
 ## How it works <a name="implementation"></a>
 Todo
 ## Tips <a name="tips"></a>
+
+### PlexusGameObjectPrecalculated  <a name="precalculated"></a>
+
+the loading Of **PlexusGameobjectFromMesh** is quite **slow** because on start of the GameObject it iterates over every vertex and edge to calculate how the PlexusEffect needs to be. on objects with ten or hundreds thousands of vertices this can take multiple seconds. To adress this issue there is also the **fast loading PlexusGameObjectPrecalculated** which generates all the neccessary data in advance.  
 
 ## Examples <a name="examples"></a>
 
