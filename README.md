@@ -36,8 +36,17 @@ here is an example on how to import the effect into a fresh project.
 - Download this Repository.
 - Create a new Project
 ![NewPorject](TutorialImages/Step1_createProject.png)
-- Open The Package Manager Window to import the needed ECS dependencies
+- Open The PackageManager window to import the needed ECS dependencies.
 ![NewPorject](TutorialImages/Step2_goToPackageManager.png)
+- In the PackageManager window, switch to the "UnityRegistry" section.
+![NewPorject](TutorialImages/Step3_SwitchToUnityRegistry.png)
+- Install the Entities package, which grabs all the neccessary packages for ECS 
+![NewPorject](TutorialImages/Step4_installEntitiesPackage.png)
+- Install the EntitiesGraphics package, which is needed to render meshes with ECS 
+![NewPorject](TutorialImages/Step5_installEntitiesGraphicsPackage.png)
+- close the Package Manager and rightclick in the Project panel to import the WireframePlexusEffect package
+![NewPorject](TutorialImages/Step6_clickImport.png)
+
 # Example with the buildin sphere mesh
 
 ![](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/blob/main/effect.gif)
