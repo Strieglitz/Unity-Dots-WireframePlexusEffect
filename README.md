@@ -72,7 +72,7 @@ in this example we create a simple PlexusEffect on a Unity-sphere
 - Add the "PlexusGameobjectFromMesh" Component to the Sphere Gameobject. This Component will iterate over the MeshData and convert it to a kind of PlexusEffectMesh data that will be used by the Effect. this will happen when the scene starts and is quite a heavy calculation. for an example like this, it is fine, but for a more preformance critical setup you should consider using the "PlexusGameObjectPrecalculated" Component
 ![NewPorject](TutorialImages/Step15_AddPlexusGameobjectFromMeshComponent.png)
 
-
+more instructions will follow in some minutes
 
 # Example with the buildin sphere mesh
 
