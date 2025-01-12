@@ -18,7 +18,7 @@ The effect does not run on heavy Shaders and can be used in **ALL RenderPipeline
 
 ### Unity Version
 
-i built the Project with Unity 6 but i dont know in which version it will break, i will try out 2023 and 2022 and will report the results here.
+i built the Project with Unity 6 but i dont know in which version it will break. I tried out with 2022.3.55f1 and it worked just like described.
 
 ### The Project Repository
 
@@ -29,10 +29,10 @@ In the Scene you have to make sure the "EntitySubScene" is activated (is ticked)
 Then when you enter the Playmode the PlexusObjects should load and animate due to the parameters.
 Now you can change the paramters, exit the PlayMode select the Gameobject "PlexeusObjectSphere" and change the parameters, then restart the playmode to what changed.
 
-### How to import the package to your Project
+### How to import the package to your Project and setup
 
 here is an example on how to import the effect into a fresh project. 
-### setup the PlexusEffect
+
 - Download this Repository.
 - Create a new Project
 ![NewPorject](TutorialImages/Step1_createProject.png)
@@ -71,6 +71,16 @@ in this example we create a simple PlexusEffect on a Unity-sphere
 
 - Add the "PlexusGameobjectFromMesh" Component to the Sphere Gameobject. This Component will iterate over the MeshData and convert it to a kind of PlexusEffectMesh data that will be used by the Effect. this will happen when the scene starts and is quite a heavy calculation. for an example like this, it is fine, but for a more preformance critical setup you should consider using the "PlexusGameObjectPrecalculated" Component
 ![NewPorject](TutorialImages/Step15_AddPlexusGameobjectFromMeshComponent.png)
+
+- now the Spehere is a "PlexusGameObject" but you will not be able to see it, because there are no values in the "PlexusGameObjectData" Field of the "PlexusGameobjectFromMesh" Component. So lets fill it with some values.
+- 
+![NewPorject](TutorialImages/Step16_FillTheCompoenntWithValues.png)
+
+- to better see the actual Plexus Effect, move the Sphere Closer to the Camera, because the position of the PlexusEffect will be synced with the position of the Sphere, even at runtime. 
+![NewPorject](TutorialImages/Step17_MoveSphereCloserToCamera.png)
+
+- test out the Effect and press the play button 
+![NewPorject](TutorialImages/Step18_TestEffect.png)
 
 more instructions will follow in some minutes
 
