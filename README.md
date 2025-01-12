@@ -22,7 +22,7 @@ i built the Project with Unity 6 but i dont know in which version it will break,
 
 ### The Project Repository
 
-After donwloading or cloning the repo, open it with the corresponding Unity version. The opne the "SampleScene" from "Assets/Scenes/".
+After donwloading or cloning the repo, open it with the corresponding Unity version. The opne the "SampleScene" from "Assets/PlexusEffect/ExampleScene/".
 In the Scene you have to make sure the "EntitySubScene" is activated (is ticked)
 ![grafik](https://github.com/user-attachments/assets/cb68dfd6-d566-433b-991a-22d6cb2642c5)
 
@@ -68,6 +68,10 @@ in this example we create a simple PlexusEffect on a Unity-sphere
 
 - In our regular Scene lets create a new Gameobject and choose the default Sphere, with rightclick into the "Hierarchy" and select GameObject->3D Object->Sphere 
 ![NewPorject](TutorialImages/Step14_CreateNewSphere.png)
+
+- Add the "PlexusGameobjectFromMesh" Component to the Sphere Gameobject. This Component will iterate over the MeshData and convert it to a kind of PlexusEffectMesh data that will be used by the Effect. this will happen when the scene starts and is quite a heavy calculation. for an example like this, it is fine, but for a more preformance critical setup you should consider using the "PlexusGameObjectPrecalculated" Component
+![NewPorject](TutorialImages/Step15_AddPlexusGameobjectFromMeshComponent.png)
+
 
 
 # Example with the buildin sphere mesh
