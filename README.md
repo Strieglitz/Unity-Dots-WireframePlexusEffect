@@ -31,7 +31,9 @@ There is still tonns of room for improvements like adding lots of options to mak
 The effect does not run on heavy Shaders and can be used in **ALL RenderPipelines**. The development Unity Project was build with the URP Renderpipeline. If you want to use the HDRP Renderpipeline you just have to convert the 2 Shaders that are used in the project. Im not sure if you can automaticly upgrade them to HDRD in a HDRP-Project. But you can always rebuild them. In the URP-Project just open the shaders with the shadergraph editor and you can see how the shader is built. then open the HDRP project and rebuilt the Shader in a new Shadergraph.
 
 ### Unity Version Compability <a name="unityversion"></a>
-i built the Project with Unity 6 but i dont know in which version it will break. I tried out with 2022.3.55f1 and it worked just like described, so i just assume the 2023 will work too until some says otherwise.
+The Project in this repository is now on **Unity 6000.6.0f1** (Entities 6.6.0, Entities Graphics 6.6.0, URP 17.6.0), so open it with that version or a newer one.
+
+The code of the effect did not change with that upgrade. Before it, the Project was on Unity 6000.0.32f1 (Entities 1.3.8, URP 17.0.3). I also tried it out with 2022.3.55f1 and it worked just like described, so i just assume the 2023 will work too until someone says otherwise. If you need the Project in that older state, take [the last commit before the upgrade](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/tree/ac834fa730ecbc8cc22ff6227e150e313cd6a1ac).
 
 ## Getting Started <a name="gettingstarted"></a>
 how to get started with this repository. you can just download it an play around in the sampleScene, create a new project and play around or load it into a existing one.
