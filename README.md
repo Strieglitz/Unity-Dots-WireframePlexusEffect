@@ -4,6 +4,7 @@
 1. [Overview](#overview)
     1. [Render Pipeline Compability](#renderpipeline)
     2. [Unity Version Compability](#unityversion)
+    3. [Shader Version without ECS](#shaderversion)
 2. [Getting Started](#gettingstarted)
     1. [Play around in the Repository ExampleScene](#examplescene)
     2. [Import to new project and setup](#import)
@@ -23,6 +24,8 @@ A Plexus like effect with glowing vertecies and connection-lines based on the wi
 
 Had no idea how to implement this effect in Shadergraph or Effectgraph so i tried it with ecs/dots. Would love to know how to achieve this with Shadergraph or an Effectgraph!
 
+**Update:** there is now also a shader based version that needs no ECS, see [Shader Version without ECS](#shaderversion).
+
 You can set any mesh and andjust some values like how fast and far the vertecies move from their original Position or how thick the connection lines are and how streched they have to be until they get invisible.
 
 There is still tonns of room for improvements like adding lots of options to make the the effect more variable. If you have an idea or an request please let me know.
@@ -34,6 +37,13 @@ The effect does not run on heavy Shaders and can be used in **ALL RenderPipeline
 The Project in this repository is now on **Unity 6000.6.0f1** (Entities 6.6.0, Entities Graphics 6.6.0, URP 17.6.0), so open it with that version or a newer one.
 
 The code of the effect did not change with that upgrade. Before it, the Project was on Unity 6000.0.32f1 (Entities 1.3.8, URP 17.0.3). I also tried it out with 2022.3.55f1 and it worked just like described, so i just assume the 2023 will work too until someone says otherwise. If you need the Project in that older state, take [the last commit before the upgrade](https://github.com/Strieglitz/Unity-Dots-WireframePlexusEffect/tree/ac834fa730ecbc8cc22ff6227e150e313cd6a1ac).
+
+### Shader Version without ECS <a name="shaderversion"></a>
+There is now a second implementation of the effect in `Assets/PlexusEffectShader` that needs no Entities and no Subscene. The mesh is built once and the whole animation runs in one vertex shader, so there is no per frame work on the CPU. The settings and the script API mirror the ECS version. The shader is written for URP.
+
+Open `Assets/PlexusEffectShader/ExampleScenes/PlexusShaderExampleScene` and press Play. How it works, how to use it, the differences to the ECS version and the limits are described in [its own README](Assets/PlexusEffectShader/README.md).
+
+Measured in the editor with 66 objects, same camera and same objects: the ECS version needs 5.8 to 7.0 ms on the CPU main thread and 5.3 to 5.7 ms on the GPU (116 fps), the shader version needs 2.3 ms and 0.5 ms (229 fps).
 
 ## Getting Started <a name="gettingstarted"></a>
 how to get started with this repository. you can just download it an play around in the sampleScene, create a new project and play around or load it into a existing one.
